@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ekho — Trouve ton lieu. Vis ton moment.</title>
+  <title>ekho — Trouve où aller, selon ton mood.</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet" />
@@ -222,7 +222,7 @@
       color: rgba(255,247,239,0.65);
       font-weight: 300;
       width: 100%;
-      max-width: 520px;
+      max-width: 780px;
       line-height: 1.85;
       animation: fadeUp 0.7s 0.2s ease both;
       text-align: center;
@@ -380,13 +380,103 @@
     /* ═══════════════════════
        MOMENTS DU JOUR
     ═══════════════════════ */
+    /* ── POUR QUI ── */
+    .pourqui-section {
+      background: var(--dark);
+      padding: 80px 6%;
+    }
+    .pourqui-header {
+      text-align: center;
+      margin-bottom: 52px;
+    }
+    .pourqui-header h2 {
+      font-size: clamp(1.9rem, 3.5vw, 2.6rem);
+      font-weight: 900;
+      color: var(--dawn);
+      letter-spacing: -0.03em;
+      margin: 10px 0 0;
+      line-height: 1.15;
+    }
+    .pourqui-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      max-width: 1060px;
+      margin: 0 auto;
+    }
+    @media (max-width: 800px) {
+      .pourqui-grid { grid-template-columns: 1fr; }
+    }
+    .pourqui-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      padding: 32px 28px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      transition: background 0.25s;
+    }
+    .pourqui-card:hover { background: rgba(107,84,255,0.08); }
+    .pourqui-avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid rgba(255,255,255,0.12);
+    }
+    .pourqui-name {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.02em;
+      margin: 0;
+    }
+    .pourqui-role {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.4);
+      margin: 2px 0 0;
+    }
+    .pourqui-mood {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--manila);
+      background: rgba(236,248,144,0.1);
+      border: 1px solid rgba(236,248,144,0.25);
+      border-radius: 100px;
+      padding: 4px 12px;
+      width: fit-content;
+    }
+    .pourqui-text {
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.7;
+      margin: 0;
+    }
+    .pourqui-text strong { color: rgba(255,255,255,0.9); }
+
     .moments-section {
+      display: block;
+    }
+    .moments-part-light {
+      background: #ffffff;
+      padding: 80px 6%;
+    }
+    .moments-part-dark {
       background: var(--dawn);
-      padding: 64px 6% 52px;
+      padding: 80px 6%;
+    }
+    .moments-part-dark > div {
+      text-align: center;
+      max-width: 860px;
+      margin: 0 auto;
     }
     .moments-header {
       text-align: center;
-      margin-bottom: 36px;
+      margin-bottom: 48px;
     }
     .eyebrow {
       display: inline-flex;
@@ -408,7 +498,8 @@
       line-height: 1.06;
       color: var(--dark);
     }
-    .moments-header h2 .hl {
+    .moments-header h2 .hl,
+    .moments-part-dark h2 .hl {
       display: inline-block;
       background: var(--manila);
       padding: 0 8px;
@@ -420,7 +511,7 @@
       font-size: 1rem;
       color: rgba(26,27,35,0.5);
       font-weight: 300;
-      max-width: 460px;
+      max-width: 420px;
       margin-left: auto;
       margin-right: auto;
       line-height: 1.75;
@@ -432,7 +523,7 @@
       gap: 14px;
     }
     @media (max-width: 900px) { .moments-grid { grid-template-columns: repeat(2,1fr); } }
-    @media (max-width: 500px)  { .moments-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 500px) { .moments-grid { grid-template-columns: 1fr; } }
 
     .moment-card {
       position: relative;
@@ -442,14 +533,13 @@
     }
     .moment-card img {
       width: 100%;
-      height: 500px;
+      height: 420px;
       object-fit: cover;
       display: block;
       transition: transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94), filter 0.4s;
       filter: brightness(0.65) saturate(1.2);
     }
-    @media (max-width: 900px) { .moment-card img { height: 360px; } }
-    @media (max-width: 500px)  { .moment-card img { height: 300px; } }
+    @media (max-width: 500px)  { .moment-card img { height: 240px; } }
     .moment-card:hover img {
       transform: scale(1.08);
       filter: brightness(0.8) saturate(1.4);
@@ -551,7 +641,7 @@
     ═══════════════════════ */
     .how-section {
       background: var(--dawn);
-      padding: 0 6% 64px;
+      padding: 80px 6%;
       color: var(--dark);
     }
     .how-header { text-align: center; margin-bottom: 36px; }
@@ -653,7 +743,8 @@
     @media (max-width: 800px) { .b2b-inner { grid-template-columns: 1fr; gap: 48px; } }
 
     .b2b-tag {
-      display: inline-flex;
+      display: flex;
+      justify-content: center;
       align-items: center;
       gap: 8px;
       font-size: 0.7rem;
@@ -1076,12 +1167,12 @@
 <nav id="navbar">
   <div class="nav-logo">ekho</div>
   <div class="nav-links">
-    <a href="#moments">Moments</a>
-    <a href="#comment">Fonctionnement</a>
+    <a href="#comment">Comment ça marche</a>
+    <a href="#moments">Ce qui t'attend</a>
     <a href="#lieux">Pour les lieux</a>
-    <a href="#fondateurs">Notre vision</a>
+    <a href="#fondateurs">Pourquoi ekho</a>
   </div>
-  <a href="#inscription" class="nav-cta">Je veux en être →</a>
+  <a href="#inscription" class="nav-cta">Rejoindre la bêta →</a>
 </nav>
 
 <!-- ══════════════════════════
@@ -1101,20 +1192,20 @@
   <div class="hero-content">
     <div class="hero-badge">
       <span class="badge-dot"></span>
-      On teste à Marseille · Lancement à l'été 2026
+      Bêta privée à Marseille · Été 2026
     </div>
 
     <h1>
-      Trouve ton lieu.<br/>
-      <span class="hl-box">Vis ton moment.</span>
+      Trouve où aller,<br/>
+      <span class="hl-box">selon ton mood.</span>
     </h1>
 
     <p class="hero-sub">
-      <strong>Le bon endroit t'attend, autour de toi.</strong>
+      ekho, c'est l'app qui te propose les lieux qui collent à ton mood. Dans les lieux partenaires, tu peux aussi découvrir des présences compatibles et créer une connexion, si l'envie est partagée.
     </p>
 
     <div class="hero-actions">
-      <a href="#moments" class="btn-ghost">Découvrir ↓</a>
+      <a href="#comment" class="btn-ghost">Voir comment ça marche ↓</a>
     </div>
 
     <div class="hero-bottom">
@@ -1132,11 +1223,11 @@
       <div class="hero-ticker">
         <div class="hero-ticker-track" id="hero-ticker-track">
           <span class="hero-ticker-item">Mood du moment</span>
-          <span class="hero-ticker-item">Spontanéité</span>
-          <span class="hero-ticker-item">Découverte locale</span>
-          <span class="hero-ticker-item accent">Trouve ton lieu</span>
-          <span class="hero-ticker-item accent">Vis ton moment</span>
-          <span class="hero-ticker-item">Connexion humaine</span>
+          <span class="hero-ticker-item">Adresses qui collent</span>
+          <span class="hero-ticker-item">Spontanéité assumée</span>
+          <span class="hero-ticker-item accent">Sans recherche infinie</span>
+          <span class="hero-ticker-item">Connexion locale</span>
+          <span class="hero-ticker-item accent">Le bon endroit, maintenant</span>
         </div>
       </div>
     </div>
@@ -1144,15 +1235,61 @@
 </section>
 
 
+
 <!-- ══════════════════════════
-     MOMENTS
+     FONCTIONNEMENT
+══════════════════════════ -->
+<section class="how-section" id="comment">
+  <div class="how-header reveal">
+    <div class="eyebrow">Comment ça marche</div>
+    <h2>Un parcours<br/><span class="hl">simple.</span></h2>
+    <p>Ton mood guide tout le reste.</p>
+  </div>
+
+  <div class="how-grid">
+    <div class="how-card how-card-1 reveal">
+      <div class="how-step">Étape 01</div>
+      <div class="how-card-header">
+        <span class="how-icon">✦</span>
+        <h3>Tu choisis ton mood</h3>
+      </div>
+      <p>Pas d'itinéraire à construire, pas de recherche à rallonge. Tu choisis une énergie du moment. ekho part de là.</p>
+      <div class="how-num">01</div>
+    </div>
+
+    <div class="how-card how-card-2 reveal">
+      <div class="how-step">Étape 02</div>
+      <div class="how-card-header">
+        <span class="how-icon">📍</span>
+        <h3>ekho lit l'ambiance autour</h3>
+      </div>
+      <p>Le moment, les lieux, leur énergie du moment. ekho resserre le champ et te montre les options qui tombent juste — pas une liste infinie.</p>
+      <div class="how-num">02</div>
+    </div>
+
+    <div class="how-card how-card-3 reveal">
+      <div class="how-step">Étape 03</div>
+      <div class="how-card-header">
+        <span class="how-icon">✦</span>
+        <h3>Découvre les présences autour de toi</h3>
+      </div>
+      <p>Quand tu es dans un lieu partenaire, ekho peut détecter des présences compatibles autour de toi. Pas de profil public. Pas de swipe. Pas d'approche forcée. Un échange anonyme peut s'ouvrir uniquement si l'envie est partagée.</p>
+      <div class="how-num">03</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════
+     CE QUI T'ATTEND — lieux selon le mood
 ══════════════════════════ -->
 <section class="moments-section" id="moments">
-  <div class="moments-header reveal">
-    <div class="eyebrow">Ce qui t'attend</div>
-    <h2>Chaque heure mérite<br/><span class="hl">le bon endroit.</span></h2>
-    <p>ekho te guide vers les lieux qui collent le mieux à ton humeur, ici et maintenant.</p>
-  </div>
+  <div class="moments-part-light">
+    <div class="moments-header reveal">
+      <div class="eyebrow">Ce qui t'attend</div>
+      <h2>Chaque heure mérite<br/><span class="hl">le bon endroit.</span></h2>
+      <p>ekho lit l'ambiance et te propose les lieux qui collent le mieux à ton humeur, ici et maintenant.</p>
+    </div>
 
   <div class="moments-grid">
     <div class="moment-card reveal">
@@ -1173,8 +1310,8 @@
       <span class="moment-time-badge badge-sociable">Sociable · Déjeuner</span>
       <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=700&q=85&fit=crop&crop=center" alt="Déjeuner vivant et local" loading="lazy"/>
       <div class="moment-overlay">
-        <div class="moment-title">Ça tombe bien</div>
-        <div class="moment-desc">Une bonne adresse, un peu de vie, le bon niveau de mouvement. De quoi bien couper, sans perdre de temps.</div>
+        <div class="moment-title">Couper sans déconnecter</div>
+        <div class="moment-desc">Une bonne adresse, un peu de monde, le bon niveau d'énergie. Tu décompresses sans t'isoler.</div>
         <div class="moment-moods">
           <span class="m-chip">Animé</span>
           <span class="m-chip">Bon spot</span>
@@ -1210,61 +1347,21 @@
         </div>
       </div>
     </div>
-
   </div>
+  </div><!-- end moments-part-light -->
+
+  <!-- Continuation : expérience sociale lieux partenaires -->
+  <div class="moments-part-dark">
+    <div class="reveal">
+      <h2 style="font-size:clamp(2.2rem,5vw,3.6rem);font-weight:900;color:var(--dark);letter-spacing:-0.04em;line-height:1.06;margin:0 0 20px;">Dans les lieux partenaires,<br/><span class="hl">ekho va plus loin.</span></h2>
+      <p style="font-size:1rem;color:rgba(26,27,35,0.55);font-weight:300;line-height:1.75;margin:0 0 24px;">Certains lieux deviennent plus qu'une adresse : ils deviennent des endroits où une connexion peut naître, sans pression.</p>
+      <p style="font-size:1rem;color:rgba(26,27,35,0.55);font-weight:300;line-height:1.75;margin:0 0 24px;">Tu peux découvrir une présence compatible, sans profil public et sans savoir immédiatement qui c'est. Tu peux ignorer. Tu peux demander à échanger. L'autre personne accepte ou non.</p>
+      <p style="font-size:1rem;color:rgba(26,27,35,0.7);font-weight:400;line-height:1.75;margin:0 0 36px;">La connexion commence seulement si les deux en ont envie.</p>
+      <p style="font-size:0.9rem;color:rgba(26,27,35,0.35);line-height:1.7;margin:0;border-top:1px solid rgba(26,27,35,0.12);padding-top:24px;font-style:italic;letter-spacing:0.01em;">Le lieu reste le point de départ. La rencontre reste un choix.</p>
+    </div>
+  </div><!-- end moments-part-dark -->
 </section>
 
-
-
-<!-- ══════════════════════════
-     FONCTIONNEMENT
-══════════════════════════ -->
-<section class="how-section" id="comment">
-  <div class="how-header reveal">
-    <div class="eyebrow">Comment ça marche</div>
-    <h2>Un parcours<br/><span class="hl">simple.</span></h2>
-    <p>Ton mood guide tout le reste.</p>
-  </div>
-
-  <div class="how-grid">
-    <div class="how-card how-card-1 reveal">
-      <div class="how-step">Étape 01</div>
-      <div class="how-card-header">
-        <span class="how-icon">✦</span>
-        <h3>Tu choisis ton mood</h3>
-      </div>
-      <p>Pas d'itinéraire à construire, pas de recherche à rallonge. Tu choisis une énergie du moment. ekho part de là.</p>
-      <div class="how-num">01</div>
-    </div>
-
-    <div class="how-card how-card-2 reveal">
-      <div class="how-step">Étape 02</div>
-      <div class="how-card-header">
-        <span class="how-icon">📍</span>
-        <h3>ekho regarde ce qui correspond</h3>
-      </div>
-      <p>Le moment, les lieux, ce qu'ils dégagent maintenant. L'app resserre le champ et te montre quelques options qui tombent juste — pas une liste infinie.</p>
-      <div class="how-num">02</div>
-    </div>
-
-    <div class="how-card how-card-3 reveal">
-      <div class="how-step">Étape 03</div>
-      <div class="how-card-header">
-        <span class="how-icon">✦</span>
-        <h3>Le lieu vit aussi par les gens qui s'y trouvent</h3>
-      </div>
-      <p>Dans les lieux partenaires, tu peux échanger anonymement avec des personnes présentes sur place. Pas de profil, pas de pression. Juste une autre façon de sentir qu'un lieu est vivant.</p>
-      <div class="how-num">03</div>
-    </div>
-  </div>
-</section>
-
-<!-- Wave dawn → dark -->
-<div class="wave-divider" style="background:var(--dawn); line-height:0;">
-  <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M0,40 C480,0 960,80 1440,40 L1440,80 L0,80 Z" fill="#1A1B23"/>
-  </svg>
-</div>
 
 <!-- ══════════════════════════
      POUR LES ÉTABLISSEMENTS
@@ -1274,40 +1371,43 @@
     <div class="b2b-content reveal">
       <div class="b2b-tag">Pour les établissements</div>
       <h2 class="b2b-title">
-        Ton lieu mérite<br/>
-        <span class="accent">les bonnes personnes.</span>
+        Ton lieu peut devenir<br/>
+        <span class="accent">plus qu'une adresse.</span>
       </h2>
       <p class="b2b-desc">
-        Pas une plateforme de réservation. Pas un guide. Les personnes qui arrivent via ekho ne cherchent pas une adresse au hasard. Elles cherchent un moment, et ton lieu y répond.
+        Avec ekho, ton établissement n'est pas seulement recommandé. Il devient un lieu actif : visible au bon moment, associé aux bons moods, et capable de favoriser des connexions entre les personnes présentes.
+      </p>
+      <p class="b2b-desc" style="margin-top:-8px;">
+        Pas une plateforme de réservation. Pas un guide touristique. Un outil pour faire venir les bonnes personnes au bon moment — et rendre ton lieu plus vivant.
       </p>
 
       <ul class="b2b-perks">
         <li class="b2b-perk">
           <div class="perk-icon">🎯</div>
           <div class="perk-text">
-            <strong>Présent au bon moment</strong>
-            <span>Ton lieu apparaît aux bonnes personnes, au bon moment, selon leur mood et l'ambiance réelle autour de toi.</span>
+            <strong>Visible quand ça compte</strong>
+            <span>Ton lieu apparaît au moment précis où l'ambiance correspond à un mood recherché. Pas "café à Marseille" — "café calme, pour bosser, à 10h, à Castellane".</span>
           </div>
         </li>
         <li class="b2b-perk">
           <div class="perk-icon">📊</div>
           <div class="perk-text">
-            <strong>Suivi simple</strong>
-            <span>Tu vois combien de personnes ont découvert ton lieu via ekho, et à quels moments. Lisible, utile, sans superflu.</span>
+            <strong>Tu vois ce qui marche</strong>
+            <span>Tableau de bord : combien de découvertes par jour, à quels créneaux, pour quels moods. Tu pilotes au lieu de subir.</span>
           </div>
         </li>
         <li class="b2b-perk">
           <div class="perk-icon">🎁</div>
           <div class="perk-text">
-            <strong>Gratuit au lancement</strong>
-            <span>Zéro abonnement, zéro commission. On construit ça ensemble avant de parler d'argent.</span>
+            <strong>Gratuit jusqu'au lancement officiel</strong>
+            <span>Zéro abonnement, zéro commission. On construit ekho avec vous pendant la bêta.</span>
           </div>
         </li>
       </ul>
 
       <div class="b2b-cta">
         <a href="#inscription" class="btn-primary" style="display:inline-flex;">
-          Rejoindre les lieux partenaires →
+          Devenir lieu partenaire →
         </a>
       </div>
     </div>
@@ -1372,15 +1472,15 @@
     </h2>
 
     <p>
-      Sois là dès le premier jour. Laisse ton email — on te prévient dès qu'ekho ouvre à Marseille.
+      Rejoins les premiers utilisateurs à Marseille. Laisse ton email — on te prévient dès qu'ekho ouvre.
     </p>
 
     <div class="tab-switcher">
       <button class="tab-btn active" id="tab-user" onclick="switchTab('user')">
-        Je suis un utilisateur
+        Je veux découvrir des lieux
       </button>
       <button class="tab-btn" id="tab-venue" onclick="switchTab('venue')">
-        Je suis un établissement
+        Je gère un lieu
       </button>
     </div>
 
@@ -1416,7 +1516,7 @@
         </div>
 
         <button type="submit" class="form-submit" id="form-submit-btn">
-          Je rejoins ekho →
+          Rejoindre la bêta →
         </button>
 
         <p class="form-disclaimer">Aucun spam. On te contacte uniquement pour l'accès anticipé.</p>
@@ -1439,38 +1539,34 @@
 
   <div class="founders-header reveal">
     <div class="eyebrow" style="color:var(--purple);">Pourquoi ekho</div>
-    <h2>Une ville pleine<br/><span class="hl">de lieux invisibles.</span></h2>
-    <p>ekho est né d'une friction simple et réelle.</p>
+    <h2>Le bon lieu<br/><span class="hl">dépend du moment.</span></h2>
+    <p>Une même adresse peut être parfaite le matin, trop calme à midi, idéale l'après-midi ou trop pleine le soir.<br/><br/>Le problème n'est pas de trouver des lieux. Il y en a déjà partout.<br/>Le vrai sujet, c'est de savoir lequel correspond à ce que tu veux vivre maintenant.</p>
   </div>
-
-  <p class="founders-quote reveal">
-    "Tu es dans une ville pleine d'endroits. Et pourtant, tu ne sais pas toujours lequel correspond à maintenant. Ce n'est pas un manque de choix. C'est un manque de lecture."
-  </p>
 
   <div class="founders-grid">
 
     <div class="founders-block reveal">
       <div class="founders-block-title">Le point de départ</div>
       <h3>Ce que tu ressens maintenant, pas ce que les autres ont aimé.</h3>
-      <p>Les guides classiques te racontent des expériences passées. ekho part de ton mood du moment et lit ce qui se passe réellement autour de toi.</p>
+      <p>Les guides classiques s'appuient sur des avis, des notes et des expériences passées. ekho part de ce que tu veux vivre maintenant.</p>
     </div>
 
     <div class="founders-block reveal">
       <div class="founders-block-title">Ce qu'on construit</div>
-      <h3>Ni guide, ni réseau social. Un outil plus juste.</h3>
-      <p>Pas de note, pas de classement. Un outil discret qui comprend le moment et propose des endroits justes — et une façon aussi de se reconnecter à sa ville, à ses lieux, et parfois aux autres, sans forcer les choses. Rien de plus.</p>
+      <h3>Ni guide, ni réseau social.</h3>
+      <p>Pas de note de 1 à 5. Pas de classement par popularité. Pas de profil exposé à tout le monde.<br/>Juste un outil discret qui comprend le moment, propose des endroits qui collent, et permet parfois de créer une connexion réelle à partir du lieu — sans forcer.</p>
     </div>
 
     <div class="founders-block reveal">
       <div class="founders-block-title">La méthode</div>
-      <h3>Marseille d'abord. Bien, avant vite.</h3>
+      <h3>Marseille d'abord.</h3>
       <p>On ne veut pas scaler une mauvaise méthode. On veut que ça tombe juste ici — dans une ville avec une culture de quartier forte et des lieux qui méritent d'être trouvés — avant de passer à la suite.</p>
     </div>
 
     <div class="founders-block reveal">
       <div class="founders-block-title">L'engagement</div>
-      <h3>Construit avec ceux qui l'utilisent en premier.</h3>
-      <p>Les premiers inscrits ne sont pas là pour remplir un formulaire. Ils participent à rendre ekho plus juste. Leurs retours définissent ce qu'ekho devient.</p>
+      <h3>Une app qui s'ajuste avec l'usage.</h3>
+      <p>ekho évolue avec les retours des utilisateurs et des lieux partenaires, pour proposer des recommandations toujours plus justes, au bon moment.</p>
     </div>
 
   </div>
@@ -1532,8 +1628,8 @@
     document.getElementById('tab-venue').classList.toggle('active', type === 'venue');
     document.getElementById('b2b-fields').classList.toggle('visible', type === 'venue');
     document.getElementById('form-submit-btn').textContent = type === 'venue'
-      ? 'Je veux être contacté pour référencer mon établissement →'
-      : 'Je rejoins ekho →';
+      ? 'Devenir partenaire →'
+      : 'Rejoindre la bêta →';
   }
 
   // Form submit
