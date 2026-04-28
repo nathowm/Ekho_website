@@ -328,10 +328,20 @@
     }
     .hero-sub strong { color: var(--dawn); font-weight: 700; }
 
+    @media (max-width: 900px) {
+      /* Désactive les effets lourds sur mobile */
+      .glow { display: none; }
+      .particle { display: none; }
+      nav.scrolled { backdrop-filter: none; -webkit-backdrop-filter: none; }
+      .nav-mobile { backdrop-filter: none; -webkit-backdrop-filter: none; }
+    }
     @media (max-width: 600px) {
       .hero { padding: 100px 5% 60px; }
       .hero-badge { font-size: 0.65rem; padding: 7px 14px; }
     }
+    /* GPU hints sur les éléments animés */
+    .hero-ticker-track { will-change: transform; }
+    .reveal { will-change: opacity, transform; }
 
     .hero-actions {
       margin-top: 28px;
@@ -1749,11 +1759,11 @@
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry, i) => {
       if (entry.isIntersecting) {
-        setTimeout(() => entry.target.classList.add('visible'), i * 90);
+        setTimeout(() => entry.target.classList.add('visible'), i * 60);
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.1 });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
   // Tab switcher
