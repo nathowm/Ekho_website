@@ -208,13 +208,13 @@
       50%      { transform: translateY(-10px) rotate(var(--r,0deg)); }
     }
     .b1 { top: 12%; left: 55%; --r:-2deg; animation-delay:0s;   animation-duration:5.5s; }
-    .b2 { top: 21%; left: 76%; --r: 2deg; animation-delay:1.3s; animation-duration:6.5s; }
+    .b2 { top: 46%; left: 90%; --r: 2deg; animation-delay:1.3s; animation-duration:6.5s; }
     .b3 { top: 30%; left: 58%; --r:-1deg; animation-delay:0.6s; animation-duration:5s;   }
-    .b4 { top: 38%; left: 80%; --r: 1deg; animation-delay:1.8s; animation-duration:6.2s; }
-    .b5 { top: 80%; left: 54%; --r:-2deg; animation-delay:0.9s; animation-duration:5.8s; }
-    .b8 { top: 71%; left: 65%; --r: 1deg; animation-delay:2.1s; animation-duration:6.1s; }
-    .b6 { top: 72%; left: 80%; --r: 1deg; animation-delay:0.3s; animation-duration:6s;   }
-    .b7 { top: 84%; left: 79%; --r:-1deg; animation-delay:1.5s; animation-duration:5.3s; }
+    .b4 { top: 21%; left: 76%; --r: 1deg; animation-delay:1.8s; animation-duration:6.2s; }
+    .b5 { top: 56%; left: 51%; --r:-2deg; animation-delay:0.9s; animation-duration:5.8s; }
+    .b8 { top: 79%; left: 65%; --r: 1deg; animation-delay:2.1s; animation-duration:6.1s; }
+    .b6 { top: 86%; left: 84%; --r: 1deg; animation-delay:0.3s; animation-duration:6s;   }
+    .b7 { top: 88%; left: 61%; --r:-1deg; animation-delay:1.5s; animation-duration:5.3s; }
     @media(max-width:900px) {
       .b1,.b2,.b3,.b4,.b5,.b6,.b7,.b8 { display: none; }
     }
@@ -458,6 +458,73 @@
     /* reveal */
     .rv { opacity: 0; transform: translateY(22px); transition: opacity .6s ease, transform .6s ease; }
     .rv.on { opacity: 1; transform: translateY(0); }
+
+    /* ──────────── HERO CARD ──────────── */
+    .hero-card {
+      background: var(--dark);
+      border-radius: 24px;
+      padding: 28px 28px 22px;
+      width: 300px;
+      box-shadow: 0 32px 80px rgba(26,27,46,.28), 0 8px 24px rgba(107,84,255,.15);
+      border: 1px solid rgba(255,255,255,.07);
+      position: relative;
+    }
+    .hc-header {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    .hc-title {
+      font-size: 1rem; font-weight: 700; color: #fff; letter-spacing: -0.02em;
+    }
+    .hc-loc {
+      font-size: .65rem; font-weight: 600;
+      color: rgba(255,255,255,.4);
+      background: rgba(255,255,255,.07);
+      padding: 4px 10px; border-radius: 100px;
+    }
+    .hc-moods { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
+    .hc-mood {
+      display: flex; flex-direction: row; align-items: center; justify-content: space-between;
+      flex-wrap: nowrap;
+      padding: 12px 14px; border-radius: 14px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.07);
+      cursor: pointer; transition: background .2s, border-color .2s, transform .15s;
+      user-select: none; width: 100%;
+    }
+    .hc-mood-active {
+      background: rgba(107,84,255,.18);
+      border-color: rgba(107,84,255,.4);
+    }
+    .hc-mood-left {
+      display: flex; flex-direction: row; align-items: center; gap: 10px;
+      flex: 1; min-width: 0;
+    }
+    .hc-emoji { font-size: 1.1rem; line-height: 1; flex-shrink: 0; width: 24px; text-align: center; }
+    .hc-mood-text { display: flex; flex-direction: column; min-width: 0; }
+    .hc-mood-name { font-size: .73rem; font-weight: 700; color: #fff; line-height: 1.3; white-space: nowrap; }
+    .hc-place { font-size: .58rem; color: rgba(255,255,255,.4); font-weight: 500; white-space: nowrap; }
+    .hc-mood-active .hc-mood-name { color: #C7B5F3; }
+    .hc-mood-active .hc-place { color: rgba(199,181,243,.5); }
+    .hc-dist {
+      font-size: .58rem; font-weight: 700; flex-shrink: 0;
+      color: rgba(255,255,255,.35);
+      background: rgba(255,255,255,.06);
+      padding: 3px 8px; border-radius: 100px; margin-left: 8px;
+    }
+    .hc-mood-active .hc-dist {
+      color: #C7B5F3; background: rgba(107,84,255,.2);
+    }
+    .hc-cta {
+      display: block; width: 100%; text-align: center;
+      background: var(--p); color: #fff;
+      font-size: .8rem; font-weight: 700;
+      padding: 14px; border-radius: 14px;
+      text-decoration: none;
+      transition: transform .2s, box-shadow .2s;
+      letter-spacing: -0.01em;
+    }
+    .hc-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(107,84,255,.4); }
 
     /* ──────────── HOW ──────────── */
     .how-sec { background: white; padding: 0 !important; }
@@ -1072,24 +1139,50 @@
     <div class="hero-badge">
       <span class="dot"></span>Bêta privée · Premiers accès à Marseille · Été 2026
     </div>
-    <p class="hero-phrases" style="max-width:480px;margin-top:12px;margin-bottom:28px;font-size:clamp(1rem,1.6vw,1.1rem);">Tes amis te donnent toujours les mêmes plans, les réseaux sociaux de beaux endroits, Google Maps des adresses… <span style="color:var(--p);font-weight:700;">toi tu as envie de quoi ?</span></p>
-    <h1 style="margin-bottom:0;"><span class="bold"><em>ekho</em> trouve<br/>le bon endroit<br/>selon ton mood du <span class="u">moment.</span></span></h1>
+    <p class="hero-phrases" style="max-width:480px;margin-top:12px;margin-bottom:28px;font-size:clamp(.9rem,1.4vw,1rem);line-height:1.9;">Tes amis proposent souvent les mêmes plans.<br/>Instagram montre de beaux endroits.<br/>Google Maps liste des adresses.<br/><span style="color:var(--p);font-weight:700;">Mais toi, tu as envie de quoi maintenant ?</span></p>
+    <h1 style="margin-bottom:24px;"><span class="bold"><em>ekho</em> trouve<br/>le bon endroit<br/>selon ton mood du <span class="u">moment.</span></span></h1>
+    <a href="#comment" class="btn-sec" style="font-size:1.1rem;font-weight:700;">Comment ça marche ↓</a>
   </div>
 
 
-  <div class="hero-right" style="display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:28px;position:relative;z-index:3;padding-left:30%;padding-top:18%;">
-    <a href="#inscription" class="btn-main" style="font-size:1.15rem;padding:20px 52px;">Rejoindre la bêta →</a>
-    <a href="#comment" class="btn-sec" style="font-size:1.3rem;font-weight:700;">Comment ça marche ↓</a>
+  <div class="hero-right" style="display:flex;align-items:center;justify-content:center;position:relative;z-index:3;padding-left:18%;padding-top:10%;">
+    <div class="hero-card">
+      <div class="hc-header">
+        <span class="hc-title">On va où ?</span>
+        <span class="hc-loc">📍 Marseille</span>
+      </div>
+      <div class="hc-moods">
+        <div class="hc-mood" onclick="selectMood(this)">
+          <div class="hc-mood-left">
+            <span class="hc-emoji">🌿</span>
+            <div class="hc-mood-name">Calme</div>
+          </div>
+        </div>
+        <div class="hc-mood hc-mood-active" onclick="selectMood(this)">
+          <div class="hc-mood-left">
+            <span class="hc-emoji">👥</span>
+            <div class="hc-mood-name">Social</div>
+          </div>
+        </div>
+        <div class="hc-mood" onclick="selectMood(this)">
+          <div class="hc-mood-left">
+            <span class="hc-emoji">⚡</span>
+            <div class="hc-mood-name">Énergique</div>
+          </div>
+        </div>
+      </div>
+      <a href="#inscription" class="hc-cta">Trouver mon lieu →</a>
+    </div>
   </div>
 
   <!-- Bulles flottantes -->
   <div class="bubbles">
     <div class="bbl b1">📍 Pas trop loin.</div>
     <div class="bbl v b2">🙅 Pas trop blindé.</div>
-    <div class="bbl b3">😶 Pas mort non plus.</div>
+    <div class="bbl b3">😶 Pas vide non plus.</div>
     <div class="bbl m b4">🔄 Pas encore le même endroit.</div>
     <div class="bbl v b5">💻 Pour bosser.</div>
-    <div class="bbl b8">☕ Pour te poser.</div>
+    <div class="bbl b8">☕ Pour me poser.</div>
     <div class="bbl b6">🍷 Prendre un verre.</div>
     <div class="bbl m b7">👀 Voir du monde.</div>
   </div>
@@ -1314,6 +1407,12 @@
   // Nav scroll
   const nav = document.querySelector('nav');
   window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 30), { passive: true });
+
+  // Hero card mood selector
+  function selectMood(el) {
+    el.closest('.hc-moods').querySelectorAll('.hc-mood').forEach(m => m.classList.remove('hc-mood-active'));
+    el.classList.add('hc-mood-active');
+  }
 
   // Mobile menu
   function toggleMenu() {
