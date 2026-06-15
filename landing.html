@@ -79,7 +79,8 @@
 
     /* ──────────── HERO ──────────── */
     .hero {
-      min-height: 100vh;
+      height: 100vh;
+      min-height: 600px;
       padding: 0 5% 0 7%;
       background: #F2EDE7;
       display: grid;
@@ -173,27 +174,49 @@
     /* Mood pills — flottent dans la zone droite uniquement */
     .bubbles { position: absolute; inset: 0; pointer-events: none; }
     .bbl {
-      position: absolute; padding: 7px 13px;
-      border-radius: 100px; font-size: .65rem; font-weight: 600;
-      white-space: nowrap; border: 1.5px solid rgba(26,27,46,0.1);
-      background: #FFF7EF; color: rgba(26,27,35,.55);
+      position: absolute;
+      padding: 4px 10px;
+      border-radius: 100px;
+      font-size: .5rem;
+      font-weight: 600;
+      white-space: nowrap;
+      letter-spacing: 0.01em;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      background: rgba(255,247,239,0.35);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: rgba(26,27,35,.38);
+      box-shadow: 0 4px 16px rgba(107,84,255,.06), inset 0 1px 0 rgba(255,255,255,.4);
       animation: float 6s ease-in-out infinite;
-      box-shadow: 0 2px 10px rgba(0,0,0,.06);
     }
-    .bbl.vert, .bbl.blue, .bbl.orange { background: #FFF7EF; color: rgba(26,27,35,.55); border-color: rgba(26,27,35,.1); }
+    /* Variante violet */
+    .bbl.v {
+      background: rgba(107,84,255,0.07);
+      border-color: rgba(107,84,255,0.14);
+      color: rgba(107,84,255,0.5);
+      box-shadow: 0 4px 16px rgba(107,84,255,.07), inset 0 1px 0 rgba(255,255,255,.15);
+    }
+    /* Variante manila */
+    .bbl.m {
+      background: rgba(236,248,144,0.25);
+      border-color: rgba(236,248,144,0.4);
+      color: rgba(26,27,35,.38);
+      box-shadow: 0 4px 16px rgba(107,84,255,.04), inset 0 1px 0 rgba(255,255,255,.4);
+    }
     @keyframes float {
       0%,100% { transform: translateY(0px) rotate(var(--r,0deg)); }
-      50%      { transform: translateY(-9px) rotate(var(--r,0deg)); }
+      50%      { transform: translateY(-10px) rotate(var(--r,0deg)); }
     }
-    .b1 { top: 18%;  right: 30%; --r:-2deg; animation-delay:0s;   animation-duration:5.5s; }
-    .b2 { top: 12%;  right: 6%;  --r: 2deg; animation-delay:1.3s; animation-duration:6.5s; }
-    .b3 { top: 32%;  right: 8%;  --r:-1deg; animation-delay:0.6s; animation-duration:5s;   }
-    .b4 { top: 58%;  right: 26%; --r: 1deg; animation-delay:1.8s; animation-duration:6.2s; }
-    .b5 { top: 66%;  right: 5%;  --r:-2deg; animation-delay:0.9s; animation-duration:5.8s; }
-    .b6 { top: 76%;  right: 18%; --r: 1deg; animation-delay:0.3s; animation-duration:6s;   }
-    .b7 { top: 5%;   right: 20%; --r:-1deg; animation-delay:1.5s; animation-duration:5.3s; }
+    .b1 { top: 12%; left: 55%; --r:-2deg; animation-delay:0s;   animation-duration:5.5s; }
+    .b2 { top: 21%; left: 76%; --r: 2deg; animation-delay:1.3s; animation-duration:6.5s; }
+    .b3 { top: 30%; left: 58%; --r:-1deg; animation-delay:0.6s; animation-duration:5s;   }
+    .b4 { top: 38%; left: 80%; --r: 1deg; animation-delay:1.8s; animation-duration:6.2s; }
+    .b5 { top: 80%; left: 54%; --r:-2deg; animation-delay:0.9s; animation-duration:5.8s; }
+    .b8 { top: 71%; left: 65%; --r: 1deg; animation-delay:2.1s; animation-duration:6.1s; }
+    .b6 { top: 72%; left: 80%; --r: 1deg; animation-delay:0.3s; animation-duration:6s;   }
+    .b7 { top: 84%; left: 79%; --r:-1deg; animation-delay:1.5s; animation-duration:5.3s; }
     @media(max-width:900px) {
-      .b1,.b2,.b3,.b4,.b5,.b6,.b7 { display: none; }
+      .b1,.b2,.b3,.b4,.b5,.b6,.b7,.b8 { display: none; }
     }
 
     .hero-badge {
@@ -1054,9 +1077,21 @@
   </div>
 
 
-  <div class="hero-right" style="display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:28px;position:relative;z-index:3;padding-left:30%;">
+  <div class="hero-right" style="display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:28px;position:relative;z-index:3;padding-left:30%;padding-top:18%;">
     <a href="#inscription" class="btn-main" style="font-size:1.15rem;padding:20px 52px;">Rejoindre la bêta →</a>
-    <a href="#comment" class="btn-sec">Comment ça marche ↓</a>
+    <a href="#comment" class="btn-sec" style="font-size:1.3rem;font-weight:700;">Comment ça marche ↓</a>
+  </div>
+
+  <!-- Bulles flottantes -->
+  <div class="bubbles">
+    <div class="bbl b1">📍 Pas trop loin.</div>
+    <div class="bbl v b2">🙅 Pas trop blindé.</div>
+    <div class="bbl b3">😶 Pas mort non plus.</div>
+    <div class="bbl m b4">🔄 Pas encore le même endroit.</div>
+    <div class="bbl v b5">💻 Pour bosser.</div>
+    <div class="bbl b8">☕ Pour te poser.</div>
+    <div class="bbl b6">🍷 Prendre un verre.</div>
+    <div class="bbl m b7">👀 Voir du monde.</div>
   </div>
 
 </section>
@@ -1246,8 +1281,8 @@
 <section class="reg-sec" id="inscription">
   <div class="reg-inner">
     <div class="reg-badge"><span class="dot" style="background:var(--manila)"></span>Rejoins la bêta privée.</div>
-    <h2 class="reg-h2 rv"><em>ekho</em> arrive à Marseille<br/><span>cet été.</span></h2>
-    <p class="reg-sub rv">Laisse ton email pour faire partie des premiers accès.</p>
+    <h2 class="reg-h2 rv"><span style="color:#fff;font-style:normal;">ekho</span> arrive à Marseille<br/><span>cet été.</span></h2>
+    <p class="reg-sub rv">Laisse ton email pour faire partie des premiers.</p>
     <form class="form rv" id="myform" onsubmit="onSubmit(event)">
       <input type="text" class="fi" placeholder="Prénom" required/>
       <input type="email" class="fi" placeholder="Email" required/>
