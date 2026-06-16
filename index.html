@@ -3,10 +3,65 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="robots" content="noindex, nofollow"/>
+  <meta name="theme-color" content="#1A1B23"/>
   <title>ekho — Trouve ton lieu. Lance ton moment.</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&display=swap" rel="stylesheet"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png"/>
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png"/>
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png"/>
+  <link rel="manifest" href="favicon/site.webmanifest"/>
+
+  <meta name="description" content="ekho te propose des lieux à Marseille selon ton mood et ta position. Dans les lieux partenaires, découvre aussi des connexions possibles autour de toi."/>
+  <meta name="keywords" content="lieux à Marseille, lieux autour de moi Marseille, application lieux Marseille, lieux selon humeur, mood Marseille, recommandation de lieux, café Marseille, bar Marseille, terrasse Marseille, sortir seul à Marseille, sortir à Marseille, où sortir à Marseille, rencontres à Marseille, connexion locale, application de rencontre locale"/>
+  <meta name="author" content="ekho"/>
+
+  <link rel="canonical" href="https://www.ekhoapp.fr/"/>
+
+  <!-- Open Graph -->
+  <meta property="og:site_name" content="ekho"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:locale" content="fr_FR"/>
+  <meta property="og:title" content="ekho – Trouve le bon lieu à Marseille selon ton mood"/>
+  <meta property="og:description" content="ekho te propose des lieux à Marseille selon ton mood et ta position. Dans les lieux partenaires, découvre aussi des connexions possibles autour de toi."/>
+  <meta property="og:url" content="https://www.ekhoapp.fr/"/>
+  <meta property="og:image" content="https://www.ekhoapp.fr/favicon/android-chrome-512x512.png"/>
+  <meta property="og:image:width" content="512"/>
+  <meta property="og:image:height" content="512"/>
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:title" content="ekho – Trouve le bon lieu à Marseille selon ton mood"/>
+  <meta name="twitter:description" content="ekho te propose des lieux à Marseille selon ton mood et ta position. Dans les lieux partenaires, découvre aussi des connexions possibles autour de toi."/>
+  <meta name="twitter:image" content="https://www.ekhoapp.fr/favicon/android-chrome-512x512.png"/>
+
+  <!-- JSON-LD : Organization + WebSite -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "name": "ekho",
+        "url": "https://www.ekhoapp.fr/",
+        "description": "ekho te propose des lieux à Marseille selon ton mood et ta position. Dans les lieux partenaires, découvre aussi des connexions possibles autour de toi.",
+        "areaServed": {
+          "@type": "City",
+          "name": "Marseille"
+        }
+      },
+      {
+        "@type": "WebSite",
+        "name": "ekho",
+        "url": "https://www.ekhoapp.fr/",
+        "inLanguage": "fr-FR"
+      }
+    ]
+  }
+  </script>
+
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -1376,10 +1431,10 @@
     <h2 class="reg-h2 rv"><span style="color:#fff;font-style:normal;">ekho</span> arrive à Marseille<br/><span>cet été.</span></h2>
     <p class="reg-sub rv">Laisse ton email pour faire partie des premiers.</p>
     <form class="form rv" id="myform" onsubmit="onSubmit(event)">
-      <input type="text" class="fi" placeholder="Prénom" required/>
-      <input type="email" class="fi" placeholder="Email" required/>
+      <input type="text" class="fi" name="firstName" placeholder="Prénom" required/>
+      <input type="email" class="fi" name="email" placeholder="Email" required/>
       <label class="fcheck">
-        <input type="checkbox" required/>
+        <input type="checkbox" name="consent" required/>
         J'accepte de recevoir les informations liées à ekho.
       </label>
       <button type="submit" class="fsub">Rejoindre la bêta →</button>
@@ -1423,12 +1478,33 @@
     document.body.style.overflow = '';
   }
 
-  // Tabs
-// Form
-  function onSubmit(e) {
+  // Form — envoi vers le webhook n8n (relais Brevo)
+  const EKHO_WEBHOOK = 'https://n8n.mnicole.dev/webhook/d773084c-f3a9-4438-b9d9-b68bfd57829c';
+  async function onSubmit(e) {
     e.preventDefault();
-    document.getElementById('myform').style.display = 'none';
-    document.getElementById('ok-msg').style.display = 'block';
+    const form = document.getElementById('myform');
+    const btn = form.querySelector('button[type="submit"]');
+    btn.disabled = true;
+    const payload = {
+      firstName: form.firstName.value.trim(),
+      email: form.email.value.trim(),
+      consent: form.consent.checked,
+      source: location.href,
+      submittedAt: new Date().toISOString(),
+    };
+    try {
+      const res = await fetch(EKHO_WEBHOOK, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      form.style.display = 'none';
+      document.getElementById('ok-msg').style.display = 'block';
+    } catch (err) {
+      alert("Oups, l'inscription n'a pas pu être envoyée. Réessaie dans un instant.");
+      btn.disabled = false;
+    }
   }
 
   // Reveal on scroll
