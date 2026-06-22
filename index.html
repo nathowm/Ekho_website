@@ -93,12 +93,13 @@
     .nav-links a { font-size: 0.8rem; font-weight: 500; color: var(--muted); text-decoration: none; transition: color .2s; }
     .nav-links a:hover { color: var(--p); }
     .nav-pill {
-      background: var(--p); color: #fff;
-      font-size: 0.8rem; font-weight: 700;
-      padding: 9px 20px; border-radius: 100px;
-      text-decoration: none; transition: transform .2s, box-shadow .2s;
+      background: transparent; color: var(--p);
+      font-size: 0.8rem; font-weight: 600;
+      padding: 8px 18px; border-radius: 100px;
+      border: 1.5px solid rgba(107,84,255,.35);
+      text-decoration: none; transition: border-color .2s, background .2s;
     }
-    .nav-pill:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(107,84,255,.35); }
+    .nav-pill:hover { background: rgba(107,84,255,.07); border-color: var(--p); }
     .burger {
       display: none; flex-direction: column; gap: 5px;
       width: 34px; height: 34px; justify-content: center;
@@ -135,19 +136,20 @@
     /* ──────────── HERO ──────────── */
     .hero {
       height: 100vh;
-      min-height: 600px;
-      padding: 0 5% 0 7%;
+      min-height: 640px;
+      padding: 80px 5% 0 7%;
       background: #F2EDE7;
       display: grid;
       grid-template-columns: 1fr 1fr;
       align-items: center;
-      gap: 0 60px;
+      gap: 0 48px;
       position: relative; overflow: hidden;
     }
     .hero-left {
       display: flex; flex-direction: column;
       align-items: flex-start; text-align: left;
       position: relative; z-index: 2;
+      max-width: 620px;
     }
     .hero-right {
       display: flex; align-items: center; justify-content: center;
@@ -262,14 +264,15 @@
       0%,100% { transform: translateY(0px) rotate(var(--r,0deg)); }
       50%      { transform: translateY(-10px) rotate(var(--r,0deg)); }
     }
-    .b1 { top: 12%; left: 55%; --r:-2deg; animation-delay:0s;   animation-duration:5.5s; }
-    .b2 { top: 46%; left: 90%; --r: 2deg; animation-delay:1.3s; animation-duration:6.5s; }
-    .b3 { top: 30%; left: 58%; --r:-1deg; animation-delay:0.6s; animation-duration:5s;   }
-    .b4 { top: 21%; left: 76%; --r: 1deg; animation-delay:1.8s; animation-duration:6.2s; }
-    .b5 { top: 56%; left: 51%; --r:-2deg; animation-delay:0.9s; animation-duration:5.8s; }
-    .b8 { top: 79%; left: 65%; --r: 1deg; animation-delay:2.1s; animation-duration:6.1s; }
-    .b6 { top: 86%; left: 84%; --r: 1deg; animation-delay:0.3s; animation-duration:6s;   }
-    .b7 { top: 88%; left: 61%; --r:-1deg; animation-delay:1.5s; animation-duration:5.3s; }
+    .bbl { opacity: 0.65; }
+    .b1 { top: 12%; left: 55%; --r:-2deg; animation-delay:0s;   animation-duration:5.5s; } /* Pas trop loin */
+    .b2 { top: 46%; left: 90%; --r: 2deg; animation-delay:1.3s; animation-duration:6.5s; } /* Pas trop blindé */
+    .b3 { top: 30%; left: 58%; --r:-1deg; animation-delay:0.6s; animation-duration:5s;   } /* Pas vide non plus */
+    .b4 { display: none; } /* Pas encore le même endroit — masqué */
+    .b5 { top: 56%; left: 51%; --r:-2deg; animation-delay:0.9s; animation-duration:5.8s; } /* Pour bosser */
+    .b8 { display: none; } /* Pour me poser — masqué */
+    .b6 { display: none; } /* Prendre un verre — masqué */
+    .b7 { display: none; } /* Voir du monde — masqué */
     @media(max-width:900px) {
       .b1,.b2,.b3,.b4,.b5,.b6,.b7,.b8 { display: none; }
     }
@@ -297,10 +300,10 @@
 
     /* Contraste typographique : light + black */
     .hero h1 {
-      font-size: clamp(2.6rem, 5.2vw, 6rem);
-      font-weight: 300; letter-spacing: -0.04em;
-      line-height: 1.04; color: var(--dark);
-      max-width: 700px;
+      font-size: clamp(1.75rem, 3.3vw, 3.15rem);
+      font-weight: 300; letter-spacing: -1.2px;
+      line-height: 1.18; color: var(--dark);
+      max-width: 560px;
       margin-bottom: 0;
     }
     .hero h1 .bold, .hero-tagline .bold { font-weight: 900; }
@@ -316,10 +319,10 @@
 
     .hero-phrases {
       font-family: 'Poppins', sans-serif;
-      font-size: clamp(.85rem, 1.4vw, .98rem);
-      font-weight: 400; color: rgba(26,27,35,.5);
-      line-height: 1.7; margin: 4px 0 20px;
-      max-width: 420px;
+      font-size: clamp(.88rem, 1.3vw, 1rem);
+      font-weight: 500; color: #5A5564;
+      line-height: 1.6; margin: 4px 0 20px;
+      max-width: 460px;
     }
     .hero-sub {
       font-size: clamp(.88rem, 1.5vw, 1rem);
@@ -346,10 +349,6 @@
       transition: color .2s;
     }
     .btn-sec:hover { color: var(--p); }
-    @media(max-width:600px) {
-      .btn-main { width: 100%; justify-content: center; }
-      .hero-cta { flex-direction: column; }
-    }
 
     /* ─── CARTE MAP FILIGRANE ─── */
     /* ─── HERO HALOS ─── */
@@ -581,6 +580,129 @@
     }
     .hc-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(107,84,255,.4); }
 
+    /* ──────────── INTRO LIEUX ──────────── */
+    .lieux-intro {
+      background: #F2EDE7;
+      padding: 52px 7%;
+      text-align: center;
+      border-top: 1px solid rgba(26,27,35,.06);
+    }
+    .lieux-usage {
+      font-size: clamp(1rem, 1.8vw, 1.3rem);
+      font-weight: 600; color: var(--dark);
+      margin-bottom: 14px; letter-spacing: -0.01em;
+    }
+    .lieux-proof {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      font-size: .72rem; font-weight: 600;
+      color: rgba(26,27,35,.45); letter-spacing: 0.02em;
+    }
+
+    /* ──────────── QUAND EKHO ──────────── */
+    .when-sec {
+      background: #F2EDE7;
+      padding: 90px 7%;
+    }
+    .when-inner { max-width: 680px; }
+    .when-label {
+      font-size: .62rem; font-weight: 800; letter-spacing: .16em;
+      text-transform: uppercase; color: var(--p);
+      display: flex; align-items: center; gap: 8px;
+      margin-bottom: 36px;
+    }
+    .when-label::before { content:''; width: 22px; height: 2.5px; background: var(--p); border-radius: 2px; }
+    .when-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0; }
+    .when-item {
+      font-size: clamp(1rem, 1.8vw, 1.25rem);
+      font-weight: 500; color: var(--dark);
+      padding: 18px 0;
+      border-bottom: 1px solid rgba(26,27,35,.08);
+      display: flex; align-items: center; gap: 16px;
+    }
+    .when-item:last-child { border-bottom: none; }
+    .when-item::before {
+      content: "→";
+      color: var(--p); font-weight: 700; flex-shrink: 0;
+    }
+
+    /* ──────────── HERO SUB BLOCK ──────────── */
+    .hero-sub-block {
+      margin-bottom: 0;
+      padding: 15px 20px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.58);
+      border: 1px solid rgba(106,76,255,0.16);
+      box-shadow: 0 10px 30px rgba(40,30,80,0.06);
+      max-width: 500px;
+    }
+    .hsb-main {
+      font-size: .92rem; font-weight: 500;
+      color: #3D3749;
+      line-height: 1.55; margin-bottom: 0;
+    }
+    .hsb-proof {
+      display: flex; align-items: center; gap: 8px;
+      font-size: .82rem; font-weight: 700;
+      color: #6A4CFF; letter-spacing: 0.01em;
+    }
+
+    /* ──────────── PREUVE LOCALE ──────────── */
+    .local-proof {
+      background: #F2EDE7;
+      text-align: center;
+      padding: 14px 5%;
+      font-size: .72rem; font-weight: 600;
+      color: rgba(26,27,35,.45);
+      letter-spacing: 0.02em;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      border-top: 1px solid rgba(26,27,35,.07);
+    }
+    .lp-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--p); opacity: .6; flex-shrink: 0;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%,100% { opacity: .6; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.3); }
+    }
+
+    /* ──────────── PITCH ──────────── */
+    .pitch-sec {
+      background: var(--dark);
+      padding: 100px 7%;
+    }
+    .pitch-inner {
+      max-width: 680px; margin: 0 auto; text-align: left;
+    }
+    .pitch-intro {
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      font-weight: 300; color: rgba(255,255,255,.65);
+      line-height: 1.7; margin-bottom: 52px;
+    }
+    .pitch-intro em { color: var(--p); font-style: normal; font-weight: 700; }
+    .pitch-list {
+      display: flex; flex-direction: column; gap: 0;
+      margin-bottom: 52px;
+      border-left: 2px solid rgba(107,84,255,.3);
+      padding-left: 28px;
+    }
+    .pitch-item {
+      font-size: clamp(1rem, 1.8vw, 1.25rem);
+      font-weight: 600; color: rgba(255,255,255,.85);
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .pitch-item:last-child { border-bottom: none; }
+    .pitch-close {
+      font-size: clamp(1rem, 1.8vw, 1.25rem);
+      color: rgba(255,255,255,.55);
+      line-height: 1.6; margin-bottom: 40px;
+    }
+    .pitch-close strong { color: #fff; }
+    .pitch-close em { color: var(--p); font-style: normal; }
+    .pitch-cta { display: inline-block; }
+
     /* ──────────── HOW ──────────── */
     .how-sec { background: white; padding: 0 !important; }
     .how-intro { padding: 80px 7% 52px; text-align: center; background: white; }
@@ -595,7 +717,6 @@
       display: grid; grid-template-columns: 1fr 1fr; gap: 28px;
       padding: 0 7% 88px; background: white;
     }
-    @media(max-width:720px) { .how-paths { grid-template-columns: 1fr; padding: 0 5% 60px; } }
     .how-path {
       display: flex; flex-direction: row;
       align-items: flex-start; gap: 32px;
@@ -961,7 +1082,6 @@
     /* ──────────── B2B ──────────── */
     .b2b-sec { background: var(--white); }
     .b2b-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
-    @media(max-width:800px) { .b2b-grid { grid-template-columns: 1fr; gap: 48px; } }
     .b2b-quote {
       font-size: .82rem; font-style: italic; font-weight: 600; color: var(--p);
       background: rgba(107,84,255,.06); border-left: 3px solid var(--p);
@@ -1019,6 +1139,8 @@
       line-height: 1.04; color: white; margin-bottom: 10px;
     }
     .reg-h2 span { color: var(--manila); }
+    .reg-anti { font-size: clamp(.9rem, 1.4vw, 1rem); color: rgba(255,255,255,.45); line-height: 1.8; margin-bottom: 16px; max-width: 520px; }
+    .reg-tagline { font-size: clamp(1.2rem, 2vw, 1.5rem); font-weight: 700; color: var(--manila); letter-spacing: -0.02em; margin-bottom: 32px; }
     .reg-sub { font-size: .86rem; color: rgba(255,255,255,.38); margin-bottom: 28px; line-height: 1.7; }
     .tabs {
       display: flex; background: rgba(255,255,255,.07);
@@ -1033,7 +1155,6 @@
     .tab.on { background: white; color: var(--dark); }
     .form { display: flex; flex-direction: column; gap: 10px; }
     .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-    @media(max-width:460px) { .row2 { grid-template-columns: 1fr; } }
     .fi {
       width: 100%; padding: 13px 17px;
       background: rgba(255,255,255,.08); border: 1.5px solid rgba(255,255,255,.1);
@@ -1078,7 +1199,8 @@
       background: radial-gradient(circle, rgba(0,0,0,.18) 0%, transparent 70%);
       bottom: -200px; right: -100px; pointer-events: none;
     }
-    .why-sec .sec-label { color: rgba(255,255,255,.45); margin-bottom: 14px; position: relative; }
+    .why-sec .sec-label { color: var(--manila); margin-bottom: 14px; position: relative; }
+    .why-sec .sec-label::before { background: var(--manila); }
     /* Header */
     .why-header {
       display: flex; align-items: flex-start; justify-content: space-between;
@@ -1123,8 +1245,8 @@
     }
     .why-item-text {
       padding: 20px 0 20px 28px;
-      font-size: clamp(.82rem, 1.4vw, .95rem);
-      color: rgba(255,255,255,.5); line-height: 1.7; font-weight: 400;
+      font-size: clamp(.88rem, 1.4vw, 1rem);
+      color: rgba(255,255,255,.82); line-height: 1.7; font-weight: 400;
     }
     .why-item-text strong { color: white; font-weight: 700; }
     /* Closing statement */
@@ -1135,7 +1257,7 @@
     .why-close {
       font-size: clamp(1.6rem, 4vw, 3.2rem);
       font-weight: 900; letter-spacing: -.06em; line-height: 1.05;
-      color: rgba(255,255,255,.2);
+      color: rgba(255,255,255,.65);
     }
     .why-close-em { color: white; display: block; }
     .why-tagline-wrap { max-width: 280px; text-align: right; flex-shrink: 0; }
@@ -1156,6 +1278,117 @@
     .ft-links a { font-size: .7rem; color: rgba(255,255,255,.25); text-decoration: none; transition: color .2s; }
     .ft-links a:hover { color: rgba(255,255,255,.6); }
     .ft-copy { font-size: .66rem; color: rgba(255,255,255,.15); width: 100%; }
+
+    /* ══════════════════════════════════════════
+       RESPONSIVE — TABLETTE (≤ 900px)
+    ══════════════════════════════════════════ */
+    @media (max-width: 900px) {
+      /* Hero */
+      .hero {
+        height: auto !important;
+        min-height: auto !important;
+        grid-template-columns: 1fr;
+        padding: 96px 6% 48px;
+        gap: 40px 0;
+        align-items: start;
+      }
+      .hero-left { max-width: 100%; }
+      .hero-right {
+        padding-left: 0 !important;
+        justify-content: flex-start !important;
+      }
+      .hero-watermark { display: none; }
+      .hero-glow { display: none; }
+      .hero-card { transform: scale(1) !important; width: 290px; }
+
+      /* Sections */
+      .sec { padding: 72px 6%; }
+      .when-sec { padding: 72px 6%; }
+      .how-intro { padding: 64px 6% 40px; }
+      .how-paths { padding: 0 6% 64px; }
+      .why-sec { padding: 72px 6% 80px; }
+      .reg-sec { padding: 80px 6%; }
+      .b2b-sec.sec { padding: 72px 6%; }
+
+      /* Pourquoi — empile header */
+      .why-header { flex-direction: column; gap: 20px; }
+      .why-personas { max-width: 100%; justify-content: flex-start; }
+
+      /* Comment — empile les 2 usages */
+      .how-paths { grid-template-columns: 1fr; gap: 32px; }
+      .how-path { flex-direction: column; gap: 20px; }
+      .how-ui-wrap { width: 100%; height: auto !important; }
+      .how-ui {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        justify-content: flex-start !important;
+        padding: 20px !important;
+      }
+      .how-ui-b { width: 100% !important; height: auto !important; }
+      .loupe { display: none !important; }
+    }
+
+    /* ══════════════════════════════════════════
+       RESPONSIVE — MOBILE (≤ 600px)
+    ══════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      /* Hero */
+      .hero { height: auto !important; min-height: auto !important; padding: 80px 5% 44px; gap: 24px 0; }
+      .hero h1 { font-size: clamp(1.65rem, 7.5vw, 2.4rem); line-height: 1.38; }
+      .hero-badge { font-size: .55rem; padding: 5px 11px; }
+      .hero-sub-block { padding: 12px 16px; }
+      .hero-right { display: none !important; } /* carte masquée sur mobile : CTA dans la page */
+
+      /* CTA group — centré sur mobile */
+      .hero-left > div[style*="display:flex"] {
+        flex-direction: column !important;
+        align-items: center !important;
+        width: 100% !important;
+        gap: 14px !important;
+      }
+      .btn-main { width: 100%; justify-content: center; }
+
+      /* Sections */
+      .sec { padding: 56px 5%; }
+      .when-sec { padding: 56px 5%; }
+      .how-intro { padding: 48px 5% 28px; text-align: left; }
+      .how-paths { padding: 0 5% 48px; gap: 24px; }
+      .why-sec { padding: 56px 5% 64px; }
+      .reg-sec { padding: 64px 5%; }
+      .b2b-sec.sec { padding: 56px 5%; }
+
+      /* Pourquoi */
+      .why-item-text { padding: 16px 0 16px 18px; }
+      .why-num-wrap { padding: 16px 0; }
+
+      /* Quand */
+      .when-item { font-size: clamp(.9rem, 4vw, 1.05rem); padding: 14px 0; }
+
+      /* Inscription */
+      .reg-inner { text-align: left; }
+      .reg-badge { font-size: .55rem; }
+      .reg-h2 { font-size: clamp(1.8rem, 7.5vw, 2.4rem); }
+      .reg-sub { font-size: .88rem; }
+      .tabs { flex-direction: column; background: transparent; padding: 0; gap: 8px; }
+      .tab { border-radius: 10px; background: rgba(255,255,255,.07); }
+      .tab.on { background: white; }
+      .row2 { grid-template-columns: 1fr !important; }
+
+      /* Footer */
+      footer { flex-direction: column; gap: 20px; align-items: flex-start; }
+      .ft-links { flex-wrap: wrap; gap: 12px; }
+    }
+
+    /* ══════════════════════════════════════════
+       RESPONSIVE — PETIT MOBILE (≤ 380px)
+    ══════════════════════════════════════════ */
+    @media (max-width: 380px) {
+      .hero { padding: 76px 5% 40px; }
+      .hero h1 { font-size: 1.65rem; }
+      .sec, .when-sec, .why-sec, .reg-sec { padding-left: 5%; padding-right: 5%; }
+    }
   </style>
 </head>
 <body>
@@ -1166,6 +1399,7 @@
   <div class="nav-links">
     <a href="#comment">Comment ça marche</a>
     <a href="#pourquoi">Pourquoi ekho</a>
+    <a href="#quand">Quand ekho sert</a>
   </div>
   <a href="#inscription" class="nav-pill">Rejoindre la bêta →</a>
   <button class="burger" id="burger" onclick="toggleMenu()" aria-label="Menu">
@@ -1176,6 +1410,7 @@
 <div class="mob-menu" id="mob-menu">
   <a href="#comment" onclick="closeMenu()">Comment ça marche</a>
   <a href="#pourquoi" onclick="closeMenu()">Pourquoi ekho</a>
+  <a href="#quand" onclick="closeMenu()">Quand ekho sert</a>
   <a href="#inscription" onclick="closeMenu()">Rejoindre la bêta →</a>
 </div>
 
@@ -1194,39 +1429,61 @@
     <div class="hero-badge">
       <span class="dot"></span>Bêta privée · Premiers accès à Marseille · Été 2026
     </div>
-    <p class="hero-phrases" style="max-width:480px;margin-top:12px;margin-bottom:28px;font-size:clamp(.9rem,1.4vw,1rem);line-height:1.9;">Trop de choix.<br/>Toujours les mêmes idées.<br/>Rien qui colle vraiment à ton mood.<br/><span style="color:var(--p);font-weight:700;">Et si on faisait en fonction de tes envies ?</span></p>
-    <h1 style="margin-bottom:24px;"><span class="bold"><em>ekho</em> trouve<br/>le bon endroit<br/>selon ton mood du <span class="u">moment.</span></span></h1>
-    <a href="#comment" class="btn-sec" style="font-size:1.1rem;font-weight:700;">Comment ça marche ↓</a>
+    <p class="hero-phrases" style="max-width:460px;margin-top:10px;margin-bottom:20px;">Trop de choix.<br/>Toujours les mêmes endroits.</p>
+    <h1 style="margin-top:0;margin-bottom:26px;"><span class="bold"><em>ekho</em> te propose<br/>3 lieux autour de toi,<br/>pas <span class="u">40 résultats.</span></span></h1>
+    <div class="hero-sub-block">
+      <p class="hsb-main">Pour bosser, te poser, prendre un verre ou voir du monde. Sans comparer 40 avis ni finir encore au même endroit.</p>
+    </div>
+    <p style="font-size:17px;font-weight:750;color:#514B5F;margin-top:22px;margin-bottom:10px;line-height:1.5;">Tu choisis ton mood. <em style="color:var(--p);font-style:normal;">ekho</em> trouve le lieu.</p>
+    <p style="font-size:.73rem;font-weight:700;color:#756F82;margin-top:0;margin-bottom:22px;letter-spacing:.01em;display:flex;align-items:center;gap:6px;"><span style="width:5px;height:5px;border-radius:50%;background:var(--p);display:inline-block;flex-shrink:0;opacity:.7;"></span>Premiers lieux partenaires à Marseille · cafés, bars, coworkings, librairies-cafés.</p>
+    <div style="display:flex;align-items:center;gap:32px;flex-wrap:wrap;">
+      <a href="#inscription" class="btn-main" style="height:46px;padding:0 26px;border-radius:999px;font-size:.88rem;font-weight:800;display:inline-flex;align-items:center;box-shadow:0 10px 28px rgba(106,76,255,0.26);">Rejoindre la bêta →</a>
+      <a href="#comment" style="font-size:.82rem;font-weight:500;color:#9A94A6;text-decoration:none;letter-spacing:.01em;">Comment ça marche ↓</a>
+    </div>
   </div>
 
 
-  <div class="hero-right" style="display:flex;align-items:center;justify-content:center;position:relative;z-index:3;padding-left:18%;padding-top:10%;">
-    <div class="hero-card">
-      <div class="hc-header">
-        <span class="hc-title">On va où ?</span>
-        <span class="hc-loc">📍 Marseille</span>
+  <div class="hero-right" style="display:flex;align-items:center;justify-content:center;position:relative;z-index:3;padding-left:6%;">
+    <div class="hero-card" id="hcard" style="transform:scale(1.04);">
+
+      <!-- Écran 1 : sélecteur de mood -->
+      <div id="hc-screen1">
+        <div class="hc-header">
+          <span class="hc-title">On va où ?</span>
+          <span class="hc-loc">📍 Marseille</span>
+        </div>
+        <div class="hc-moods">
+          <div class="hc-mood" onclick="selectMood(this)">
+            <div class="hc-mood-left">
+              <span class="hc-emoji">🌿</span>
+              <div class="hc-mood-name">Calme</div>
+            </div>
+          </div>
+          <div class="hc-mood hc-mood-active" onclick="selectMood(this)">
+            <div class="hc-mood-left">
+              <span class="hc-emoji">👥</span>
+              <div class="hc-mood-name">Social</div>
+            </div>
+          </div>
+          <div class="hc-mood" onclick="selectMood(this)">
+            <div class="hc-mood-left">
+              <span class="hc-emoji">⚡</span>
+              <div class="hc-mood-name">Énergique</div>
+            </div>
+          </div>
+        </div>
+        <button onclick="showCardResult()" class="hc-cta" style="border:none;cursor:pointer;width:100%;">Trouver mon lieu →</button>
       </div>
-      <div class="hc-moods">
-        <div class="hc-mood" onclick="selectMood(this)">
-          <div class="hc-mood-left">
-            <span class="hc-emoji">🌿</span>
-            <div class="hc-mood-name">Calme</div>
-          </div>
-        </div>
-        <div class="hc-mood hc-mood-active" onclick="selectMood(this)">
-          <div class="hc-mood-left">
-            <span class="hc-emoji">👥</span>
-            <div class="hc-mood-name">Social</div>
-          </div>
-        </div>
-        <div class="hc-mood" onclick="selectMood(this)">
-          <div class="hc-mood-left">
-            <span class="hc-emoji">⚡</span>
-            <div class="hc-mood-name">Énergique</div>
-          </div>
-        </div>
+
+      <!-- Écran 2 : après le clic -->
+      <div id="hc-screen2" style="display:none;padding:8px 0 6px;">
+        <div style="font-size:.65rem;font-weight:700;color:var(--p);letter-spacing:.08em;text-transform:uppercase;margin-bottom:18px;">📍 Marseille · Été 2026</div>
+        <p style="font-size:1.05rem;font-weight:800;color:#fff;line-height:1.25;margin-bottom:10px;letter-spacing:-0.02em;"><em style="font-style:normal;color:#C7B5F3;">ekho</em> arrive à Marseille cet été.</p>
+        <p style="font-size:.8rem;font-weight:500;color:rgba(255,255,255,.55);line-height:1.55;margin-bottom:22px;">Rejoins la bêta pour tester les premiers lieux.</p>
+        <a href="#inscription" class="hc-cta">Rejoindre la bêta →</a>
+        <button onclick="resetCard()" style="display:block;width:100%;background:none;border:none;cursor:pointer;font-size:.72rem;font-weight:600;color:rgba(255,255,255,.3);margin-top:12px;text-align:center;">← Retour</button>
       </div>
-      <a href="#inscription" class="hc-cta">Trouver mon lieu →</a>
+
     </div>
   </div>
 
@@ -1245,31 +1502,14 @@
 </section>
 
 <!-- SCROLL STRIP -->
-<div class="strip">
-  <div class="strip-track">
-    <span class="strip-item hi">ON VA OÙ ?</span>
-    <span class="strip-item">FLEMME DE CHERCHER.</span>
-    <span class="strip-item hi">PAS ENCORE LE MÊME ENDROIT.</span>
-    <span class="strip-item">PAS TROP LOIN.</span>
-    <span class="strip-item hi">PAS TROP BLINDÉ.</span>
-    <span class="strip-item">LE BON ENDROIT MAINTENANT.</span>
-    <span class="strip-item hi">ON VA OÙ ?</span>
-    <span class="strip-item">FLEMME DE CHERCHER.</span>
-    <span class="strip-item hi">PAS ENCORE LE MÊME ENDROIT.</span>
-    <span class="strip-item">PAS TROP LOIN.</span>
-    <span class="strip-item hi">PAS TROP BLINDÉ.</span>
-    <span class="strip-item">LE BON ENDROIT MAINTENANT.</span>
-  </div>
-</div>
 
 <!-- COMMENT ÇA MARCHE -->
 <section class="sec how-sec" id="comment">
 
   <!-- Intro pivot -->
   <div class="how-intro">
-    <div class="sec-label rv">Comment ekho fonctionne vraiment</div>
+    <div class="sec-label rv">Comment ekho fonctionne</div>
     <h2 class="poster rv">Deux usages.<br/>Un même but.<br/><em style="color:var(--p);">Se mettre en mouvement.</em></h2>
-    <p class="how-pivot rv">Trouve le bon endroit selon ton mood.<br/>Et ensuite ? Discute si tu le souhaites avec les personnes qui t'entourent.</p>
   </div>
 
   <div class="how-paths">
@@ -1280,7 +1520,7 @@
       <!-- Texte à gauche -->
       <div class="how-path-text">
         <div class="path-eyebrow path-eyebrow-a">📍 Usage 1</div>
-        <h3 class="path-title path-title-a">Tu veux sortir,<br/>sans chercher.</h3>
+        <h3 class="path-title path-title-a">Trouve le bon endroit<br/>selon ton mood.</h3>
         <p class="path-subtitle path-subtitle-a">Tu choisis un mood. <em style="color:var(--p);font-style:normal;font-weight:700;">ekho</em> te propose des adresses autour de toi, selon ton timing et l'ambiance du moment.</p>
       </div>
 
@@ -1334,8 +1574,8 @@
       <!-- Texte à gauche -->
       <div class="how-path-text">
         <div class="path-eyebrow path-eyebrow-b">✦ Usage 2</div>
-        <h3 class="path-title path-title-b">Le lieu est aussi<br/>une opportunité de rencontre.</h3>
-        <p class="path-subtitle path-subtitle-b">Dans les lieux partenaires, tu peux activer ta présence et découvrir des personnes ouvertes à échanger au même moment autour de toi. L'échange commence seulement si les deux acceptent — et de manière anonyme.</p>
+        <h3 class="path-title path-title-b">Échange dans les<br/>lieux partenaires.</h3>
+        <p class="path-subtitle path-subtitle-b">Dans les lieux partenaires, tu peux activer ta présence et voir si d'autres personnes autour de toi sont ouvertes à échanger.<br/>Rien n'apparaît publiquement. Ni nom, ni photo. L'échange commence seulement si les deux acceptent.</p>
       </div>
 
       <!-- Animation card -->
@@ -1397,30 +1637,39 @@
       <span>Télétravailleurs</span>
       <span>Nouveaux en ville</span>
       <span>Groupes indécis</span>
-      <span>Célibataires discrets</span>
+      <span>Ceux qui veulent voir du monde</span>
     </div>
   </div>
 
   <div class="why-items">
     <div class="why-item rv">
       <div class="why-num-wrap"><div class="why-num">01</div></div>
-      <div class="why-item-text">Envie de bouger, te poser, bosser ou voir du monde. Pas envie de chercher, comparer, proposer, négocier.</div>
+      <div class="why-item-text">Le problème, ce n'est pas de trouver des adresses. <strong>C'est de savoir laquelle est juste pour toi, maintenant.</strong></div>
     </div>
     <div class="why-item rv">
       <div class="why-num-wrap"><div class="why-num">02</div></div>
-      <div class="why-item-text">Le problème, ce n'est pas les adresses. <strong>C'est de choisir vite le bon endroit correspondant au mood dans lequel tu es.</strong></div>
+      <div class="why-item-text"><strong>Google te dit si un lieu est bien noté. <em style="color:var(--manila);font-style:normal;">ekho</em> t'aide à savoir s'il est juste pour toi, maintenant.</strong></div>
     </div>
     <div class="why-item rv">
       <div class="why-num-wrap"><div class="why-num">03</div></div>
-      <div class="why-item-text">Google te dit si un lieu est bien noté. <strong>ekho t'aide à savoir s'il est juste pour toi, maintenant.</strong></div>
+      <div class="why-item-text" style="color:var(--manila);font-weight:700;font-size:1.1rem;">Moins chercher. Mieux sortir. Rester ouvert à ce qui t'entoure.</div>
     </div>
   </div>
 
-  <div class="why-bottom rv">
-    <div class="why-close">
-      <span style="color:#C7B5F3;">Tu choisis un mood. ekho te donne l'endroit.</span>
-      <span class="why-close-em">Le reste dépend de toi.</span>
-    </div>
+</section>
+
+<!-- QUAND EKHO SERT VRAIMENT -->
+<section class="when-sec" id="quand">
+  <div class="when-inner">
+    <div class="when-label rv">Quand ekho sert vraiment</div>
+    <ul class="when-list">
+      <li class="when-item rv">Pour télétravailler sans finir dans un café blindé.</li>
+      <li class="when-item rv">Pour sortir sans grosse soirée.</li>
+      <li class="when-item rv">Pour voir du monde sans te forcer.</li>
+      <li class="when-item rv">Pour découvrir autre chose que tes trois adresses habituelles.</li>
+      <li class="when-item rv">Pour les moments où tu veux bouger, mais pas chercher pendant 30 minutes.</li>
+      <li class="when-item rv">Pour retrouver un peu de spontanéité dans ta ville.</li>
+    </ul>
   </div>
 </section>
 
@@ -1429,7 +1678,7 @@
   <div class="reg-inner">
     <div class="reg-badge"><span class="dot" style="background:var(--manila)"></span>Rejoins la bêta privée.</div>
     <h2 class="reg-h2 rv"><span style="color:#fff;font-style:normal;">ekho</span> arrive à Marseille<br/><span>cet été.</span></h2>
-    <p class="reg-sub rv">Laisse ton email pour faire partie des premiers.</p>
+    <p class="reg-sub rv">Ta ville bouge. Tes envies aussi.<br/>Laisse ton email pour faire partie des premiers.</p>
     <form class="form rv" id="myform" onsubmit="onSubmit(event)">
       <input type="text" class="fi" name="firstName" placeholder="Prénom" required/>
       <input type="email" class="fi" name="email" placeholder="Email" required/>
@@ -1447,7 +1696,7 @@
 <footer>
   <div>
     <div class="ft-logo">ekho</div>
-    <div class="ft-tag">Moins chercher. Mieux sortir.</div>
+    <div class="ft-tag">Ta ville bouge. Tes envies aussi.</div>
   </div>
   <div class="ft-links">
     <a href="#">Confidentialité</a>
@@ -1466,6 +1715,33 @@
   function selectMood(el) {
     el.closest('.hc-moods').querySelectorAll('.hc-mood').forEach(m => m.classList.remove('hc-mood-active'));
     el.classList.add('hc-mood-active');
+  }
+
+  // Hero card screen transition
+  function showCardResult() {
+    const s1 = document.getElementById('hc-screen1');
+    const s2 = document.getElementById('hc-screen2');
+    s1.style.transition = 'opacity .25s';
+    s1.style.opacity = '0';
+    setTimeout(() => {
+      s1.style.display = 'none';
+      s2.style.display = 'block';
+      s2.style.opacity = '0';
+      s2.style.transition = 'opacity .3s';
+      requestAnimationFrame(() => { s2.style.opacity = '1'; });
+    }, 250);
+  }
+
+  function resetCard() {
+    const s1 = document.getElementById('hc-screen1');
+    const s2 = document.getElementById('hc-screen2');
+    s2.style.opacity = '0';
+    setTimeout(() => {
+      s2.style.display = 'none';
+      s1.style.display = 'block';
+      s1.style.opacity = '0';
+      requestAnimationFrame(() => { s1.style.opacity = '1'; });
+    }, 250);
   }
 
   // Mobile menu
