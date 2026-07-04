@@ -745,6 +745,19 @@
     /* ──────────── HOW ──────────── */
     .how-sec { background: white; padding: 0 !important; }
     .how-intro { padding: 80px 7% 52px; text-align: center; background: white; }
+    .how-duo {
+      display: flex; align-items: center; justify-content: center;
+      gap: 24px; flex-wrap: wrap; margin-top: 16px;
+    }
+    .how-duo-item {
+      font-size: clamp(1.5rem, 2.6vw, 2.4rem);
+      font-weight: 800; color: var(--dark);
+      letter-spacing: -.03em;
+    }
+    .how-duo-sub {
+      font-size: clamp(1.4rem, 2.4vw, 2.2rem);
+      font-weight: 800; margin-top: 8px; letter-spacing: -.02em;
+    }
     .how-pivot {
       font-size: clamp(.95rem, 1.6vw, 1.15rem);
       font-weight: 300; color: var(--muted);
@@ -1569,7 +1582,11 @@
   <!-- Intro pivot -->
   <div class="how-intro">
     <div class="sec-label rv">Comment ekho fonctionne</div>
-    <h2 class="poster rv">Deux usages.<br/>Un même but.<br/><em style="color:var(--p);">Se mettre en mouvement.</em></h2>
+    <div class="how-duo rv">
+      <span class="how-duo-item">Deux usages.</span>
+      <span class="how-duo-item">Un même but.</span>
+    </div>
+    <p class="how-duo-sub rv"><em style="color:var(--p);">Se mettre en mouvement.</em></p>
   </div>
 
   <div class="how-paths">
@@ -1580,7 +1597,7 @@
       <!-- Texte à gauche -->
       <div class="how-path-text">
         <div class="path-eyebrow path-eyebrow-a">📍 Usage 1</div>
-        <h3 class="path-title path-title-a">Trouve le bon endroit<br/>selon ton mood.</h3>
+        <h3 class="path-title path-title-a">Mood → Lieu.</h3>
         <p class="path-subtitle path-subtitle-a">Tu choisis un mood. <em style="color:var(--p);font-style:normal;font-weight:700;">ekho</em> te propose des adresses autour de toi, selon ton timing et l'ambiance du moment.</p>
       </div>
 
@@ -1634,8 +1651,8 @@
       <!-- Texte à gauche -->
       <div class="how-path-text">
         <div class="path-eyebrow path-eyebrow-b">✦ Usage 2</div>
-        <h3 class="path-title path-title-b">Échange dans les<br/>lieux partenaires.</h3>
-        <p class="path-subtitle path-subtitle-b">Dans les lieux partenaires, <em style="font-style:italic;font-weight:600;color:var(--p);">tu peux choisir d'activer ta présence</em> et voir si d'autres personnes autour de toi sont ouvertes à échanger.<br/>Rien n'apparaît publiquement. Ni nom, ni photo. L'échange commence seulement si les deux acceptent.</p>
+        <h3 class="path-title path-title-b">Présence → Connexion.</h3>
+        <p class="path-subtitle path-subtitle-b"><strong style="color:var(--p);font-weight:700;">Choisis d'activer ta présence dans les lieux partenaires,</strong> et vois si d'autres personnes autour de toi sont ouvertes à échanger. Rien n'apparaît publiquement. Ni nom, ni photo. L'échange commence seulement si les deux acceptent.</p>
       </div>
 
       <!-- Animation card -->
