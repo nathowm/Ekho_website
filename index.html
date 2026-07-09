@@ -1171,6 +1171,56 @@
     }
     .statement-sec .giant .y { color: var(--manila); }
 
+    /* ──────────── MOOD SECTION ──────────── */
+    .mood-sec {
+      background: #F2EDE7;
+      padding: 90px 7%;
+      text-align: center;
+    }
+    .mood-inner { max-width: 720px; margin: 0 auto; }
+    .mood-intro {
+      font-size: clamp(1.3rem, 2.2vw, 2rem);
+      font-weight: 700; color: var(--dark);
+      line-height: 1.35; letter-spacing: -.02em;
+      margin-bottom: 40px;
+    }
+    .hero-stickers {
+      display: flex; flex-wrap: wrap;
+      justify-content: flex-start; gap: 10px;
+    }
+    .mood-stickers {
+      display: flex; flex-wrap: wrap;
+      justify-content: center; gap: 12px;
+      margin-bottom: 48px;
+    }
+    .mood-sticker {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: #fff;
+      border: 1.5px solid rgba(107,84,255,.15);
+      border-radius: 999px;
+      padding: 10px 20px;
+      font-size: .92rem; font-weight: 600;
+      color: var(--dark);
+      box-shadow: 0 4px 14px rgba(40,30,80,.07);
+      transition: transform .18s ease, box-shadow .18s ease;
+      cursor: default;
+    }
+    .mood-sticker:hover {
+      transform: translateY(-3px) rotate(-1deg);
+      box-shadow: 0 8px 24px rgba(107,84,255,.15);
+    }
+    .mood-cta {
+      display: inline-flex; align-items: center;
+      background: var(--p);
+      color: #fff; text-decoration: none;
+      font-size: .92rem; font-weight: 800;
+      padding: 14px 32px; border-radius: 999px;
+      box-shadow: 0 10px 28px rgba(107,84,255,.28);
+      transition: opacity .2s ease;
+      letter-spacing: .01em;
+    }
+    .mood-cta:hover { opacity: .88; }
+
     /* ──────────── INSCRIPTION ──────────── */
     .reg-sec { background: var(--dark2); padding: 100px 5%; position: relative; overflow: hidden; }
     .reg-sec::before {
@@ -1492,25 +1542,17 @@
     <div class="hero-badge">
       <span class="dot"></span>Bêta privée gratuite · Premiers accès à Marseille · Été 2026
     </div>
-    <h1 style="margin-top:0;margin-bottom:28px;"><span class="bold"><em>ekho</em><br/>trouve le bon endroit<br/>selon ton mood <span class="u">du moment.</span></span></h1>
-
-    <!-- Tagline + carte partenaires -->
-    <p style="font-size:.73rem;font-weight:400;color:#756F82;letter-spacing:.01em;line-height:1.7;margin:0 0 10px 0;max-width:420px;">Que tu veuilles bosser, te poser, prendre un verre ou simplement voir du monde.</p>
-    <p class="hero-tagline-sub"><span style="color:var(--p);">✦</span> Choisis ton mood & ton timing. <em style="color:var(--p);font-style:normal;font-weight:700;">ekho</em> trouve le lieu.</p>
-    <div class="hero-partner-card">
-      <div class="hpc-icon">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="3"/><path d="M3 20c0-4 2.7-6 6-6"/><circle cx="17" cy="9" r="2.5"/><path d="M13 20c0-3 2-4.5 4-4.5s4 1.5 4 4.5"/></svg>
-      </div>
-      <div class="hpc-text">
-        <span class="hpc-title">Dans les lieux partenaires</span>
-        <span class="hpc-sub">Vois si d'autres personnes sont ouvertes à échanger.</span>
-      </div>
-      <div class="hpc-arrow">›</div>
+    <h1 style="margin-top:16px;margin-bottom:32px;"><span class="bold"><em>ekho</em> te présente les meilleurs endroits où aller selon ton mood du moment.</span></h1>
+    <div class="hero-stickers">
+      <span class="mood-sticker">🧘 Que tu veuilles rester seul</span>
+      <span class="mood-sticker">👥 Que tu veuilles rencontrer du monde</span>
+      <span class="mood-sticker">🍷 Pour boire un verre</span>
+      <span class="mood-sticker">💻 Pour bosser</span>
+      <span class="mood-sticker">☕ Pour prendre un café</span>
+      <span class="mood-sticker">🙋 Pour autre chose ?</span>
     </div>
-
-    <p style="font-size:.73rem;font-weight:700;color:#756F82;margin-top:20px;margin-bottom:36px;letter-spacing:.01em;display:flex;align-items:center;gap:6px;"><svg width="13" height="13" viewBox="0 0 24 24" fill="var(--p)" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;margin-top:1px;"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Premiers lieux partenaires à Marseille · cafés, bars, coworkings, librairies-cafés.</p>
-    <div style="display:flex;align-items:center;gap:40px;flex-wrap:wrap;">
-      <a href="#inscription" class="btn-main" style="height:46px;padding:0 26px;border-radius:999px;font-size:.88rem;font-weight:800;display:inline-flex;align-items:center;box-shadow:0 10px 28px rgba(106,76,255,0.26);">Rejoindre la bêta →</a>
+    <div style="display:flex;align-items:center;gap:40px;flex-wrap:wrap;margin-top:36px;">
+      <a href="#inscription" class="btn-main" style="height:46px;padding:0 26px;border-radius:999px;font-size:.88rem;font-weight:800;display:inline-flex;align-items:center;box-shadow:0 10px 28px rgba(106,76,255,0.26);">Décris ton mood et trouve le bon endroit →</a>
       <a href="#comment" class="hero-link-down">Comment ça marche ↓</a>
     </div>
   </div>
@@ -1748,6 +1790,22 @@
       <li class="when-item rv">Pour les moments où tu veux bouger, mais pas chercher pendant 30 minutes.</li>
       <li class="when-item rv">Pour retrouver un peu de spontanéité dans ta ville.</li>
     </ul>
+  </div>
+</section>
+
+<!-- MOOD SECTION -->
+<section class="mood-sec">
+  <div class="mood-inner">
+    <p class="mood-intro rv"><em style="color:var(--p);font-style:normal;font-weight:800;">ekho</em> te présente les meilleurs endroits où aller selon ton mood du moment.</p>
+    <div class="mood-stickers rv">
+      <span class="mood-sticker">🧘 Que tu veuilles rester seul</span>
+      <span class="mood-sticker">👥 Que tu veuilles rencontrer du monde</span>
+      <span class="mood-sticker">🍷 Pour boire un verre</span>
+      <span class="mood-sticker">💻 Pour bosser</span>
+      <span class="mood-sticker">☕ Pour prendre un café</span>
+      <span class="mood-sticker">🙋 Pour autre chose ?</span>
+    </div>
+    <a href="#inscription" class="mood-cta rv">Décris ton mood et trouve le bon endroit →</a>
   </div>
 </section>
 
