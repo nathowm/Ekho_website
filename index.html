@@ -137,19 +137,20 @@
     .hero {
       height: 100vh;
       min-height: 700px;
-      padding: 100px 6% 0 8%;
+      padding: 100px 8% 0;
       background: #F2EDE7;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+      display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: 0 64px;
+      justify-content: center;
+      text-align: center;
       position: relative; overflow: hidden;
     }
     .hero-left {
       display: flex; flex-direction: column;
-      align-items: flex-start; text-align: left;
+      align-items: center; text-align: center;
       position: relative; z-index: 2;
-      max-width: 620px;
+      max-width: 780px; width: 100%;
     }
     .hero-right {
       display: flex; align-items: center; justify-content: center;
@@ -266,11 +267,11 @@
       50%      { transform: translateY(-10px) rotate(var(--r,0deg)); }
     }
     .bbl { opacity: 0.65; }
-    .b1 { top: 12%; left: 55%; --r:-2deg; animation-delay:0s;   animation-duration:5.5s; } /* Pas trop loin */
-    .b2 { top: 46%; left: 90%; --r: 2deg; animation-delay:1.3s; animation-duration:6.5s; } /* Pas trop blindé */
-    .b3 { top: 30%; left: 58%; --r:-1deg; animation-delay:0.6s; animation-duration:5s;   } /* Pas vide non plus */
-    .b4 { display: none; } /* Pas encore le même endroit — masqué */
-    .b5 { top: 56%; left: 51%; --r:-2deg; animation-delay:0.9s; animation-duration:5.8s; } /* Pour bosser */
+    .b1 { top: 22%; left:  4%; --r:-2deg; animation-delay:0s;   animation-duration:5.5s; } /* gauche haut */
+    .b2 { top: 62%; left:  6%; --r: 2deg; animation-delay:1.3s; animation-duration:6.5s; } /* gauche bas */
+    .b3 { top: 20%; right: 4%; left:auto; --r:-1deg; animation-delay:0.6s; animation-duration:5s;   } /* droite haut */
+    .b4 { display: none; }
+    .b5 { top: 60%; right: 5%; left:auto; --r:-2deg; animation-delay:0.9s; animation-duration:5.8s; } /* droite bas */
     .b8 { display: none; } /* Pour me poser — masqué */
     .b6 { display: none; } /* Prendre un verre — masqué */
     .b7 { display: none; } /* Voir du monde — masqué */
@@ -279,7 +280,7 @@
     }
 
     .hero-badge {
-      display: inline-flex; align-items: center; gap: 7px;
+      display: inline-flex; align-items: center; gap: 7px; margin: 0 auto;
       background: rgba(107,84,255,.1); border: 1px solid rgba(107,84,255,.2);
       border-radius: 100px; padding: 6px 14px;
       font-size: .6rem; font-weight: 700; letter-spacing: .1em;
@@ -301,10 +302,10 @@
 
     /* Contraste typographique : light + black */
     .hero h1 {
-      font-size: clamp(1.75rem, 3.3vw, 3.15rem);
+      font-size: clamp(1.8rem, 3.2vw, 3.4rem);
       font-weight: 300; letter-spacing: -1.2px;
       line-height: 1.22; color: var(--dark);
-      max-width: 560px;
+      max-width: 780px;
       margin-bottom: 0;
     }
     .hero h1 .bold, .hero-tagline .bold { font-weight: 900; }
@@ -1186,7 +1187,7 @@
     }
     .hero-stickers {
       display: flex; flex-wrap: wrap;
-      justify-content: flex-start; gap: 10px;
+      justify-content: center; gap: 10px;
     }
     .mood-stickers {
       display: flex; flex-wrap: wrap;
@@ -1542,7 +1543,7 @@
     <div class="hero-badge">
       <span class="dot"></span>Bêta privée gratuite · Premiers accès à Marseille · Été 2026
     </div>
-    <h1 style="margin-top:16px;margin-bottom:32px;"><span class="bold"><em>ekho</em> te présente les meilleurs endroits où aller selon ton mood du moment.</span></h1>
+    <h1 style="margin-top:16px;margin-bottom:32px;"><span class="bold"><em>ekho</em> te présente<br/>les meilleurs endroits où aller<br/>selon ton mood du moment.</span></h1>
     <div class="hero-stickers">
       <span class="mood-sticker">🧘 Que tu veuilles rester seul</span>
       <span class="mood-sticker">👥 Que tu veuilles rencontrer du monde</span>
@@ -1551,14 +1552,25 @@
       <span class="mood-sticker">☕ Pour prendre un café</span>
       <span class="mood-sticker">🙋 Pour autre chose ?</span>
     </div>
-    <div style="display:flex;align-items:center;gap:40px;flex-wrap:wrap;margin-top:36px;">
+    <p style="font-size:.78rem;font-weight:400;color:#9A94A6;margin-top:18px;margin-bottom:0;line-height:1.6;max-width:480px;">Et dans les lieux partenaires, si tu le souhaites, vois si d'autres personnes sont ouvertes à échanger.</p>
+    <div class="hero-partner-card" style="margin-top:20px;display:none;">
+      <div class="hpc-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="3"/><path d="M3 20c0-4 2.7-6 6-6"/><circle cx="17" cy="9" r="2.5"/><path d="M13 20c0-3 2-4.5 4-4.5s4 1.5 4 4.5"/></svg>
+      </div>
+      <div class="hpc-text">
+        <span class="hpc-title">Dans les lieux partenaires</span>
+        <span class="hpc-sub">Vois si d'autres personnes sont ouvertes à échanger.</span>
+      </div>
+      <div class="hpc-arrow">›</div>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:center;gap:40px;flex-wrap:wrap;margin-top:28px;">
       <a href="#inscription" class="btn-main" style="height:46px;padding:0 26px;border-radius:999px;font-size:.88rem;font-weight:800;display:inline-flex;align-items:center;box-shadow:0 10px 28px rgba(106,76,255,0.26);">Décris ton mood et trouve le bon endroit →</a>
       <a href="#comment" class="hero-link-down">Comment ça marche ↓</a>
     </div>
   </div>
 
 
-  <div class="hero-right" style="display:flex;align-items:center;justify-content:center;position:relative;z-index:3;padding-left:6%;">
+  <div class="hero-right" style="display:none;align-items:center;justify-content:center;position:relative;z-index:3;padding-left:6%;">
     <div class="hero-card" id="hcard" style="transform:scale(1.04);">
 
       <!-- Écran 1 : sélecteur de mood -->
@@ -1607,11 +1619,7 @@
     <div class="bbl b1">📍 Pas trop loin.</div>
     <div class="bbl v b2">🙅 Pas trop blindé.</div>
     <div class="bbl b3">😶 Pas vide non plus.</div>
-    <div class="bbl m b4">🔄 Pas encore le même endroit.</div>
     <div class="bbl v b5">💻 Pour bosser.</div>
-    <div class="bbl b8">☕ Pour me poser.</div>
-    <div class="bbl b6">🍷 Prendre un verre.</div>
-    <div class="bbl m b7">👀 Voir du monde.</div>
   </div>
 
 </section>
@@ -1694,7 +1702,7 @@
       <div class="how-path-text">
         <div class="path-eyebrow path-eyebrow-b">✦ Usage 2</div>
         <h3 class="path-title path-title-b">Présence → Connexion.</h3>
-        <p class="path-subtitle path-subtitle-b"><strong style="color:var(--p);font-weight:700;">Choisis d'activer ta présence dans les lieux partenaires,</strong> et vois si d'autres personnes autour de toi sont ouvertes à échanger. Rien n'apparaît publiquement. Ni nom, ni photo. L'échange commence seulement si les deux acceptent.</p>
+        <p class="path-subtitle path-subtitle-b"><strong style="color:var(--p);font-weight:700;">Dans les lieux partenaires,</strong><br/>vois si d'autres personnes sont ouvertes à échanger.<br/>Rien n'apparaît publiquement. Ni nom, ni photo. L'échange commence seulement si les deux acceptent.</p>
       </div>
 
       <!-- Animation card -->
