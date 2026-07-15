@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Ekho — Slide 1/5</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;0,900;1,700;1,900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1080px;
+    height: 1350px;
+    background: #F2EDE7;
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+  }
+  .slide {
+    width: 1080px;
+    height: 1350px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 90px 130px;
+  }
+
+  /* Decorative background dots */
+  .dot {
+    position: absolute;
+    border-radius: 50%;
+    background: #1A1B2E;
+    opacity: 0.06;
+  }
+  .dot-1 { width: 320px; height: 320px; top: -80px; right: -80px; }
+  .dot-2 { width: 200px; height: 200px; bottom: 140px; left: -60px; }
+  .dot-3 { width: 80px; height: 80px; top: 200px; left: 80px; }
+
+  /* Slide number */
+  .slide-number {
+    position: absolute;
+    top: 54px;
+    right: 64px;
+    font-size: 26px;
+    font-weight: 400;
+    color: #1A1B2E;
+    opacity: 0.25;
+    letter-spacing: 3px;
+  }
+
+  /* Content */
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    text-align: center;
+  }
+
+  .label {
+    font-size: 22px;
+    font-weight: 700;
+    color: #6B54FF;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 60px;
+    opacity: 0.8;
+  }
+
+  .line-main {
+    font-size: 86px;
+    font-weight: 900;
+    color: #1A1B2E;
+    line-height: 1.1;
+    text-align: center;
+    margin-bottom: 16px;
+  }
+
+  .divider {
+    width: 80px;
+    height: 4px;
+    background: #6B54FF;
+    border-radius: 2px;
+    margin: 48px auto;
+    opacity: 0.6;
+  }
+
+  .line-accent {
+    font-size: 74px;
+    font-weight: 900;
+    font-style: italic;
+    color: #6B54FF;
+    line-height: 1.2;
+    text-align: center;
+  }
+
+  /* Swipe hint */
+  .swipe {
+    position: absolute;
+    bottom: 140px;
+    right: 64px;
+    font-size: 22px;
+    color: #1A1B2E;
+    opacity: 0.3;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+  .swipe::after {
+    content: '→';
+    font-size: 28px;
+  }
+
+  /* Footer */
+  .footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 90px;
+    background: #F2EDE7;
+    border-top: 1.5px solid rgba(26,27,46,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+  .footer-logo {
+    font-size: 28px;
+    font-weight: 900;
+    font-style: italic;
+    color: #1A1B2E;
+    letter-spacing: -1px;
+  }
+  .footer-sep {
+    font-size: 22px;
+    color: #1A1B2E;
+    opacity: 0.3;
+  }
+  .footer-text {
+    font-size: 22px;
+    font-weight: 400;
+    color: #1A1B2E;
+    opacity: 0.45;
+    letter-spacing: 0.5px;
+  }
+</style>
+</head>
+<body>
+<div class="slide">
+  <div class="dot dot-1"></div>
+  <div class="dot dot-2"></div>
+  <div class="dot dot-3"></div>
+
+  <span class="slide-number">1 / 5</span>
+
+  <div class="content">
+    <p class="line-main">Tu ne cherches<br>pas un café.</p>
+    <div class="divider"></div>
+    <p class="line-accent">Tu cherches<br>comment tu veux<br>te sentir.</p>
+  </div>
+
+  <div class="swipe">swipe</div>
+
+  <div class="footer">
+    <span class="footer-logo">ekho</span>
+    <span class="footer-sep">·</span>
+    <span class="footer-text">Le bon lieu, maintenant</span>
+    <span class="footer-sep">·</span>
+    <span class="footer-text">Marseille</span>
+  </div>
+</div>
+</body>
+</html>

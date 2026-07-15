@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Ekho — Templates email Brevo</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif; background: #f0f0f0; padding: 40px 20px; color: #333; }
+    .tpl-block { background: white; border-radius: 12px; margin-bottom: 60px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.1); }
+    .tpl-label { background: #6B54FF; color: white; padding: 14px 24px; font-family: monospace; font-size: 13px; font-weight: bold; letter-spacing: 0.05em; }
+    .tpl-subject { background: #ffffff; color: #333; padding: 10px 24px; font-size: 12px; font-family: monospace; border-top: 1px solid #eee; }
+    .tpl-subject span { color: #aaa; margin-right: 8px; }
+    .tpl-content { padding: 0; }
+  </style>
+</head>
+<body>
+
+<h1 style="font-family: -apple-system, sans-serif; color: #1A1B23; margin-bottom: 8px;">ekho — Templates Brevo</h1>
+<p style="color: #888; margin-bottom: 40px; font-size: 14px;">Copie le contenu de chaque bloc dans l'éditeur HTML de Brevo.</p>
+
+
+<!-- ════════════════════════════════════════
+     TPL 01 — PREINSCRIPTION CONFIRMATION
+════════════════════════════════════════ -->
+<div class="tpl-block">
+  <div class="tpl-label">TPL_UTILISATEUR_PREINSCRIPTION_CONFIRMATION</div>
+  <div class="tpl-subject"><span>Objet :</span>Tu es sur la liste. On te prévient dès l'ouverture.</div>
+  <div class="tpl-content">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>ekho</title>
+</head>
+<body style="margin:0;padding:0;background-color:#F2F0ED;">
+<table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#F2F0ED;">
+  <tr><td align="center" style="padding:48px 20px;">
+    <table border="0" cellpadding="0" cellspacing="0" width="560" style="max-width:560px;">
+
+      <!-- HEADER -->
+      <tr><td style="padding:0 0 36px 0;" align="center">
+        <p style="margin:0;font-family:Helvetica,Arial,sans-serif;font-size:36px;font-weight:900;color:#1A1B23;letter-spacing:-0.03em;">ekho</p>
+      </td></tr>
+
+      <!-- HERO BAND -->
+      <tr><td style="background-color:#6B54FF;border-radius:20px 20px 0 0;padding:40px 48px 36px;">
+        <p style="margin:0 0 6px 0;font-family:Helvetica,Arial,sans-serif;font-size:10px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:rgba(236,248,144,0.7);">Inscription confirmée</p>
+        <h1 style="margin:0;font-family:Helvetica,Arial,sans-serif;font-size:34px;font-weight:900;color:#ECF890;line-height:1.15;letter-spacing:-0.03em;">Tu es sur<br/>la liste.</h1>
+      </td></tr>
+
+      <!-- BODY -->
+      <tr><td style="background-color:#ffffff;border-radius:0 0 20px 20px;padding:40px 48px 44px;">
+
+        <p style="margin:0 0 20px 0;font-family:Helvetica,Arial,sans-serif;font-size:16px;color:#1A1B23;line-height:1.7;">Bonjour {{ contact.FIRSTNAME }},</p>
+
+        <p style="margin:0 0 20px 0;font-family:Helvetica,Arial,sans-serif;font-size:15px;color:#444;line-height:1.75;">On te prévient dès qu'ekho ouvre à Marseille. Pas de spam, pas de newsletter inutile — juste le message qui compte.</p>
+
+        <p style="margin:0 0 36px 0;font-family:Helvetica,Arial,sans-serif;font-size:15px;color:#444;line-height:1.75;">En attendant : ekho lit ton humeur du moment et te guide vers les lieux qui y répondent — autour de toi, maintenant.</p>
+
+        <!-- DIVIDER -->
+        <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-bottom:36px;">
+          <tr><td style="border-top:1px solid #EBEBEB;"></td></tr>
+        </table>
+
+        <!-- 3 POINTS -->
+        <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-bottom:40px;">
+          <tr>
+            <td style="padding:0 0 16px 0;">
+              <p style="margin:0;font-family:Helvetica,Arial,sans-serif;font-size:14px;color:#1A1B23;line-height:1.6;"><span style="display:inline-block;width:8px;height:8px;background:#6B54FF;border-radius:50%;margin-right:10px;vertical-align:middle;"></span><strong>Accès en avant-première</strong> dès l'ouverture</p>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:0 0 16px 0;">
+              <p style="margin:0;font-family:Helvetica,Arial,sans-serif;font-size:14px;color:#1A1B23;line-height:1.6;"><span style="display:inline-block;width:8px;height:8px;background:#6B54FF;border-radius:50%;margin-right:10px;vertical-align:middle;"></span><strong>40+ lieux partenaires</strong> à Marseille dès le lancement</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p style="margin:0;font-family:Helvetica,Arial,sans-serif;font-size:14px;color:#1A1B23;line-height:1.6;"><span style="display:inline-block;width:8px;height:8px;background:#6B54FF;border-radius:50%;margin-right:10px;vertical-align:middle;"></span><strong>Tes retours</strong> façonnent ce qu'ekho devient</p>
+            </td>
+          </tr>
+        </table>
+
+        <!-- CTA -->
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><td style="border-radius:100px;background-color:#6B54FF;">
+            <a href="{{ params.LANDING_URL }}" style="display:inline-block;padding:15px 32px;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:700;color:#ffffff;text-decoration:none;letter-spacing:0.01em;">Voir la landing page →</a>
+          </td></tr>
+        </table>
+
+      </td></tr>
+
+      <!-- FOOTER -->
+      <tr><td style="padding:28px 0 0 0;" align="center">
+        <p style="margin:0;font-family:Helvetica,Arial,sans-serif;font-size:11px;color:#AAA;line-height:1.6;">Tu reçois cet email car tu t'es inscrit sur ekho.fr.<br/><a href="{{ unsubscribe }}" style="color:#AAA;">Se désinscrire</a></p>
+      </td></tr>
+
+    </table>
+  </td></tr>
+</table>
+</body></html>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════
+     TPL 02 — PREINSCRIPTION PRELANCEMENT
+════════════════════════════════════════ -->
+<div class="tpl-block">
+  <div class="tpl-label">TPL_UTILISATEUR_PREINSCRIPTION_PRELANCEMENT</div>
+  <div class="tpl-subject"><span>Objet :</span>Ça arrive dans quelques jours.</div>
+  <div class="tpl-content">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>ekho</title></head>
+<body style="margin:0;padding:0;background-color:#1A1B23;">
+<table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#1A1B23;">
+  <tr><td align="center" style="padding:40px 20px;">
+    <table border="0" cellpadding="0" cellspacing="0" width="560" style="max-width:560px;">
+
+      <tr><td style="padding:0 0 32px 0;">
+        <p style="margin:0;font-family:Helvetica,Arial,sans-serif;font-size:22px;font-weight:900;color:#ECF890;letter-spacing:-0.02em;">ekho</p>
+      </td></tr>
+
+      <tr><td style="background-color:#221A40;border-radius:16px;padding:40px;">
+
+        <p style="margin:0 0 8px 0;font-family:Helvetica,Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#6B54FF;">Pré-lancement</p>
+
+        <h1 style="margin:0 0 24px 0;font-family:Helvetica,Arial,sans-serif;font-size:28px;font-weight:900;color:#FFF7EF;line-height:1.2;letter-spacing:-0.02em;">C'est pour très bientôt,<br/>{{ contact.FIRSTNAME }}.</h1>
+
+        <p style="margin:0 0 20px 0;font-family:Helvetica,Arial,sans-serif;font-size:15px;color:rgba(255,247,239,0.7);line-height:1.7;">Tu fais partie des premiers inscrits. Dans quelques jours, ekho ouvre à Marseille — et tu es dans la première vague.</p>
+
+        <p style="margin:0 0 20px 0;font-family:Helvetica,Arial,sans-serif;font-size:15px;color:rgba(255,247,239,0.7);line-height:1.7;">L'app lit ton humeur du moment et te propose les lieux autour de toi qui y répondent. Pas de liste infinie, pas d'avis à trier. Juste quelques endroits qui tombent juste.</p>
+
+        <table border="0" cellpadding="0" cellspacing="0" style="margin:0 0 32px 0;">
+          <tr>
+            <td style="padding:12px 0;border-top:1px solid rgba(107,84,255,0.3);">
+              <p style="margin:0;font-family:Helvetica,Arial,sans-serif;font-size:13px;color:rgba(255,247,239,0.5);">✦ &nbsp;Accès en avant-première</p>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:12px 0;border-top:1px solid rgba(107,84,255,0.3);">
+              <p style="margin:0;font-family:Helvetica,Arial,sans-serif;font-size:13px;color:rgba(255,247,239,0.5);">✦ &nbsp;40+ lieux partenaires dès le lancement</p>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:12px 0;border-top:1px solid rgba(107,84,255,0.3);border-bottom:1px solid rgba(107,84,255,0.3);">
+              <p style="margin:0;font-family:Helvetica,Arial,sans-serif;font-size:13px;color:rgba(255,247,239,0.5);">✦ &nbsp;Tes retours façonnent ce qu'ekho devient</p>
+            </td>
+          </tr>
+        </table>
+
+        <p style="margin:0 0 8px 0;font-family:Helvetica,Arial,sans-serif;font-size:15px;color:rgba(255,247,239,0.7);line-height:1.7;">On te revient très vite avec le lien d'accès.</p>
+
+      </td></tr>
+
+      <tr><td style="padding:24px 0 0 0;">
+        <p style="margin:0;font-family:Helvetica,Arial,sans-serif;font-size:11px;color:rgba(255,247,239,0.25);line-height:1.6;">Tu reçois cet email car tu t'es inscrit sur ekho.fr. <a href="{{ unsubscribe }}" style="color:rgba(255,247,239,0.25);">Se désinscrire</a></p>
+      </td></tr>
+
+    </table>
+  </td></tr>
+</table>
+</body></html>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════
+     TPL 03 — PREINSCRIPTION LANCEMENT
+════════════════════════════════════════ -->
+<div class="tpl-block">
+  <div class="tpl-label">TPL_UTILISATEUR_PREINSCRIPTION_LANCEMENT</div>
+  <div class="tpl-subject"><span>Objet :</span>ekho est disponible. Trouve ton lieu.</div>
+  <div class="tpl-content">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>ekho</title></head>
+<body style="margin:0;padding:0;background-color:#1A1B23;">
+<table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#1A1B23;">
+  <tr><td align="center" style="padding:40px 20px;">
+    <table border="0" cellpadding="0" cellspacing="0" width="560" style="max-width:560px;">
+
+      <tr><td style="padding:0 0 32px 0;">
+        <p style="margin:0;font-family:Helvetica,Arial,sans-serif;font-size:22px;font-weight:900;color:#ECF890;letter-spacing:-0.02em;">ekho</p>
+      </td></tr>
+
+      <tr><td style="background-color:#ECF890;border-radius:16px;padding:40px;">
+
+        <p style="margin:0 0 8px 0;font-family:Helvetica,Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#6B54FF;">C'est live.</p>
+
+        <h1 style="margin:0 0 24px 0;font-family:Helvetica,Arial,sans-serif;font-size:32px;font-weight:900;color:#1A1B23;line-height:1.15;letter-spacing:-0.03em;">Trouve ton lieu.<br/>Vis ton moment.</h1>
+
+        <p style="margin:0 0 20px 0;font-family:Helvetica,Arial,sans-serif;font-size:15px;color:rgba(26,27,35,0.7);line-height:1.7;">ekho est disponible à Marseille dès maintenant. Tu fais partie de la première vague — ceux qui ont rendu ça possible.</p>
+
+        <p style="margin:0 0 32px 0;font-family:Helvetica,Arial,sans-serif;font-size:15px;color:rgba(26,27,35,0.7);line-height:1.7;">Choisis ton énergie du moment. ekho fait le reste.</p>
+
+        <table border="0" cellpadding="0" cellspacing="0" style="margin-bottom:16px;">
+          <tr><td style="border-radius:100px;background-color:#6B54FF;">
+            <a href="{{ params.APP_STORE_URL }}" style="display:inline-block;padding:14px 28px;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:700;color:#FFF7EF;text-decoration:none;">Télécharger ekho →</a>
+          </td></tr>
+        </table>
+
+        <p style="margin:0;font-family:Helvetica,Arial,sans-serif;font-size:12px;color:rgba(26,27,35,0.4);">Disponible sur iOS et Android</p>
+
+      </td></tr>
+
+      <tr><td style="padding:24px 0 0 0;">
+        <p style="margin:0;font-family:Helvetica,Arial,sans-serif;font-size:11px;color:rgba(255,247,239,0.25);line-height:1.6;">Tu reçois cet email car tu t'es inscrit sur ekho.fr. <a href="{{ unsubscribe }}" style="color:rgba(255,247,239,0.25);">Se désinscrire</a></p>
+      </td></tr>
+
+    </table>
+  </td></tr>
+</table>
+</body></html>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════
+     TPL 04 — BIENVENUE
+════════════════════════════════════════ -->
+<div class="tpl-block">
+  <div class="tpl-label">TPL_UTILISATEUR_BIENVENUE</div>
+  <div class="tpl-subject"><span>Objet :</span>Bienvenue sur ekho, {{ contact.FIRSTNAME }}.</div>
+  <div class="tpl-content">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>ekho</title></head>
+<body style="margin:0;padding:0;background-color:#1A1B23;">
+<table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#1A1B23;">
+  <tr><td align="center" style="padding:40px 20px;">
+    <table border="0" cellpadding="0" cellspacing="0" width="560" style="max-width:560px;">
+
+      <tr><td style="padding:0 0 32px 0;">
+        <p style="margin:0;font-family:Helvetica,Arial,sans-serif;font-size:22px;font-weight:900;color:#ECF890;letter-spacing:-0.02em;">ekho</p>
+      </td></tr>
+
+      <tr><td style="background-color:#221A40;border-radius:16px;padding:40px;">
+
+        <p style="margin:0 0 8px 0;font-family:Helvetica,Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#6B54FF;">Bienvenue</p>
+
+        <h1 style="margin:0 0 24px 0;font-family:Helvetica,Arial,sans-serif;font-size:28px;font-weight:900;color:#FFF7EF;line-height:1.2;letter-spacing:-0.02em;">C'est parti,<br/>{{ contact.FIRSTNAME }}.</h1>
+
+        <p style="margin:0 0 20px 0;font-family:Helvetica,Arial,sans-serif;font-size:15px;color:rgba(255,247,239,0.7);line-height:1.7;">Tu es dans ekho. La ville autour de toi vient de devenir un peu plus lisible.</p>
+
+        <p style="margin:0 0 8px 0;font-family:Helvetica,Arial,sans-serif;font-size:13px;font-weight:700;color:#C7B5F3;letter-spacing:0.04em;">Comment ça marche</p>
+
+        <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin:0 0 32px 0;">
+          <tr><td style="padding:12px 0;border-top:1px solid rgba(107,84,255,0.3);">
+            <p style="margin:0;font-family:Helvetica,Arial,sans-serif;font-size:14px;color:rgba(255,247,239,0.65);line-height:1.6;"><strong style="color:#FFF7EF;">01 —</strong> Tu choisis ton énergie du moment</p>
+          </td></tr>
+          <tr><td style="padding:12px 0;border-top:1px solid rgba(107,84,255,0.3);">
+            <p style="margin:0;font-family:Helvetica,Arial,sans-serif;font-size:14px;color:rgba(255,247,239,0.65);line-height:1.6;"><strong style="color:#FFF7EF;">02 —</strong> ekho regarde ce qui correspond autour de toi</p>
+          </td></tr>
+          <tr><td style="padding:12px 0;border-top:1px solid rgba(107,84,255,0.3);border-bottom:1px solid rgba(107,84,255,0.3);">
+            <p style="margin:0;font-family:Helvetica,Arial,sans-serif;font-size:14px;color:rgba(255,247,239,0.65);line-height:1.6;"><strong style="color:#FFF7EF;">03 —</strong> Tu trouves le lieu. Tu vis le moment.</p>
+          </td></tr>
+        </table>
+
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><td style="border-radius:100px;background-color:#6B54FF;">
+            <a href="{{ params.APP_URL }}" style="display:inline-block;padding:14px 28px;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:700;color:#FFF7EF;text-decoration:none;">Ouvrir ekho →</a>
+          </td></tr>
+        </table>
+
+      </td></tr>
+
+      <tr><td style="padding:24px 0 0 0;">
+        <p style="margin:0;font-family:Helvetica,Arial,sans-serif;font-size:11px;color:rgba(255,247,239,0.25);line-height:1.6;">Tu reçois cet email car tu t'es inscrit sur ekho. <a href="{{ unsubscribe }}" style="color:rgba(255,247,239,0.25);">Se désinscrire</a></p>
+      </td></tr>
+
+    </table>
+  </td></tr>
+</table>
+</body></html>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════
+     TPL 05 — PROFIL INCOMPLET
+════════════════════════════════════════ -->
+<div class="tpl-block">
+  <div class="tpl-label">TPL_UTILISATEUR_PROFIL_INCOMPLET</div>
+  <div class="tpl-subject"><span>Objet :</span>Il manque juste un détail pour que ça tombe mieux.</div>
+  <div class="tpl-content">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>ekho</title></head>
+<body style="margin:0;padding:0;background-color:#1A1B23;">
+<table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#1A1B23;">
+  <tr><td align="center" style="padding:40px 20px;">
+    <table border="0" cellpadding="0" cellspacing="0" width="560" style="max-width:560px;">
+
+      <tr><td style="padding:0 0 32px 0;">
+        <p style="margin:0;font-family:Helvetica,Arial,sans-serif;font-size:22px;font-weight:900;color:#ECF890;letter-spacing:-0.02em;">ekho</p>
+      </td></tr>
+
+      <tr><td style="background-color:#221A40;border-radius:16px;padding:40px;">
+
+        <p style="margin:0 0 8px 0;font-family:Helvetica,Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#6B54FF;">Profil</p>
+
+        <h1 style="margin:0 0 24px 0;font-family:Helvetica,Arial,sans-serif;font-size:28px;font-weight:900;color:#FFF7EF;line-height:1.2;letter-spacing:-0.02em;">Presque là,<br/>{{ contact.FIRSTNAME }}.</h1>
+
+        <p style="margin:0 0 20px 0;font-family:Helvetica,Arial,sans-serif;font-size:15px;color:rgba(255,247,239,0.7);line-height:1.7;">Ton profil n'est pas encore complet. C'est ce qui permet à ekho de mieux lire ce qui te correspond — et de tomber plus juste.</p>
+
+        <p style="margin:0 0 32px 0;font-family:Helvetica,Arial,sans-serif;font-size:15px;color:rgba(255,247,239,0.7);line-height:1.7;">Ça prend moins d'une minute.</p>
+
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><td style="border-radius:100px;background-color:#6B54FF;">
+            <a href="{{ params.APP_URL }}" style="display:inline-block;padding:14px 28px;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:700;color:#FFF7EF;text-decoration:none;">Compléter mon profil →</a>
+          </td></tr>
+        </table>
+
+      </td></tr>
+
+      <tr><td style="padding:24px 0 0 0;">
+        <p style="margin:0;font-family:Helvetica,Arial,sans-serif;font-size:11px;color:rgba(255,247,239,0.25);line-height:1.6;">Tu reçois cet email car tu t'es inscrit sur ekho. <a href="{{ unsubscribe }}" style="color:rgba(255,247,239,0.25);">Se désinscrire</a></p>
+      </td></tr>
+
+    </table>
+  </td></tr>
+</table>
+</body></html>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════
+     TPL 06 — PREMIERE RECHERCHE
+════════════════════════════════════════ -->
+<div class="tpl-block">
+  <div class="tpl-label">TPL_UTILISATEUR_PREMIERE_RECHERCHE</div>
+  <div class="tpl-subject"><span>Objet :</span>Tu viens de trouver ton premier lieu.</div>
+  <div class="tpl-content">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>ekho</title></head>
+<body style="margin:0;padding:0;background-color:#1A1B23;">
+<table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#1A1B23;">
+  <tr><td align="center" style="padding:40px 20px;">
+    <table border="0" cellpadding="0" cellspacing="0" width="560" style="max-width:560px;">
+
+      <tr><td style="padding:0 0 32px 0;">
+        <p style="margin:0;font-family:Helvetica,Arial,sans-serif;font-size:22px;font-weight:900;color:#ECF890;letter-spacing:-0.02em;">ekho</p>
+      </td></tr>
+
+      <tr><td style="background-color:#221A40;border-radius:16px;padding:40px;">
+
+        <p style="margin:0 0 8px 0;font-family:Helvetica,Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#ECF890;">✦ Premier lieu trouvé</p>
+
+        <h1 style="margin:0 0 24px 0;font-family:Helvetica,Arial,sans-serif;font-size:28px;font-weight:900;color:#FFF7EF;line-height:1.2;letter-spacing:-0.02em;">C'est ça,<br/>le bon endroit.</h1>
+
+        <p style="margin:0 0 20px 0;font-family:Helvetica,Arial,sans-serif;font-size:15px;color:rgba(255,247,239,0.7);line-height:1.7;">Tu viens de faire ta première recherche sur ekho. La prochaine fois, ça tombera encore mieux — l'app apprend ce qui te correspond.</p>
+
+        <p style="margin:0 0 32px 0;font-family:Helvetica,Arial,sans-serif;font-size:15px;color:rgba(255,247,239,0.7);line-height:1.7;">N'hésite pas à explorer d'autres moods, d'autres moments. ekho s'adapte.</p>
+
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><td style="border-radius:100px;background-color:#6B54FF;">
+            <a href="{{ params.APP_URL }}" style="display:inline-block;padding:14px 28px;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:700;color:#FFF7EF;text-decoration:none;">Retourner sur ekho →</a>
+          </td></tr>
+        </table>
+
+      </td></tr>
+
+      <tr><td style="padding:24px 0 0 0;">
+        <p style="margin:0;font-family:Helvetica,Arial,sans-serif;font-size:11px;color:rgba(255,247,239,0.25);line-height:1.6;">Tu reçois cet email car tu t'es inscrit sur ekho. <a href="{{ unsubscribe }}" style="color:rgba(255,247,239,0.25);">Se désinscrire</a></p>
+      </td></tr>
+
+    </table>
+  </td></tr>
+</table>
+</body></html>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════
+     TPL 07 — RESONANCE NON OUVERTE
+════════════════════════════════════════ -->
+<div class="tpl-block">
+  <div class="tpl-label">TPL_UTILISATEUR_RESONANCE_NON_OUVERTE</div>
+  <div class="tpl-subject"><span>Objet :</span>Tu as manqué quelque chose.</div>
+  <div class="tpl-content">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>ekho</title></head>
+<body style="margin:0;padding:0;background-color:#1A1B23;">
+<table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#1A1B23;">
+  <tr><td align="center" style="padding:40px 20px;">
+    <table border="0" cellpadding="0" cellspacing="0" width="560" style="max-width:560px;">
+
+      <tr><td style="padding:0 0 32px 0;">
+        <p style="margin:0;font-family:Helvetica,Arial,sans-serif;font-size:22px;font-weight:900;color:#ECF890;letter-spacing:-0.02em;">ekho</p>
+      </td></tr>
+
+      <tr><td style="background-color:#221A40;border-radius:16px;padding:40px;">
+
+        <p style="margin:0 0 8px 0;font-family:Helvetica,Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#6B54FF;">Notification</p>
+
+        <h1 style="margin:0 0 24px 0;font-family:Helvetica,Arial,sans-serif;font-size:28px;font-weight:900;color:#FFF7EF;line-height:1.2;letter-spacing:-0.02em;">Il s'est passé<br/>des choses autour de toi.</h1>
+
+        <p style="margin:0 0 20px 0;font-family:Helvetica,Arial,sans-serif;font-size:15px;color:rgba(255,247,239,0.7);line-height:1.7;">Tu as reçu une résonance dans un lieu — quelqu'un a croisé le même endroit que toi. Elle attend toujours une réponse.</p>
+
+        <p style="margin:0 0 32px 0;font-family:Helvetica,Arial,sans-serif;font-size:15px;color:rgba(255,247,239,0.7);line-height:1.7;">Pas de pression. Pas de profil. Juste la possibilité de voir ce que quelqu'un d'autre vivait au même endroit.</p>
+
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><td style="border-radius:100px;background-color:#6B54FF;">
+            <a href="{{ params.APP_URL }}" style="display:inline-block;padding:14px 28px;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:700;color:#FFF7EF;text-decoration:none;">Voir la résonance →</a>
+          </td></tr>
+        </table>
+
+      </td></tr>
+
+      <tr><td style="padding:24px 0 0 0;">
+        <p style="margin:0;font-family:Helvetica,Arial,sans-serif;font-size:11px;color:rgba(255,247,239,0.25);line-height:1.6;">Tu reçois cet email car tu t'es inscrit sur ekho. <a href="{{ unsubscribe }}" style="color:rgba(255,247,239,0.25);">Se désinscrire</a></p>
+      </td></tr>
+
+    </table>
+  </td></tr>
+</table>
+</body></html>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════
+     TPL 08 — MESSAGE SANS REPONSE
+════════════════════════════════════════ -->
+<div class="tpl-block">
+  <div class="tpl-label">TPL_UTILISATEUR_MESSAGE_SANS_REPONSE</div>
+  <div class="tpl-subject"><span>Objet :</span>Quelqu'un t'a écrit dans un lieu.</div>
+  <div class="tpl-content">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>ekho</title></head>
+<body style="margin:0;padding:0;background-color:#1A1B23;">
+<table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#1A1B23;">
+  <tr><td align="center" style="padding:40px 20px;">
+    <table border="0" cellpadding="0" cellspacing="0" width="560" style="max-width:560px;">
+
+      <tr><td style="padding:0 0 32px 0;">
+        <p style="margin:0;font-family:Helvetica,Arial,sans-serif;font-size:22px;font-weight:900;color:#ECF890;letter-spacing:-0.02em;">ekho</p>
+      </td></tr>
+
+      <tr><td style="background-color:#221A40;border-radius:16px;padding:40px;">
+
+        <p style="margin:0 0 8px 0;font-family:Helvetica,Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#C7B5F3;">Message en attente</p>
+
+        <h1 style="margin:0 0 24px 0;font-family:Helvetica,Arial,sans-serif;font-size:28px;font-weight:900;color:#FFF7EF;line-height:1.2;letter-spacing:-0.02em;">Un message<br/>t'attend.</h1>
+
+        <p style="margin:0 0 20px 0;font-family:Helvetica,Arial,sans-serif;font-size:15px;color:rgba(255,247,239,0.7);line-height:1.7;">Quelqu'un présent dans le même lieu que toi t'a envoyé un message. Il est encore là — sans profil, sans pression.</p>
+
+        <p style="margin:0 0 32px 0;font-family:Helvetica,Arial,sans-serif;font-size:15px;color:rgba(255,247,239,0.7);line-height:1.7;">C'est à toi de voir si tu veux répondre. Ou pas.</p>
+
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><td style="border-radius:100px;background-color:#6B54FF;">
+            <a href="{{ params.APP_URL }}" style="display:inline-block;padding:14px 28px;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:700;color:#FFF7EF;text-decoration:none;">Lire le message →</a>
+          </td></tr>
+        </table>
+
+      </td></tr>
+
+      <tr><td style="padding:24px 0 0 0;">
+        <p style="margin:0;font-family:Helvetica,Arial,sans-serif;font-size:11px;color:rgba(255,247,239,0.25);line-height:1.6;">Tu reçois cet email car tu t'es inscrit sur ekho. <a href="{{ unsubscribe }}" style="color:rgba(255,247,239,0.25);">Se désinscrire</a></p>
+      </td></tr>
+
+    </table>
+  </td></tr>
+</table>
+</body></html>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════
+     TPL 09 — REACTIVATION
+════════════════════════════════════════ -->
+<div class="tpl-block">
+  <div class="tpl-label">TPL_UTILISATEUR_REACTIVATION</div>
+  <div class="tpl-subject"><span>Objet :</span>ekho est toujours là. Les lieux aussi.</div>
+  <div class="tpl-content">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>ekho</title></head>
+<body style="margin:0;padding:0;background-color:#1A1B23;">
+<table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#1A1B23;">
+  <tr><td align="center" style="padding:40px 20px;">
+    <table border="0" cellpadding="0" cellspacing="0" width="560" style="max-width:560px;">
+
+      <tr><td style="padding:0 0 32px 0;">
+        <p style="margin:0;font-family:Helvetica,Arial,sans-serif;font-size:22px;font-weight:900;color:#ECF890;letter-spacing:-0.02em;">ekho</p>
+      </td></tr>
+
+      <tr><td style="background-color:#221A40;border-radius:16px;padding:40px;">
+
+        <p style="margin:0 0 8px 0;font-family:Helvetica,Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#6B54FF;">On ne t'a pas vu</p>
+
+        <h1 style="margin:0 0 24px 0;font-family:Helvetica,Arial,sans-serif;font-size:28px;font-weight:900;color:#FFF7EF;line-height:1.2;letter-spacing:-0.02em;">La ville n'a pas<br/>changé. Toi si ?</h1>
+
+        <p style="margin:0 0 20px 0;font-family:Helvetica,Arial,sans-serif;font-size:15px;color:rgba(255,247,239,0.7);line-height:1.7;">Ça fait un moment qu'on ne t'a pas vu sur ekho. Les lieux partenaires sont toujours là — et de nouveaux ont rejoint depuis.</p>
+
+        <p style="margin:0 0 32px 0;font-family:Helvetica,Arial,sans-serif;font-size:15px;color:rgba(255,247,239,0.7);line-height:1.7;">Quand tu auras l'envie, ekho sera là. Même énergie, même principe : ton mood, le bon endroit, maintenant.</p>
+
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><td style="border-radius:100px;background-color:#6B54FF;">
+            <a href="{{ params.APP_URL }}" style="display:inline-block;padding:14px 28px;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:700;color:#FFF7EF;text-decoration:none;">Revenir sur ekho →</a>
+          </td></tr>
+        </table>
+
+      </td></tr>
+
+      <tr><td style="padding:24px 0 0 0;">
+        <p style="margin:0;font-family:Helvetica,Arial,sans-serif;font-size:11px;color:rgba(255,247,239,0.25);line-height:1.6;">Tu reçois cet email car tu t'es inscrit sur ekho. <a href="{{ unsubscribe }}" style="color:rgba(255,247,239,0.25);">Se désinscrire</a></p>
+      </td></tr>
+
+    </table>
+  </td></tr>
+</table>
+</body></html>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════
+     TPL 10 — FEEDBACK APRES PREMIERE RECHERCHE
+════════════════════════════════════════ -->
+<div class="tpl-block">
+  <div class="tpl-label">TPL_FEEDBACK_UTILISATEUR_APRES_PREMIERE_RECHERCHE</div>
+  <div class="tpl-subject"><span>Objet :</span>C'était comment, ta première recherche ?</div>
+  <div class="tpl-content">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>ekho</title></head>
+<body style="margin:0;padding:0;background-color:#1A1B23;">
+<table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#1A1B23;">
+  <tr><td align="center" style="padding:40px 20px;">
+    <table border="0" cellpadding="0" cellspacing="0" width="560" style="max-width:560px;">
+
+      <tr><td style="padding:0 0 32px 0;">
+        <p style="margin:0;font-family:Helvetica,Arial,sans-serif;font-size:22px;font-weight:900;color:#ECF890;letter-spacing:-0.02em;">ekho</p>
+      </td></tr>
+
+      <tr><td style="background-color:#221A40;border-radius:16px;padding:40px;">
+
+        <p style="margin:0 0 8px 0;font-family:Helvetica,Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#6B54FF;">Ton avis compte</p>
+
+        <h1 style="margin:0 0 24px 0;font-family:Helvetica,Arial,sans-serif;font-size:28px;font-weight:900;color:#FFF7EF;line-height:1.2;letter-spacing:-0.02em;">C'était comment,<br/>{{ contact.FIRSTNAME }} ?</h1>
+
+        <p style="margin:0 0 20px 0;font-family:Helvetica,Arial,sans-serif;font-size:15px;color:rgba(255,247,239,0.7);line-height:1.7;">Tu viens de faire ta première recherche sur ekho. On aimerait savoir si ça a bien tombé — ou pas.</p>
+
+        <p style="margin:0 0 28px 0;font-family:Helvetica,Arial,sans-serif;font-size:15px;color:rgba(255,247,239,0.7);line-height:1.7;">Tes retours définissent directement ce qu'ekho devient. Une réponse honnête vaut plus qu'un bon avis.</p>
+
+        <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-bottom:32px;">
+          <tr>
+            <td width="48%" style="padding-right:8px;">
+              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                <tr><td align="center" style="border-radius:100px;background-color:#ECF890;">
+                  <a href="{{ params.FEEDBACK_OUI }}" style="display:block;padding:14px 20px;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:700;color:#1A1B23;text-decoration:none;text-align:center;">✓ &nbsp;Ça a bien tombé</a>
+                </td></tr>
+              </table>
+            </td>
+            <td width="48%" style="padding-left:8px;">
+              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                <tr><td align="center" style="border-radius:100px;border:1.5px solid rgba(255,247,239,0.2);">
+                  <a href="{{ params.FEEDBACK_NON }}" style="display:block;padding:14px 20px;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:700;color:rgba(255,247,239,0.7);text-decoration:none;text-align:center;">✗ &nbsp;Pas vraiment</a>
+                </td></tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+
+        <p style="margin:0;font-family:Helvetica,Arial,sans-serif;font-size:12px;color:rgba(255,247,239,0.3);line-height:1.6;">Un clic suffit. Tu peux aussi répondre directement à cet email.</p>
+
+      </td></tr>
+
+      <tr><td style="padding:24px 0 0 0;">
+        <p style="margin:0;font-family:Helvetica,Arial,sans-serif;font-size:11px;color:rgba(255,247,239,0.25);line-height:1.6;">Tu reçois cet email car tu t'es inscrit sur ekho. <a href="{{ unsubscribe }}" style="color:rgba(255,247,239,0.25);">Se désinscrire</a></p>
+      </td></tr>
+
+    </table>
+  </td></tr>
+</table>
+</body></html>
+  </div>
+</div>
+
+
+</body>
+</html>

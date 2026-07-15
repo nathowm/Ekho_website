@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Ekho — Slide 3/5</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;0,900;1,700;1,900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1080px;
+    height: 1350px;
+    background: #1A1B2E;
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+  }
+  .slide {
+    width: 1080px;
+    height: 1350px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 90px 130px;
+  }
+
+  /* Decorative circles — violet glow */
+  .glow {
+    position: absolute;
+    border-radius: 50%;
+    background: #6B54FF;
+    opacity: 0.12;
+    filter: blur(80px);
+  }
+  .glow-1 { width: 600px; height: 600px; top: -200px; left: -200px; }
+  .glow-2 { width: 400px; height: 400px; bottom: 100px; right: -100px; }
+
+  /* Slide number */
+  .slide-number {
+    position: absolute;
+    top: 54px;
+    right: 64px;
+    font-size: 26px;
+    font-weight: 400;
+    color: #F2EDE7;
+    opacity: 0.2;
+    letter-spacing: 3px;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .intro {
+    font-size: 40px;
+    font-weight: 400;
+    color: #F2EDE7;
+    opacity: 0.45;
+    margin-bottom: 50px;
+    letter-spacing: 2px;
+  }
+
+  .line-main {
+    font-size: 96px;
+    font-weight: 900;
+    font-style: italic;
+    color: #F2EDE7;
+    line-height: 1.1;
+    margin-bottom: 20px;
+  }
+
+  .line-accent {
+    font-size: 96px;
+    font-weight: 900;
+    font-style: italic;
+    color: #6B54FF;
+    line-height: 1.1;
+  }
+
+  /* Underline decoration */
+  .underline-deco {
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #6B54FF, transparent);
+    margin: 50px 0;
+    opacity: 0.5;
+  }
+
+  .tagline {
+    font-size: 28px;
+    font-weight: 400;
+    color: #F2EDE7;
+    opacity: 0.35;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  /* Arrow */
+  .swipe {
+    position: absolute;
+    bottom: 140px;
+    right: 64px;
+    font-size: 22px;
+    color: #F2EDE7;
+    opacity: 0.25;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+  .swipe::after {
+    content: '→';
+    font-size: 28px;
+  }
+
+  /* Footer */
+  .footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 90px;
+    background: rgba(242, 237, 231, 0.07);
+    border-top: 1.5px solid rgba(242,237,231,0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+  .footer-logo {
+    font-size: 28px;
+    font-weight: 900;
+    font-style: italic;
+    color: #F2EDE7;
+    letter-spacing: -1px;
+  }
+  .footer-sep {
+    font-size: 22px;
+    color: #F2EDE7;
+    opacity: 0.2;
+  }
+  .footer-text {
+    font-size: 22px;
+    font-weight: 400;
+    color: #F2EDE7;
+    opacity: 0.3;
+    letter-spacing: 0.5px;
+  }
+</style>
+</head>
+<body>
+<div class="slide">
+  <div class="glow glow-1"></div>
+  <div class="glow glow-2"></div>
+
+  <span class="slide-number">3 / 5</span>
+
+  <div class="content">
+    <p class="intro">C'est :</p>
+    <p class="line-main">« comment</p>
+    <p class="line-accent">je veux<br>me sentir ? »</p>
+    <div class="underline-deco"></div>
+    <p class="tagline">La seule question qui compte.</p>
+  </div>
+
+  <div class="swipe">swipe</div>
+
+  <div class="footer">
+    <span class="footer-logo">ekho</span>
+    <span class="footer-sep">·</span>
+    <span class="footer-text">Le bon lieu, maintenant</span>
+    <span class="footer-sep">·</span>
+    <span class="footer-text">Marseille</span>
+  </div>
+</div>
+</body>
+</html>

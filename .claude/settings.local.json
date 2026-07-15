@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 ~/.claude/skills/nano-banana-pro/scripts/generate_image.py --prompt \"A young woman walking alone on a warm sunlit street in Marseille, France, golden hour light, she looks relaxed and slightly lost in thought, tote bag on shoulder, looking up at the sky. Cinematic editorial photography style, warm amber tones, bokeh background with old Marseille buildings. No text, no UI overlay. Vertical 4:5 format.\" --filename \"2026-06-24-14-00-00-ekho-femme-marseille.png\" --resolution 2K)",
+      "Bash(~/.local/bin/uv run *)",
+      "Bash(find /usr /opt /Users/anatholemauguy -name \"uv\" 2>/dev/null | head -5)",
+      "Bash(curl -LsSf https://astral.sh/uv/install.sh)",
+      "Bash(sh)",
+      "Bash(pip3 install *)",
+      "Bash(python3 -c ' *)"
+    ]
+  }
+}

@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>ekho — Contenu organique Instagram v2</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,300;1,400;1,700;1,800;1,900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --beige: #F2EDE7;
+    --violet: #6B54FF;
+    --dark: #1A1B2E;
+    --muted: rgba(26,27,46,0.42);
+    --violet-pale: #EAE7FF;
+  }
+
+  body {
+    background: #1a1a1a;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 64px;
+    padding: 64px 40px;
+  }
+
+  .label {
+    color: #555;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    align-self: flex-start;
+    margin-bottom: -48px;
+  }
+
+  .post {
+    width: 1080px;
+    height: 1080px;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+    background: var(--beige);
+  }
+
+  /* ═══════════════════════════════
+     POST 1 — Situation : le soir où
+  ═══════════════════════════════ */
+  .p1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 90px 88px 80px;
+  }
+
+  .p1 .top-tag {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--violet);
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+  }
+
+  .p1 .main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 36px;
+  }
+
+  .p1 .headline {
+    font-size: 88px;
+    font-weight: 900;
+    line-height: 0.92;
+    color: var(--dark);
+    letter-spacing: -0.04em;
+  }
+
+  .p1 .headline em {
+    font-style: italic;
+    color: var(--violet);
+  }
+
+  .p1 .divider {
+    width: 64px;
+    height: 4px;
+    background: var(--violet);
+    border-radius: 2px;
+  }
+
+  .p1 .body {
+    font-size: 28px;
+    font-weight: 400;
+    color: var(--dark);
+    opacity: 0.62;
+    line-height: 1.5;
+    max-width: 620px;
+  }
+
+  .p1 .bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .p1 .caption {
+    font-size: 20px;
+    font-weight: 700;
+    font-style: italic;
+    color: var(--muted);
+  }
+
+  .p1 .logo {
+    font-size: 30px;
+    font-weight: 900;
+    color: var(--violet);
+    letter-spacing: -0.05em;
+  }
+
+  /* ═══════════════════════════════
+     POST 2 — Format "Metrics that matter" Timeleft
+  ═══════════════════════════════ */
+  .p2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 80px;
+    gap: 0;
+    text-align: center;
+  }
+
+  .p2 .kicker {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--violet);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 32px;
+  }
+
+  .p2 .title {
+    font-size: 76px;
+    font-weight: 900;
+    line-height: 1.0;
+    color: var(--dark);
+    letter-spacing: -0.04em;
+    margin-bottom: 28px;
+  }
+
+  .p2 .title em {
+    font-style: italic;
+    color: var(--violet);
+  }
+
+  .p2 .subtitle {
+    font-size: 30px;
+    font-weight: 400;
+    color: var(--dark);
+    opacity: 0.55;
+    line-height: 1.45;
+    max-width: 680px;
+    margin-bottom: 64px;
+  }
+
+  .p2 .big-divider {
+    width: 100%;
+    height: 2px;
+    background: var(--dark);
+    opacity: 0.12;
+    margin-bottom: 64px;
+  }
+
+  .p2 .situations {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    width: 100%;
+    text-align: left;
+  }
+
+  .p2 .sit-row {
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+  }
+
+  .p2 .sit-num {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--violet);
+    opacity: 0.5;
+    min-width: 32px;
+    font-style: italic;
+  }
+
+  .p2 .sit-text {
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--dark);
+    line-height: 1.3;
+  }
+
+  .p2 .sit-text em {
+    font-style: italic;
+    color: var(--violet);
+  }
+
+  .p2 .footer {
+    margin-top: auto;
+    padding-top: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .p2 .footer .logo {
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--violet);
+    letter-spacing: -0.05em;
+  }
+
+  .p2 .footer .city {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  /* ═══════════════════════════════
+     POST 3 — La question
+  ═══════════════════════════════ */
+  .p3 {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    padding: 0;
+  }
+
+  .p3 .block {
+    padding: 0 88px;
+    display: flex;
+    align-items: center;
+  }
+
+  .p3 .block-1 { background: var(--beige); border-bottom: 2px solid rgba(26,27,46,0.10); }
+  .p3 .block-2 { background: var(--violet); }
+  .p3 .block-3 { background: var(--dark); }
+
+  .p3 .block-1 .text {
+    font-size: 56px;
+    font-weight: 900;
+    color: var(--dark);
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+  }
+
+  .p3 .block-1 .text em { font-style: italic; color: var(--violet); }
+
+  .p3 .block-2 .text {
+    font-size: 62px;
+    font-weight: 900;
+    font-style: italic;
+    color: white;
+    letter-spacing: -0.03em;
+    line-height: 1.0;
+  }
+
+  .p3 .block-3 {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .p3 .block-3 .text {
+    font-size: 36px;
+    font-weight: 400;
+    color: white;
+    opacity: 0.65;
+    line-height: 1.4;
+    font-style: italic;
+  }
+
+  .p3 .block-3 .logo {
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--violet);
+    letter-spacing: -0.05em;
+    margin-top: 16px;
+  }
+
+  /* ═══════════════════════════════
+     POST 4 — Liste situations
+  ═══════════════════════════════ */
+  .p4 {
+    display: flex;
+    flex-direction: column;
+    padding: 88px;
+    gap: 0;
+  }
+
+  .p4 .p4-header {
+    margin-bottom: 56px;
+  }
+
+  .p4 .p4-header .eyebrow {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--violet);
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .p4 .p4-header h2 {
+    font-size: 72px;
+    font-weight: 900;
+    line-height: 0.95;
+    color: var(--dark);
+    letter-spacing: -0.04em;
+  }
+
+  .p4 .p4-header h2 em {
+    font-style: italic;
+    color: var(--violet);
+  }
+
+  .p4 .items {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0;
+  }
+
+  .p4 .item {
+    display: flex;
+    align-items: flex-start;
+    gap: 28px;
+    padding: 36px 0;
+    border-bottom: 1.5px solid rgba(26,27,46,0.10);
+  }
+
+  .p4 .item:last-child { border-bottom: none; }
+
+  .p4 .item .icon {
+    font-size: 36px;
+    flex-shrink: 0;
+    margin-top: 4px;
+  }
+
+  .p4 .item .content {}
+
+  .p4 .item .sit {
+    font-size: 30px;
+    font-weight: 800;
+    color: var(--dark);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+
+  .p4 .item .feel {
+    font-size: 22px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--muted);
+    margin-top: 6px;
+    line-height: 1.3;
+  }
+
+  .p4 .p4-footer {
+    margin-top: 44px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .p4 .p4-footer .logo {
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--violet);
+    letter-spacing: -0.05em;
+  }
+
+  .p4 .p4-footer .tag {
+    background: var(--violet);
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 10px 24px;
+    border-radius: 100px;
+  }
+
+  /* ═══════════════════════════════
+     POST 5 — Citation courte, grand format
+  ═══════════════════════════════ */
+  .p5 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 88px;
+    background: var(--dark);
+  }
+
+  .p5 .p5-top {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--violet);
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+  }
+
+  .p5 .quote-mark {
+    font-size: 200px;
+    font-weight: 900;
+    font-style: italic;
+    color: var(--violet);
+    line-height: 0.7;
+    opacity: 0.3;
+    letter-spacing: -0.05em;
+  }
+
+  .p5 .quote {
+    font-size: 72px;
+    font-weight: 900;
+    color: var(--beige);
+    line-height: 1.0;
+    letter-spacing: -0.04em;
+    margin-top: -40px;
+  }
+
+  .p5 .quote em {
+    font-style: italic;
+    color: var(--violet);
+  }
+
+  .p5 .p5-bottom {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+
+  .p5 .p5-bottom .sub {
+    font-size: 24px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--beige);
+    opacity: 0.45;
+    line-height: 1.4;
+    max-width: 460px;
+  }
+
+  .p5 .p5-bottom .logo {
+    font-size: 32px;
+    font-weight: 900;
+    color: var(--violet);
+    letter-spacing: -0.05em;
+    flex-shrink: 0;
+  }
+</style>
+</head>
+<body>
+
+<!-- POST 1 -->
+<p class="label">Post 1 — Le soir où</p>
+<div class="post p1">
+  <div class="top-tag">T'as déjà eu ce moment —</div>
+
+  <div class="main">
+    <div class="headline">T'as envie<br>de sortir,<br>mais <em>pas<br>n'importe<br>où.</em></div>
+    <div class="divider"></div>
+    <div class="body">Pas le café habituel. Pas les recommandations Google. Juste le bon endroit, là, maintenant.</div>
+  </div>
+
+  <div class="bottom">
+    <div class="caption">(midi, après le boulot, un dimanche — peu importe)</div>
+    <div class="logo">ekho</div>
+  </div>
+</div>
+
+<!-- POST 2 -->
+<p class="label">Post 2 — Format Timeleft "situations qui comptent"</p>
+<div class="post p2">
+  <div class="kicker">Situations qui comptent</div>
+  <div class="title">Trouver <em>le bon lieu</em><br>du premier coup.</div>
+  <div class="subtitle">Pas la deuxième tentative. Pas le plan B. Le lieu qui colle dès qu'on rentre.</div>
+  <div class="big-divider"></div>
+
+  <div class="situations">
+    <div class="sit-row">
+      <span class="sit-num">01</span>
+      <span class="sit-text">Quand t'as besoin de <em>calme</em> mais que chez toi tu tiens plus.</span>
+    </div>
+    <div class="sit-row">
+      <span class="sit-num">02</span>
+      <span class="sit-text">Quand t'as envie de voir des gens, <em>sans l'effort</em> de les inviter.</span>
+    </div>
+    <div class="sit-row">
+      <span class="sit-num">03</span>
+      <span class="sit-text">Quand t'as de l'énergie mais <em>aucun plan.</em></span>
+    </div>
+    <div class="sit-row">
+      <span class="sit-num">04</span>
+      <span class="sit-text">Quand le lieu que tu cherches, <em>tu le reconnais</em> quand tu y entres.</span>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="logo">ekho</div>
+    <div class="city">Marseille · Été 2026</div>
+  </div>
+</div>
+
+<!-- POST 3 -->
+<p class="label">Post 3 — 3 blocs contrastés</p>
+<div class="post p3">
+  <div class="block block-1">
+    <div class="text">T'as déjà choisi<br>un café <em>au hasard</em><br>et regretté dès<br>que t'es entré.</div>
+  </div>
+  <div class="block block-2">
+    <div class="text">"C'était pas le bon<br>lieu pour ce moment-là."</div>
+  </div>
+  <div class="block block-3">
+    <div class="text">Le lieu, ça se choisit pas comme une pizza. Ça dépend de toi, là, maintenant.</div>
+    <div class="logo">ekho · Marseille</div>
+  </div>
+</div>
+
+<!-- POST 4 -->
+<p class="label">Post 4 — Liste situations vécues</p>
+<div class="post p4">
+  <div class="p4-header">
+    <div class="eyebrow">Reconnaître le bon lieu</div>
+    <h2>C'est quand<br>tu <em>souffles</em><br>en entrant.</h2>
+  </div>
+
+  <div class="items">
+    <div class="item">
+      <div class="icon">🌿</div>
+      <div class="content">
+        <div class="sit">La lumière est douce.</div>
+        <div class="feel">T'enlèves ton manteau sans y penser.</div>
+      </div>
+    </div>
+    <div class="item">
+      <div class="icon">🔊</div>
+      <div class="content">
+        <div class="sit">Le bruit est juste ce qu'il faut.</div>
+        <div class="feel">Ni trop vide, ni trop chargé.</div>
+      </div>
+    </div>
+    <div class="item">
+      <div class="icon">⏱</div>
+      <div class="content">
+        <div class="sit">T'as pas vérifié l'heure depuis 40 minutes.</div>
+        <div class="feel">C'est le meilleur signe.</div>
+      </div>
+    </div>
+    <div class="item">
+      <div class="icon">📵</div>
+      <div class="content">
+        <div class="sit">Ton téléphone est retourné sur la table.</div>
+        <div class="feel">Tout seul.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="p4-footer">
+    <div class="logo">ekho</div>
+    <div class="tag">Bêta · Marseille</div>
+  </div>
+</div>
+
+<!-- POST 5 -->
+<p class="label">Post 5 — Citation forte, fond sombre</p>
+<div class="post p5">
+  <div class="p5-top">Ce que personne ne te dit</div>
+
+  <div>
+    <div class="quote-mark">"</div>
+    <div class="quote">Le lieu<br>change<br><em>tout.</em></div>
+  </div>
+
+  <div class="p5-bottom">
+    <div class="sub">Le même moment, dans le bon endroit, devient un moment dont tu te souviens.</div>
+    <div class="logo">ekho</div>
+  </div>
+</div>
+
+</body>
+</html>

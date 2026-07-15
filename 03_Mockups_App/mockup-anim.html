@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>ekho — Mockup animé</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --p:       #6B54FF;
+    --dark:    #1A1B23;
+    --manila:  #ECF890;
+    --bg:      #F2EDE7;
+    --muted:   rgba(255,255,255,.35);
+  }
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: #0e0f1a;
+    display: flex; align-items: center; justify-content: center;
+    min-height: 100vh;
+  }
+
+  /* ─── PHONE FRAME ─── */
+  .phone {
+    width: 300px;
+    background: #12131d;
+    border-radius: 40px;
+    border: 2px solid rgba(255,255,255,.08);
+    box-shadow:
+      0 0 0 8px rgba(0,0,0,.4),
+      0 32px 80px rgba(0,0,0,.6),
+      inset 0 1px 0 rgba(255,255,255,.06);
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* Status bar */
+  .status-bar {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 14px 20px 6px;
+    font-size: .62rem; font-weight: 700; color: rgba(255,255,255,.4);
+  }
+  .sb-right { display: flex; gap: 5px; align-items: center; }
+  .sb-battery { width: 16px; height: 8px; border: 1.5px solid rgba(255,255,255,.35); border-radius: 2px; position: relative; }
+  .sb-battery::after { content:''; position:absolute; left:1.5px; top:1.5px; bottom:1.5px; width:60%; background: rgba(255,255,255,.5); border-radius: 1px; }
+  .sb-battery::before { content:''; position:absolute; right:-4px; top:50%; transform:translateY(-50%); width:2.5px; height:4px; background:rgba(255,255,255,.35); border-radius:1px; }
+
+  /* App header inside screen */
+  .app-header {
+    display: flex; align-items: center; gap: 8px;
+    padding: 8px 20px 6px;
+  }
+  .app-logo { font-size: .9rem; font-weight: 900; letter-spacing: -.03em; color: var(--p); }
+  .app-status {
+    display: flex; align-items: center; gap: 5px;
+    font-size: .55rem; font-weight: 700; color: rgba(255,255,255,.25);
+    margin-left: auto;
+  }
+  .status-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: rgba(107,84,255,.5);
+    transition: background .4s;
+  }
+  .status-dot.active { background: #4ade80; box-shadow: 0 0 6px #4ade80; }
+  .status-dot.partner { background: var(--manila); box-shadow: 0 0 6px var(--manila); }
+
+  /* ─── SCREENS ─── */
+  .screens-wrap { position: relative; height: 460px; overflow: hidden; }
+  .pscreen {
+    position: absolute; inset: 0;
+    padding: 0 16px 20px;
+    display: flex; flex-direction: column;
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity .5s ease, transform .5s ease;
+    pointer-events: none;
+  }
+  .pscreen.visible {
+    opacity: 1; transform: translateY(0); pointer-events: auto;
+  }
+  .pscreen.exit {
+    opacity: 0; transform: translateY(-16px);
+  }
+
+  /* ─── SCREEN 1 — ANALYSE ─── */
+  .screen-title {
+    font-size: .65rem; font-weight: 700; letter-spacing: .1em;
+    text-transform: uppercase; color: rgba(255,255,255,.3);
+    margin-bottom: 18px; margin-top: 6px;
+  }
+  .screen-title em { color: var(--p); font-style: normal; }
+
+  /* Mood tag grid */
+  .mood-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 8px; margin-bottom: 20px;
+    position: relative;
+  }
+  .mtag {
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 12px;
+    padding: 10px 6px;
+    text-align: center;
+    font-size: .62rem; font-weight: 600;
+    color: rgba(255,255,255,.4);
+    transition: all .3s ease;
+    position: relative;
+  }
+  .mtag .mtag-emoji { display: block; font-size: 1rem; margin-bottom: 3px; }
+  .mtag.scanning {
+    background: rgba(107,84,255,.15);
+    border-color: rgba(107,84,255,.4);
+    color: rgba(255,255,255,.7);
+    box-shadow: 0 0 14px rgba(107,84,255,.2);
+  }
+  .mtag.selected {
+    background: var(--p);
+    border-color: var(--p);
+    color: white;
+    box-shadow: 0 4px 20px rgba(107,84,255,.5);
+    transform: scale(1.06);
+  }
+
+  /* Loupe */
+  .loupe-wrap {
+    position: absolute;
+    width: 48px; height: 48px;
+    pointer-events: none;
+    z-index: 10;
+    transition: top .5s cubic-bezier(.4,0,.2,1), left .5s cubic-bezier(.4,0,.2,1), opacity .3s;
+    opacity: 0;
+    top: 0; left: 0;
+    transform: translate(-50%, -50%);
+  }
+  .loupe-wrap.visible { opacity: 1; }
+  .loupe-svg { width: 48px; height: 48px; filter: drop-shadow(0 0 8px rgba(107,84,255,.6)); }
+
+  /* Scan label */
+  .scan-label {
+    display: flex; align-items: center; gap: 7px;
+    font-size: .6rem; font-weight: 600; color: rgba(255,255,255,.3);
+    margin-top: 4px;
+    transition: opacity .4s;
+    min-height: 20px;
+  }
+  .scan-blink {
+    width: 5px; height: 5px; border-radius: 50%;
+    background: var(--p); flex-shrink: 0;
+    animation: blink 1s ease-in-out infinite;
+  }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.2} }
+
+  /* ─── SCREEN 2 — LIEUX ─── */
+  .selected-pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(107,84,255,.15); border: 1px solid rgba(107,84,255,.3);
+    border-radius: 100px; padding: 5px 12px;
+    font-size: .58rem; font-weight: 800; color: #a494ff;
+    margin-bottom: 16px; margin-top: 6px;
+    align-self: flex-start;
+  }
+  .lieux-header {
+    font-size: .6rem; font-weight: 700; letter-spacing: .08em;
+    text-transform: uppercase; color: rgba(255,255,255,.2);
+    margin-bottom: 10px;
+  }
+  .lieu-row {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 13px 14px;
+    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(255,255,255,.07);
+    border-radius: 14px;
+    margin-bottom: 8px;
+    opacity: 0; transform: translateY(12px);
+    transition: opacity .4s ease, transform .4s ease;
+  }
+  .lieu-row.show { opacity: 1; transform: translateY(0); }
+  .lieu-row.partner-row {
+    background: rgba(107,84,255,.1);
+    border-color: rgba(107,84,255,.3);
+  }
+  .lr-name { font-size: .72rem; font-weight: 800; color: white; margin-bottom: 2px; }
+  .lr-name.partner { color: #a494ff; }
+  .lr-meta { font-size: .58rem; color: rgba(255,255,255,.28); }
+  .lr-dist { font-size: .65rem; font-weight: 700; color: rgba(255,255,255,.3); flex-shrink: 0; }
+  .partner-tip {
+    margin-top: 14px; padding: 10px 12px;
+    background: rgba(236,248,144,.06); border: 1px solid rgba(236,248,144,.15);
+    border-radius: 10px;
+    font-size: .56rem; color: rgba(236,248,144,.6); line-height: 1.5;
+    opacity: 0; transition: opacity .5s;
+  }
+  .partner-tip.show { opacity: 1; }
+
+  /* ─── SCREEN 3 — PARTENAIRE ─── */
+  .partner-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(236,248,144,.1); border: 1px solid rgba(236,248,144,.2);
+    border-radius: 100px; padding: 5px 12px;
+    font-size: .56rem; font-weight: 800; letter-spacing: .08em;
+    text-transform: uppercase; color: var(--manila);
+    margin-bottom: 24px; margin-top: 8px; align-self: flex-start;
+  }
+  .venue-name {
+    font-size: .62rem; font-weight: 700; color: rgba(255,255,255,.25);
+    margin-bottom: 6px;
+  }
+  .venue-label {
+    font-size: 1.05rem; font-weight: 900; color: white;
+    letter-spacing: -.03em; margin-bottom: 28px;
+    line-height: 1.2;
+  }
+  /* Pulsing presence rings */
+  .presence-viz {
+    display: flex; align-items: center; gap: 20px; margin-bottom: 24px;
+  }
+  .rings-wrap {
+    position: relative; width: 72px; height: 72px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .ring {
+    position: absolute; border-radius: 50%;
+    border: 1.5px solid rgba(107,84,255,.4);
+    animation: ripple 2.4s ease-out infinite;
+  }
+  .ring-1 { width: 72px; height: 72px; animation-delay: 0s; }
+  .ring-2 { width: 52px; height: 52px; animation-delay: .5s; }
+  .ring-3 { width: 34px; height: 34px; border-color: rgba(107,84,255,.6); animation-delay: 1s; }
+  @keyframes ripple {
+    0%   { opacity: .7; transform: scale(.9); }
+    50%  { opacity: .4; }
+    100% { opacity: 0;  transform: scale(1.25); }
+  }
+  .ring-center {
+    width: 24px; height: 24px; border-radius: 50%;
+    background: var(--p);
+    display: flex; align-items: center; justify-content: center;
+    font-size: .72rem; font-weight: 900; color: white;
+    z-index: 1;
+    box-shadow: 0 0 16px rgba(107,84,255,.6);
+  }
+  .presence-text { }
+  .pt-count {
+    font-size: 1.5rem; font-weight: 900; color: white;
+    letter-spacing: -.05em; line-height: 1;
+    margin-bottom: 3px;
+  }
+  .pt-label { font-size: .68rem; color: rgba(255,255,255,.4); line-height: 1.5; }
+
+  .anon-note {
+    font-size: .58rem; color: rgba(255,255,255,.2);
+    padding: 10px 0;
+    border-top: 1px solid rgba(255,255,255,.06);
+    border-bottom: 1px solid rgba(255,255,255,.06);
+    margin-bottom: 16px;
+    line-height: 1.5;
+  }
+  .activate-btn {
+    display: block; width: 100%;
+    padding: 14px; border-radius: 100px;
+    background: var(--p); color: white; border: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: .78rem; font-weight: 900;
+    letter-spacing: -.01em; cursor: pointer;
+    box-shadow: 0 6px 24px rgba(107,84,255,.4);
+    transition: transform .2s, box-shadow .2s;
+    position: relative; overflow: hidden;
+  }
+  .activate-btn::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: rgba(255,255,255,0);
+    animation: btn-pulse 2s ease-in-out infinite;
+  }
+  @keyframes btn-pulse {
+    0%,100% { background: rgba(255,255,255,0); }
+    50%      { background: rgba(255,255,255,.08); }
+  }
+
+  /* ─── PROGRESS DOTS ─── */
+  .progress-dots {
+    display: flex; justify-content: center; gap: 6px;
+    padding: 14px 0 20px;
+  }
+  .pd {
+    width: 5px; height: 5px; border-radius: 50%;
+    background: rgba(255,255,255,.15);
+    transition: background .4s, width .4s;
+  }
+  .pd.on { background: var(--p); width: 18px; border-radius: 100px; }
+
+  /* Debug / label outside */
+  .outside-label {
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: .6rem; font-weight: 700;
+    color: rgba(255,255,255,.15);
+    margin-top: 20px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+
+<div>
+  <div class="phone">
+
+    <!-- Status bar -->
+    <div class="status-bar">
+      <span>21:34</span>
+      <div class="sb-right">
+        <span>●●●</span>
+        <div class="sb-battery"></div>
+      </div>
+    </div>
+
+    <!-- App header -->
+    <div class="app-header">
+      <div class="app-logo">ekho</div>
+      <div class="app-status">
+        <div class="status-dot" id="statusDot"></div>
+        <span id="statusText">en écoute</span>
+      </div>
+    </div>
+
+    <!-- Screens -->
+    <div class="screens-wrap" id="screensWrap">
+
+      <!-- ── SCREEN 1 : Analyse ── -->
+      <div class="pscreen" id="s1">
+        <div class="screen-title">ekho <em>analyse</em> ton moment</div>
+        <div class="mood-grid" id="moodGrid">
+          <div class="mtag" id="mt0"><span class="mtag-emoji">🌿</span>Calme</div>
+          <div class="mtag" id="mt1"><span class="mtag-emoji">👥</span>Social</div>
+          <div class="mtag" id="mt2"><span class="mtag-emoji">⚡</span>Énergique</div>
+          <div class="mtag" id="mt3"><span class="mtag-emoji">☀️</span>Terrasse</div>
+          <div class="mtag" id="mt4"><span class="mtag-emoji">🍷</span>Apéro</div>
+          <div class="mtag" id="mt5"><span class="mtag-emoji">🎵</span>Lieu vivant</div>
+        </div>
+        <!-- Loupe -->
+        <div class="loupe-wrap" id="loupe">
+          <svg class="loupe-svg" viewBox="0 0 48 48" fill="none">
+            <circle cx="20" cy="20" r="15" fill="rgba(107,84,255,.08)"/>
+            <circle cx="20" cy="20" r="11" fill="rgba(107,84,255,.05)" stroke="#6B54FF" stroke-width="2"/>
+            <line x1="14" y1="20" x2="26" y2="20" stroke="rgba(107,84,255,.35)" stroke-width="1" stroke-dasharray="2 3"/>
+            <line x1="20" y1="14" x2="20" y2="26" stroke="rgba(107,84,255,.35)" stroke-width="1" stroke-dasharray="2 3"/>
+            <line x1="29" y1="29" x2="43" y2="43" stroke="#6B54FF" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="20" cy="20" r="15" fill="none" stroke="rgba(107,84,255,.15)" stroke-width=".5" stroke-dasharray="2 4">
+              <animateTransform attributeName="transform" type="rotate" from="0 20 20" to="360 20 20" dur="6s" repeatCount="indefinite"/>
+            </circle>
+          </svg>
+        </div>
+        <div class="scan-label" id="scanLabel">
+          <div class="scan-blink"></div>
+          <span id="scanText">Analyse en cours…</span>
+        </div>
+      </div>
+
+      <!-- ── SCREEN 2 : Lieux ── -->
+      <div class="pscreen" id="s2">
+        <div class="selected-pill">👥 Social · sélectionné</div>
+        <div class="lieux-header">3 lieux compatibles autour de toi</div>
+        <div class="lieu-row" id="lr1">
+          <div>
+            <div class="lr-name">Le Comptoir des Arts</div>
+            <div class="lr-meta">Ambiance sociale · Bar</div>
+          </div>
+          <div class="lr-dist">180m</div>
+        </div>
+        <div class="lieu-row" id="lr2">
+          <div>
+            <div class="lr-name">Bar Les Variétés</div>
+            <div class="lr-meta">Vivant ce soir · Social</div>
+          </div>
+          <div class="lr-dist">320m</div>
+        </div>
+        <div class="lieu-row partner-row" id="lr3">
+          <div>
+            <div class="lr-name partner">✦ Café du Cours</div>
+            <div class="lr-meta">Lieu partenaire · 2 présences</div>
+          </div>
+          <div class="lr-dist">480m</div>
+        </div>
+        <div class="partner-tip" id="partnerTip">
+          ✦ Appuie sur un lieu partenaire pour découvrir les présences compatibles.
+        </div>
+      </div>
+
+      <!-- ── SCREEN 3 : Partenaire ── -->
+      <div class="pscreen" id="s3">
+        <div class="partner-badge">✦ Lieu partenaire</div>
+        <div class="venue-name">Café du Cours · Marseille</div>
+        <div class="venue-label">2 présences<br/>compatibles détectées.</div>
+        <div class="presence-viz">
+          <div class="rings-wrap">
+            <div class="ring ring-1"></div>
+            <div class="ring ring-2"></div>
+            <div class="ring ring-3"></div>
+            <div class="ring-center">2</div>
+          </div>
+          <div class="presence-text">
+            <div class="pt-count">Anonyme.</div>
+            <div class="pt-label">Sans profil public.<br/>Sans swipe.<br/>Sans pression.</div>
+          </div>
+        </div>
+        <div class="anon-note">🛡 Rien n'est visible sans ton accord. La rencontre reste un choix.</div>
+        <button class="activate-btn">Activer ma présence</button>
+      </div>
+
+    </div>
+
+    <!-- Progress dots -->
+    <div class="progress-dots">
+      <div class="pd on" id="pd0"></div>
+      <div class="pd" id="pd1"></div>
+      <div class="pd" id="pd2"></div>
+    </div>
+
+  </div>
+  <div class="outside-label">ekho · fausse interface animée</div>
+</div>
+
+<script>
+  const s1 = document.getElementById('s1');
+  const s2 = document.getElementById('s2');
+  const s3 = document.getElementById('s3');
+  const loupe = document.getElementById('loupe');
+  const moodGrid = document.getElementById('moodGrid');
+  const scanText = document.getElementById('scanText');
+  const scanLabel = document.getElementById('scanLabel');
+  const statusDot = document.getElementById('statusDot');
+  const statusText = document.getElementById('statusText');
+  const pds = [document.getElementById('pd0'), document.getElementById('pd1'), document.getElementById('pd2')];
+
+  const tags = [0,1,2,3,4,5].map(i => document.getElementById('mt' + i));
+  const rows = ['lr1','lr2','lr3'].map(id => document.getElementById(id));
+  const partnerTip = document.getElementById('partnerTip');
+
+  // Utility: delay
+  const wait = ms => new Promise(r => setTimeout(r, ms));
+
+  // Show a screen
+  function showScreen(screen, dotIndex) {
+    [s1,s2,s3].forEach(s => { s.classList.remove('visible','exit'); });
+    pds.forEach((p,i) => p.classList.toggle('on', i === dotIndex));
+    void screen.offsetWidth; // force reflow
+    screen.classList.add('visible');
+  }
+
+  // Hide a screen
+  function hideScreen(screen) {
+    screen.classList.remove('visible');
+    screen.classList.add('exit');
+    setTimeout(() => screen.classList.remove('exit'), 500);
+  }
+
+  // Move loupe to center of an element, relative to moodGrid
+  function moveLoupeTo(el) {
+    const gRect = moodGrid.getBoundingClientRect();
+    const eRect = el.getBoundingClientRect();
+    const x = eRect.left - gRect.left + eRect.width / 2;
+    const y = eRect.top - gRect.top + eRect.height / 2;
+    loupe.style.left = x + 'px';
+    loupe.style.top = y + 'px';
+  }
+
+  // Scan through a tag (loupe over it + highlight briefly)
+  async function scanTag(idx, delay = 500) {
+    moveLoupeTo(tags[idx]);
+    tags[idx].classList.add('scanning');
+    await wait(delay);
+    tags[idx].classList.remove('scanning');
+  }
+
+  // Reset all state
+  function resetAll() {
+    tags.forEach(t => t.classList.remove('scanning','selected'));
+    rows.forEach(r => r.classList.remove('show'));
+    partnerTip.classList.remove('show');
+    loupe.classList.remove('visible');
+    scanLabel.style.opacity = '1';
+    statusDot.className = 'status-dot';
+    statusText.textContent = 'en écoute';
+    scanText.textContent = 'Analyse en cours…';
+  }
+
+  async function runSequence() {
+    resetAll();
+
+    // ── SCREEN 1 : show & loupe appears ──
+    showScreen(s1, 0);
+    await wait(600);
+
+    loupe.classList.add('visible');
+    moveLoupeTo(tags[0]); // start at Calme
+
+    await wait(300);
+
+    // Scan: Calme
+    await scanTag(0, 480);
+    // Scan: Énergique
+    await scanTag(2, 480);
+    // Scan: Terrasse
+    await scanTag(3, 380);
+    // Scan: Apéro
+    await scanTag(4, 380);
+    // Scan: Social — pause ici
+    moveLoupeTo(tags[1]);
+    tags[1].classList.add('scanning');
+    scanText.textContent = 'Correspondance trouvée…';
+    statusDot.classList.add('active');
+    statusText.textContent = 'signal détecté';
+    await wait(900);
+
+    // Select Social
+    tags[1].classList.remove('scanning');
+    tags[1].classList.add('selected');
+    loupe.classList.remove('visible');
+    scanText.textContent = '👥 Social · sélectionné';
+    await wait(900);
+
+    // ── TRANSITION vers SCREEN 2 ──
+    hideScreen(s1);
+    await wait(400);
+    showScreen(s2, 1);
+    statusText.textContent = '3 lieux compatibles';
+
+    await wait(300);
+    rows[0].classList.add('show'); await wait(200);
+    rows[1].classList.add('show'); await wait(200);
+    rows[2].classList.add('show');
+    await wait(700);
+    partnerTip.classList.add('show');
+    await wait(1400);
+
+    // ── TRANSITION vers SCREEN 3 ──
+    hideScreen(s2);
+    await wait(400);
+    showScreen(s3, 2);
+    statusDot.className = 'status-dot partner';
+    statusText.textContent = 'lieu partenaire';
+    await wait(3800);
+
+    // ── BOUCLE ──
+    hideScreen(s3);
+    await wait(600);
+    runSequence();
+  }
+
+  // Start
+  runSequence();
+</script>
+</body>
+</html>

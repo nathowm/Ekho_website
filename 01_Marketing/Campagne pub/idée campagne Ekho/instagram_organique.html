@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ekho — Contenu organique Instagram</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700;1,800;1,900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --beige: #F2EDE7;
+    --violet: #6B54FF;
+    --dark: #1A1B2E;
+    --violet-light: #EAE7FF;
+    --orange: #E8733A;
+    --green: #ECF890;
+  }
+
+  body {
+    background: #2a2a2a;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+    padding: 60px 40px;
+  }
+
+  h1 {
+    color: #aaa;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: -30px;
+  }
+
+  /* POST WRAPPER */
+  .post {
+    width: 1080px;
+    height: 1080px;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  /* ─────────────────────────────────────────
+     POST 1 — "Ce soir, t'as quelle énergie ?"
+  ───────────────────────────────────────── */
+  .post-1 {
+    background: var(--beige);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 80px 70px 70px;
+  }
+
+  .post-1 .top {
+    text-align: center;
+    z-index: 2;
+  }
+
+  .post-1 .top .eyebrow {
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--violet);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+
+  .post-1 .top h2 {
+    font-size: 74px;
+    font-weight: 900;
+    line-height: 1.0;
+    color: var(--dark);
+    letter-spacing: -0.03em;
+  }
+
+  .post-1 .top h2 em {
+    font-style: italic;
+    color: var(--violet);
+  }
+
+  .post-1 .illustration {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .post-1 .bottom {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .post-1 .bottom .moods {
+    display: flex;
+    gap: 16px;
+  }
+
+  .post-1 .bottom .mood-pill {
+    padding: 14px 28px;
+    border-radius: 100px;
+    font-size: 22px;
+    font-weight: 700;
+    border: 2.5px solid var(--dark);
+  }
+  .post-1 .bottom .mood-pill.calme { background: var(--violet-light); color: var(--violet); border-color: var(--violet); }
+  .post-1 .bottom .mood-pill.social { background: #FFF3EC; color: var(--orange); border-color: var(--orange); }
+  .post-1 .bottom .mood-pill.energique { background: #F5FFD0; color: #5A6B00; border-color: #5A6B00; }
+
+  .post-1 .bottom .logo {
+    font-size: 32px;
+    font-weight: 900;
+    color: var(--violet);
+    letter-spacing: -0.05em;
+  }
+
+  /* ─────────────────────────────────────────
+     POST 2 — Mood cards "3 moods, 1 app"
+  ───────────────────────────────────────── */
+  .post-2 {
+    background: var(--dark);
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    padding: 80px 70px 70px;
+    gap: 50px;
+  }
+
+  .post-2 .header {
+    text-align: center;
+  }
+
+  .post-2 .header h2 {
+    font-size: 62px;
+    font-weight: 900;
+    color: var(--beige);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+  }
+
+  .post-2 .header h2 em {
+    font-style: italic;
+    color: var(--violet);
+  }
+
+  .post-2 .cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    align-items: stretch;
+  }
+
+  .post-2 .card {
+    border-radius: 28px;
+    padding: 44px 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .post-2 .card.calme { background: var(--violet-light); }
+  .post-2 .card.social { background: #FFF3EC; }
+  .post-2 .card.energique { background: var(--green); }
+
+  .post-2 .card .card-icon {
+    font-size: 52px;
+    line-height: 1;
+  }
+
+  .post-2 .card .card-title {
+    font-size: 32px;
+    font-weight: 900;
+    color: var(--dark);
+    letter-spacing: -0.02em;
+  }
+
+  .post-2 .card .card-desc {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--dark);
+    opacity: 0.7;
+    line-height: 1.4;
+  }
+
+  .post-2 .card .card-tag {
+    margin-top: auto;
+    font-size: 15px;
+    font-weight: 700;
+    opacity: 0.5;
+    color: var(--dark);
+    font-style: italic;
+  }
+
+  .post-2 .footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .post-2 .footer .logo {
+    font-size: 34px;
+    font-weight: 900;
+    color: var(--violet);
+    letter-spacing: -0.05em;
+  }
+
+  .post-2 .footer .tagline {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--beige);
+    opacity: 0.5;
+  }
+
+  /* ─────────────────────────────────────────
+     POST 3 — "Le bon lieu, maintenant"
+  ───────────────────────────────────────── */
+  .post-3 {
+    background: var(--beige);
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .post-3 .top-block {
+    padding: 70px 70px 50px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .post-3 .top-block .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--violet);
+    color: white;
+    padding: 10px 22px;
+    border-radius: 100px;
+    font-size: 18px;
+    font-weight: 700;
+    width: fit-content;
+    letter-spacing: 0.02em;
+  }
+
+  .post-3 .headline {
+    font-size: 82px;
+    font-weight: 900;
+    line-height: 0.95;
+    color: var(--dark);
+    letter-spacing: -0.04em;
+  }
+
+  .post-3 .headline em {
+    font-style: italic;
+    color: var(--violet);
+    display: block;
+  }
+
+  .post-3 .sub {
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--dark);
+    opacity: 0.55;
+    line-height: 1.4;
+    max-width: 560px;
+  }
+
+  .post-3 .bottom-strip {
+    background: var(--violet);
+    padding: 44px 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .post-3 .bottom-strip .logo {
+    font-size: 48px;
+    font-weight: 900;
+    color: white;
+    letter-spacing: -0.05em;
+  }
+
+  .post-3 .bottom-strip .cta {
+    background: white;
+    color: var(--violet);
+    font-size: 22px;
+    font-weight: 800;
+    padding: 18px 44px;
+    border-radius: 100px;
+    letter-spacing: -0.01em;
+  }
+
+  /* ─────────────────────────────────────────
+     POST 4 — Timeleft style pur illustré
+  ───────────────────────────────────────── */
+  .post-4 {
+    background: var(--beige);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 70px 70px 60px;
+    gap: 0;
+  }
+
+  .post-4 .p4-top {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .post-4 .p4-top .big {
+    font-size: 70px;
+    font-weight: 900;
+    line-height: 1.0;
+    color: var(--dark);
+    letter-spacing: -0.04em;
+  }
+
+  .post-4 .p4-top .big em {
+    font-style: italic;
+    color: var(--violet);
+  }
+
+  .post-4 .p4-illus {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .post-4 .p4-bottom {
+    text-align: center;
+    margin-top: 32px;
+  }
+
+  .post-4 .p4-bottom .caption {
+    font-size: 26px;
+    font-weight: 700;
+    font-style: italic;
+    color: var(--dark);
+    opacity: 0.6;
+  }
+
+  .post-4 .p4-bottom .arrow-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 18px;
+  }
+
+  .post-4 .p4-bottom .arrow-label {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--violet);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  /* Noise texture overlay */
+  .post::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 10;
+    opacity: 0.4;
+  }
+
+  .label {
+    color: #666;
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: -44px;
+    align-self: flex-start;
+  }
+</style>
+</head>
+<body>
+
+<h1>ekho · Contenu organique Instagram · 1080×1080</h1>
+
+<!-- ═══════════════════════════════════════════
+     POST 1 — Ce soir, t'as quelle énergie ?
+═══════════════════════════════════════════ -->
+<p class="label">Post 1 — L'énergie du soir</p>
+<div class="post post-1">
+  <div class="top">
+    <div class="eyebrow">Ce soir</div>
+    <h2>T'as quelle<br><em>énergie ?</em></h2>
+  </div>
+
+  <div class="illustration">
+    <svg width="720" height="460" viewBox="0 0 720 460" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Table ronde -->
+      <ellipse cx="360" cy="340" rx="180" ry="60" fill="#E0D9D1" stroke="#1A1B2E" stroke-width="3"/>
+
+      <!-- Personne 1 — Calme (gauche, violet) -->
+      <circle cx="165" cy="240" r="42" fill="#C8C0FF" stroke="#1A1B2E" stroke-width="3"/>
+      <text x="165" y="247" text-anchor="middle" font-size="32" fill="#1A1B2E">😌</text>
+      <rect x="130" y="282" width="70" height="80" rx="18" fill="#C8C0FF" stroke="#1A1B2E" stroke-width="3"/>
+      <!-- Bras -->
+      <line x1="130" y1="310" x2="95" y2="340" stroke="#1A1B2E" stroke-width="3" stroke-linecap="round"/>
+      <line x1="200" y1="310" x2="235" y2="340" stroke="#1A1B2E" stroke-width="3" stroke-linecap="round"/>
+      <!-- Bulle calme -->
+      <rect x="48" y="170" width="100" height="42" rx="12" fill="white" stroke="#6B54FF" stroke-width="2.5"/>
+      <text x="98" y="196" text-anchor="middle" font-family="Poppins, sans-serif" font-weight="700" font-size="16" fill="#6B54FF">Calme 🌊</text>
+
+      <!-- Personne 2 — Social (centre, orange) -->
+      <circle cx="360" cy="180" r="48" fill="#FFD4B8" stroke="#1A1B2E" stroke-width="3"/>
+      <text x="360" y="188" text-anchor="middle" font-size="36" fill="#1A1B2E">😄</text>
+      <rect x="318" y="228" width="84" height="90" rx="20" fill="#FFD4B8" stroke="#1A1B2E" stroke-width="3"/>
+      <line x1="318" y1="258" x2="278" y2="295" stroke="#1A1B2E" stroke-width="3" stroke-linecap="round"/>
+      <line x1="402" y1="258" x2="442" y2="295" stroke="#1A1B2E" stroke-width="3" stroke-linecap="round"/>
+      <!-- Bulle social -->
+      <rect x="272" y="100" width="176" height="42" rx="12" fill="white" stroke="#E8733A" stroke-width="2.5"/>
+      <text x="360" y="126" text-anchor="middle" font-family="Poppins, sans-serif" font-weight="700" font-size="16" fill="#E8733A">Social 👥</text>
+
+      <!-- Personne 3 — Énergique (droite, vert) -->
+      <circle cx="558" cy="240" r="42" fill="#D4F56A" stroke="#1A1B2E" stroke-width="3"/>
+      <text x="558" y="247" text-anchor="middle" font-size="32" fill="#1A1B2E">⚡</text>
+      <rect x="522" y="282" width="70" height="80" rx="18" fill="#D4F56A" stroke="#1A1B2E" stroke-width="3"/>
+      <line x1="522" y1="310" x2="487" y2="340" stroke="#1A1B2E" stroke-width="3" stroke-linecap="round"/>
+      <line x1="592" y1="310" x2="627" y2="340" stroke="#1A1B2E" stroke-width="3" stroke-linecap="round"/>
+      <!-- Bulle énergique -->
+      <rect x="564" y="170" width="120" height="42" rx="12" fill="white" stroke="#5A6B00" stroke-width="2.5"/>
+      <text x="624" y="196" text-anchor="middle" font-family="Poppins, sans-serif" font-weight="700" font-size="16" fill="#5A6B00">Énergique ⚡</text>
+
+      <!-- Objets sur table -->
+      <circle cx="310" cy="336" r="22" fill="white" stroke="#1A1B2E" stroke-width="2.5"/>
+      <circle cx="310" cy="336" r="14" fill="#D4B896"/>
+      <rect x="348" y="318" width="26" height="36" rx="6" fill="#6B54FF" stroke="#1A1B2E" stroke-width="2"/>
+      <circle cx="415" cy="338" r="18" fill="white" stroke="#1A1B2E" stroke-width="2.5"/>
+
+      <!-- Lignes de mouvement -->
+      <path d="M240 195 Q270 210 295 230" stroke="#E8733A" stroke-width="2.5" stroke-dasharray="6 4" fill="none" stroke-linecap="round"/>
+      <path d="M480 195 Q450 210 425 230" stroke="#E8733A" stroke-width="2.5" stroke-dasharray="6 4" fill="none" stroke-linecap="round"/>
+    </svg>
+  </div>
+
+  <div class="bottom">
+    <div class="moods">
+      <div class="mood-pill calme">🌊 Calme</div>
+      <div class="mood-pill social">👥 Social</div>
+      <div class="mood-pill energique">⚡ Énergique</div>
+    </div>
+    <div class="logo">ekho</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     POST 2 — 3 moods, fond sombre
+═══════════════════════════════════════════ -->
+<p class="label">Post 2 — Les 3 moods</p>
+<div class="post post-2">
+  <div class="header">
+    <h2>Pas d'humeur<br>pour les <em>mauvais lieux.</em></h2>
+  </div>
+
+  <div class="cards">
+    <div class="card calme">
+      <div class="card-icon">🌊</div>
+      <div class="card-title">Calme</div>
+      <div class="card-desc">Un coin tranquille pour souffler, lire ou travailler.</div>
+      <div class="card-tag">Lumière douce · Peu de bruit</div>
+    </div>
+    <div class="card social">
+      <div class="card-icon">👥</div>
+      <div class="card-title">Social</div>
+      <div class="card-desc">Une terrasse vivante pour partager un verre.</div>
+      <div class="card-tag">Ambiance · Contact facile</div>
+    </div>
+    <div class="card energique">
+      <div class="card-icon">⚡</div>
+      <div class="card-title">Énergique</div>
+      <div class="card-desc">De la musique, du mouvement, de l'élan.</div>
+      <div class="card-tag">Musique · Rythme</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="logo">ekho</div>
+    <div class="tagline">Bêta privée · Marseille · Été 2026</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     POST 3 — Le bon lieu, maintenant
+═══════════════════════════════════════════ -->
+<p class="label">Post 3 — CTA organique</p>
+<div class="post post-3">
+  <div class="top-block">
+    <div class="tag">✦ Marseille · Bêta privée</div>
+
+    <div class="headline">
+      Le bon<br>lieu,
+      <em>maintenant.</em>
+    </div>
+
+    <div class="sub">
+      ekho recommande 3 lieux autour de toi selon ton mood du moment. Pas des avis. Pas des algorithmes. Ton énergie.
+    </div>
+  </div>
+
+  <div class="bottom-strip">
+    <div class="logo">ekho</div>
+    <div class="cta">Rejoindre la bêta →</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     POST 4 — Style Timeleft pur
+═══════════════════════════════════════════ -->
+<p class="label">Post 4 — Style Timeleft illustré</p>
+<div class="post post-4">
+  <div class="p4-top">
+    <div class="big">Le lieu qui<br><em>te ressemble</em><br>ce soir.</div>
+  </div>
+
+  <div class="p4-illus">
+    <svg width="700" height="380" viewBox="0 0 700 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Café de fond simplifié -->
+      <!-- Sol -->
+      <rect x="0" y="290" width="700" height="90" rx="0" fill="#E0D9D1"/>
+      <!-- Mur -->
+      <rect x="0" y="0" width="700" height="295" fill="#F2EDE7"/>
+
+      <!-- Fenêtre gauche -->
+      <rect x="40" y="60" width="120" height="160" rx="8" fill="#D4EEF7" stroke="#1A1B2E" stroke-width="3"/>
+      <line x1="100" y1="60" x2="100" y2="220" stroke="#1A1B2E" stroke-width="2"/>
+      <line x1="40" y1="140" x2="160" y2="140" stroke="#1A1B2E" stroke-width="2"/>
+      <!-- Lumière fenêtre -->
+      <rect x="44" y="64" width="52" height="72" rx="4" fill="white" opacity="0.6"/>
+
+      <!-- Plante gauche -->
+      <rect x="155" y="200" width="20" height="60" rx="4" fill="#8B6914" stroke="#1A1B2E" stroke-width="2"/>
+      <circle cx="165" cy="185" r="35" fill="#5C8B1A" stroke="#1A1B2E" stroke-width="2.5"/>
+      <circle cx="148" cy="175" r="22" fill="#6BA020" stroke="#1A1B2E" stroke-width="2"/>
+      <circle cx="182" cy="172" r="26" fill="#4E7A14" stroke="#1A1B2E" stroke-width="2"/>
+
+      <!-- Table centrale -->
+      <rect x="240" y="230" width="220" height="14" rx="7" fill="#8B6914" stroke="#1A1B2E" stroke-width="2.5"/>
+      <rect x="270" y="244" width="16" height="46" rx="6" fill="#8B6914" stroke="#1A1B2E" stroke-width="2"/>
+      <rect x="414" y="244" width="16" height="46" rx="6" fill="#8B6914" stroke="#1A1B2E" stroke-width="2"/>
+
+      <!-- Tasse café -->
+      <ellipse cx="310" cy="230" rx="22" ry="9" fill="#C8A882" stroke="#1A1B2E" stroke-width="2"/>
+      <rect x="290" y="215" width="40" height="18" rx="6" fill="white" stroke="#1A1B2E" stroke-width="2"/>
+      <path d="M330 220 Q342 222 338 230 Q334 236 330 232" stroke="#1A1B2E" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <!-- Vapeur -->
+      <path d="M305 205 Q308 197 305 190" stroke="#1A1B2E" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.4"/>
+      <path d="M313 203 Q316 194 313 186" stroke="#1A1B2E" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.4"/>
+
+      <!-- Téléphone ekho sur table -->
+      <rect x="352" y="206" width="52" height="30" rx="7" fill="#6B54FF" stroke="#1A1B2E" stroke-width="2"/>
+      <rect x="357" y="211" width="42" height="20" rx="4" fill="white" opacity="0.9"/>
+      <text x="378" y="225" text-anchor="middle" font-family="Poppins, sans-serif" font-weight="800" font-size="9" fill="#6B54FF">ekho</text>
+
+      <!-- Personnage principale (femme assise) -->
+      <!-- Corps -->
+      <rect x="300" y="115" width="100" height="125" rx="24" fill="#C8906A" stroke="#1A1B2E" stroke-width="3"/>
+      <!-- Cardigan roux détail -->
+      <path d="M300 130 L300 230 Q300 240 310 240 L350 240 Q360 240 360 230 L360 130" stroke="#1A1B2E" stroke-width="2" fill="none"/>
+      <!-- Tête -->
+      <circle cx="350" cy="88" r="46" fill="#F5C5A3" stroke="#1A1B2E" stroke-width="3"/>
+      <!-- Cheveux -->
+      <path d="M308 72 Q315 42 350 38 Q385 42 392 72 Q395 88 390 100 Q380 80 370 78 Q360 76 350 76 Q340 76 330 78 Q320 80 310 100 Q305 88 308 72Z" fill="#4A3520" stroke="#1A1B2E" stroke-width="2"/>
+      <!-- Yeux -->
+      <ellipse cx="337" cy="88" rx="6" ry="7" fill="#1A1B2E"/>
+      <ellipse cx="363" cy="88" rx="6" ry="7" fill="#1A1B2E"/>
+      <circle cx="340" cy="86" r="2" fill="white"/>
+      <circle cx="366" cy="86" r="2" fill="white"/>
+      <!-- Sourire -->
+      <path d="M336 104 Q350 116 364 104" stroke="#1A1B2E" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <!-- Bras gauche (sur table) -->
+      <path d="M300 155 Q265 185 252 230" stroke="#C8906A" stroke-width="28" stroke-linecap="round"/>
+      <path d="M300 155 Q265 185 252 230" stroke="#1A1B2E" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <!-- Bras droit -->
+      <path d="M400 155 Q435 185 448 230" stroke="#C8906A" stroke-width="28" stroke-linecap="round"/>
+      <path d="M400 155 Q435 185 448 230" stroke="#1A1B2E" stroke-width="3" fill="none" stroke-linecap="round"/>
+
+      <!-- Chaise -->
+      <rect x="270" y="225" width="160" height="12" rx="6" fill="#6B4C2A" stroke="#1A1B2E" stroke-width="2.5"/>
+      <rect x="278" y="237" width="16" height="50" rx="5" fill="#6B4C2A" stroke="#1A1B2E" stroke-width="2"/>
+      <rect x="406" y="237" width="16" height="50" rx="5" fill="#6B4C2A" stroke="#1A1B2E" stroke-width="2"/>
+      <!-- Dossier chaise -->
+      <rect x="274" y="165" width="14" height="62" rx="5" fill="#6B4C2A" stroke="#1A1B2E" stroke-width="2"/>
+      <rect x="408" y="165" width="14" height="62" rx="5" fill="#6B4C2A" stroke="#1A1B2E" stroke-width="2"/>
+      <rect x="274" y="162" width="148" height="16" rx="7" fill="#6B4C2A" stroke="#1A1B2E" stroke-width="2.5"/>
+
+      <!-- Guirlandes lumineuses -->
+      <path d="M0 45 Q87 55 175 45 Q262 35 350 45 Q437 55 525 45 Q612 35 700 45" stroke="#1A1B2E" stroke-width="2" fill="none"/>
+      <circle cx="45" cy="49" r="7" fill="#FFE566" stroke="#1A1B2E" stroke-width="1.5"/>
+      <circle cx="130" cy="42" r="7" fill="#FFE566" stroke="#1A1B2E" stroke-width="1.5"/>
+      <circle cx="215" cy="50" r="7" fill="#FFE566" stroke="#1A1B2E" stroke-width="1.5"/>
+      <circle cx="300" cy="43" r="7" fill="#FFE566" stroke="#1A1B2E" stroke-width="1.5"/>
+      <circle cx="385" cy="50" r="7" fill="#FFE566" stroke="#1A1B2E" stroke-width="1.5"/>
+      <circle cx="470" cy="42" r="7" fill="#FFE566" stroke="#1A1B2E" stroke-width="1.5"/>
+      <circle cx="555" cy="49" r="7" fill="#FFE566" stroke="#1A1B2E" stroke-width="1.5"/>
+      <circle cx="640" cy="42" r="7" fill="#FFE566" stroke="#1A1B2E" stroke-width="1.5"/>
+
+      <!-- Plante droite -->
+      <rect x="530" y="200" width="20" height="70" rx="4" fill="#8B6914" stroke="#1A1B2E" stroke-width="2"/>
+      <circle cx="540" cy="182" r="40" fill="#5C8B1A" stroke="#1A1B2E" stroke-width="2.5"/>
+      <circle cx="520" cy="170" r="26" fill="#6BA020" stroke="#1A1B2E" stroke-width="2"/>
+      <circle cx="560" cy="168" r="28" fill="#4E7A14" stroke="#1A1B2E" stroke-width="2"/>
+
+      <!-- Fenêtre droite -->
+      <rect x="545" y="65" width="110" height="145" rx="8" fill="#D4EEF7" stroke="#1A1B2E" stroke-width="3"/>
+      <line x1="600" y1="65" x2="600" y2="210" stroke="#1A1B2E" stroke-width="2"/>
+      <line x1="545" y1="138" x2="655" y2="138" stroke="#1A1B2E" stroke-width="2"/>
+      <rect x="549" y="69" width="47" height="65" rx="4" fill="white" opacity="0.6"/>
+
+      <!-- Bulle humeur -->
+      <rect x="412" y="58" width="168" height="52" rx="16" fill="white" stroke="#6B54FF" stroke-width="2.5"/>
+      <path d="M430 110 L418 124 L450 110Z" fill="white" stroke="#6B54FF" stroke-width="2.5"/>
+      <text x="496" y="82" text-anchor="middle" font-family="Poppins, sans-serif" font-weight="700" font-size="15" fill="#1A1B2E">Je suis bien ici</text>
+      <text x="496" y="102" text-anchor="middle" font-family="Poppins, sans-serif" font-weight="500" font-size="13" fill="#6B54FF">mood : social ✦</text>
+    </svg>
+  </div>
+
+  <div class="p4-bottom">
+    <div class="caption">(ekho t'a trouvé ça en 3 secondes)</div>
+    <div class="arrow-row">
+      <svg width="48" height="16" viewBox="0 0 48 16" fill="none">
+        <path d="M0 8 L40 8 M32 2 L42 8 L32 14" stroke="#6B54FF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <div class="arrow-label">ekho · Marseille</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
