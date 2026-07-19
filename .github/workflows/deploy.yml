@@ -19,7 +19,12 @@ jobs:
       - name: Prepare site files
         run: |
           mkdir -p dist
-          cp index.html dist/
+          cp index.html \
+             mentions-legales.html \
+             politique-de-confidentialite.html \
+             conditions-generales-utilisation.html \
+             legal.css \
+             app_screen.png dist/
           cp -r favicon dist/
 
       - name: Deploy to Cloudflare Pages
