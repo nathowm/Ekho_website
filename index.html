@@ -107,9 +107,15 @@
     .nav-store-btn span { letter-spacing: .01em; }
     @media (max-width: 820px) { .nav-stores { display: none; } }
     .mob-stores {
-      display: flex; gap: 10px; padding: 12px 0 4px;
+      display: flex; gap: 10px; padding: 14px 0 4px;
       border-top: 1px solid rgba(107,84,255,.1); margin-top: 8px;
     }
+    .mob-stores .nav-store-btn {
+      background: transparent;
+      border: 1.5px solid rgba(26,27,35,.2);
+      color: var(--dark);
+    }
+    .mob-stores .nav-store-btn:hover { background: rgba(107,84,255,.06); border-color: var(--p); color: var(--p); }
     .nav-pill {
       background: transparent; color: var(--p);
       font-size: 0.8rem; font-weight: 600;

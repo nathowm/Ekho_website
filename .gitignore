@@ -3,3 +3,16 @@
 *.db-journal
 __pycache__/
 *.pyc
+.DS_Store
+*.DS_Store
+app_screen.png
+01_Marketing/
+03_Mockups_App/screenshop*/
+04_Documents/*.xlsx
+05_Partenaires/Base-Lieux-Marseille/IMAGE/
+05_Partenaires/Base-Lieux-Marseille/*.html
+05_Partenaires/Base-Lieux-Marseille/*.json
+05_Partenaires/Base-Lieux-Marseille/*.db*
+05_Partenaires/Base-Lieux-Marseille/scripts/
+05_Partenaires/Base-Lieux-Marseille/Geocoder*/
+08_Produit/
