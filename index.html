@@ -1805,7 +1805,7 @@
           </svg>
         </div>
         <div class="how-ui how-ui-a" id="aui1">
-        <div id="a1p0">
+        <div id="a1p0" data-phase>
           <div class="anim-eyebrow"><div class="anim-dot"></div>Choisis un mood</div>
           <div style="display:flex;gap:7px;margin-bottom:14px;" id="a1BtnRow">
             <div class="mbtn" id="a1b0"><span class="btn-emoji">🌿</span>Calme</div>
@@ -1814,7 +1814,7 @@
           </div>
           <div class="tap-hint" id="tapHint"><span class="tap-cursor">👆</span> Voir les lieux autour de moi.</div>
         </div>
-        <div id="a1p1" style="display:none;opacity:0;transition:opacity .4s;">
+        <div id="a1p1" data-phase style="display:none;opacity:0;transition:opacity .4s;">
           <div class="anim-eyebrow"><div class="anim-dot"></div>Correspondances trouvées</div>
           <div class="lieu-row" id="res1a">
             <div><div class="lr-name" id="rn1a">—</div><div class="lr-sub" id="rs1a">—</div></div>
@@ -1850,12 +1850,12 @@
           <div class="venue-pill">✦ Lieu partenaire</div>
           <div class="venue-big">Café du Cours</div>
         </div>
-        <div id="p0" class="p2-phase">
+        <div id="p0" class="p2-phase" data-phase>
           <div class="p0-desc">Tu n'es pas seul·e ici.<br/>Découvre les présences compatibles.</div>
           <button class="act-btn-big" id="actBtnBig">Activer ma présence</button>
           <div class="p0-anon">🛡 Anonyme · Rien de visible sans ton accord</div>
         </div>
-        <div id="p1" class="p2-phase" style="display:none;opacity:0;">
+        <div id="p1" class="p2-phase" data-phase style="display:none;opacity:0;">
           <div class="confirm-line" id="confirmLine"><span class="confirm-check">✓</span> Présence activée</div>
           <div class="radar-wrap">
             <div class="radar-ring rr1"></div><div class="radar-ring rr2"></div><div class="radar-ring rr3"></div>
@@ -1869,7 +1869,7 @@
           </div>
           <div class="scan-label-2" id="scanLabel2">Recherche en cours…</div>
         </div>
-        <div id="p2" class="p2-phase" style="display:none;opacity:0;">
+        <div id="p2" class="p2-phase" data-phase style="display:none;opacity:0;">
           <div style="margin-bottom:12px;"><span class="det-badge">1 profil compatible</span></div>
           <div class="detected-card" id="detCard">
             <div class="det-avatar">?</div>
@@ -1877,7 +1877,7 @@
           </div>
           <button class="engage-btn" id="engageBtn">Ouvrir un échange →</button>
         </div>
-        <div id="p3" class="p2-phase" style="display:none;opacity:0;">
+        <div id="p3" class="p2-phase" data-phase style="display:none;opacity:0;">
           <div class="chat-header-label">Échange anonyme · en cours</div>
           <div class="chat-wrap">
             <div class="chat-bubble recv" id="cb1">Salut, t'es là pour longtemps ? 👋<span class="chat-time">21:34</span></div>
@@ -2042,6 +2042,34 @@
     ['burger','mob-menu','mob-ov'].forEach(id => document.getElementById(id).classList.remove('open'));
     document.body.style.overflow = '';
   }
+
+  // Cartes "Comment ça marche" : hauteur figée sur la phase la plus haute
+  // (sous 900px les cartes passent en hauteur auto — sans ça, chaque changement
+  //  de phase modifiait la hauteur et décalait tout le texte de la page)
+  function lockHowCardHeights() {
+    const stack = window.matchMedia('(max-width: 900px)').matches;
+    document.querySelectorAll('.how-ui').forEach(card => {
+      const phases = [...card.children].filter(el => el.hasAttribute('data-phase'));
+      if (!phases.length) return;
+      card.style.removeProperty('min-height');
+      if (!stack) return;
+      const saved = phases.map(p => p.style.display);
+      let max = 0;
+      phases.forEach((_, i) => {
+        phases.forEach((q, j) => { q.style.display = (i === j) ? 'block' : 'none'; });
+        max = Math.max(max, card.scrollHeight);
+      });
+      phases.forEach((p, i) => { p.style.display = saved[i]; });
+      card.style.setProperty('min-height', max + 'px', 'important');
+    });
+  }
+  window.addEventListener('load', lockHowCardHeights);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(lockHowCardHeights);
+  let howResizeT;
+  window.addEventListener('resize', () => {
+    clearTimeout(howResizeT);
+    howResizeT = setTimeout(lockHowCardHeights, 200);
+  });
 
   // Modale QR (desktop)
   function openQr() {
