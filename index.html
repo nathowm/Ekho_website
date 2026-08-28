@@ -72,7 +72,9 @@
       --bg: #F2EDE7;
       --terracotta: #C94B2D;
       --white: #FFFFFF;
-      --muted: rgba(26,27,46,0.42);
+      --muted: rgba(26,27,46,0.63);
+      --p-text: #5A43F0;
+      --manila-hi: #F7FDCE;
       --maxw: 1280px;
     }
     html { scroll-behavior: smooth; overflow-x: hidden; }
@@ -214,7 +216,7 @@
     .dl-stores { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; }
     .dl-sec .store-btn { background: #fff; color: var(--dark); }
     .dl-sec .store-btn:hover { background: var(--manila); color: var(--dark); box-shadow: 0 10px 30px rgba(236,248,144,.25); }
-    .dl-note { font-size: .7rem; font-weight: 500; color: rgba(255,255,255,.3); margin-top: 18px; letter-spacing: .01em; }
+    .dl-note { font-size: .7rem; font-weight: 500; color: rgba(255,255,255,.5); margin-top: 18px; letter-spacing: .01em; }
     @media(max-width:560px) {
       .dl-sec { padding: 72px 6%; }
       .dl-stores { flex-direction: column; }
@@ -263,7 +265,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: flex-start;
+      justify-content: center;
       text-align: center;
       position: relative; overflow: hidden;
     }
@@ -365,7 +367,7 @@
       -webkit-backdrop-filter: blur(12px);
       background: rgba(255,247,239,0.35);
       border: 1px solid rgba(255,255,255,0.3);
-      color: rgba(26,27,35,.38);
+      color: rgba(26,27,35,.72);
       box-shadow: 0 4px 16px rgba(107,84,255,.06), inset 0 1px 0 rgba(255,255,255,.4);
       animation: float 6s ease-in-out infinite;
     }
@@ -373,21 +375,21 @@
     .bbl.v {
       background: rgba(107,84,255,0.07);
       border-color: rgba(107,84,255,0.14);
-      color: rgba(107,84,255,0.5);
+      color: var(--p-text);
       box-shadow: 0 4px 16px rgba(107,84,255,.07), inset 0 1px 0 rgba(255,255,255,.15);
     }
     /* Variante manila */
     .bbl.m {
       background: rgba(236,248,144,0.25);
       border-color: rgba(236,248,144,0.4);
-      color: rgba(26,27,35,.38);
+      color: rgba(26,27,35,.72);
       box-shadow: 0 4px 16px rgba(107,84,255,.04), inset 0 1px 0 rgba(255,255,255,.4);
     }
     @keyframes float {
       0%,100% { transform: translateY(0px) rotate(var(--r,0deg)); }
       50%      { transform: translateY(-10px) rotate(var(--r,0deg)); }
     }
-    .bbl { opacity: 0.65; }
+    .bbl { opacity: 1; }
     .b1 { top: 22%; left:  4%; --r:-2deg; animation-delay:0s;   animation-duration:5.5s; } /* gauche haut */
     .b2 { top: 62%; left:  6%; --r: 2deg; animation-delay:1.3s; animation-duration:6.5s; } /* gauche bas */
     .b3 { top: 20%; right: 4%; left:auto; --r:-1deg; animation-delay:0.6s; animation-duration:5s;   } /* droite haut */
@@ -608,7 +610,7 @@
     .how-sec { padding-left: 0; padding-right: 0; }
     .sec-label {
       font-size: .62rem; font-weight: 800; letter-spacing: .16em;
-      text-transform: uppercase; color: var(--p);
+      text-transform: uppercase; color: var(--p-text);
       display: flex; align-items: center; gap: 8px;
       margin-bottom: 14px;
     }
@@ -751,7 +753,7 @@
 
     .hero-link-down {
       font-size: .82rem; font-weight: 500;
-      color: #9A94A6; text-decoration: none;
+      color: #66606F; text-decoration: none;
       letter-spacing: .01em;
       transition: color .2s ease;
       cursor: pointer;
@@ -867,9 +869,9 @@
 
     /* ──────────── HOW ──────────── */
     .how-sec { background: white; padding: 0 !important; }
-    .how-intro { padding: 80px max(7%, calc((100% - var(--maxw)) / 2)) 52px; text-align: center; background: white; }
+    .how-intro { padding: 80px max(7%, calc((100% - var(--maxw)) / 2)) 52px; text-align: left; background: white; }
     .how-duo {
-      display: flex; align-items: center; justify-content: center;
+      display: flex; align-items: center; justify-content: flex-start;
       gap: 24px; flex-wrap: wrap; margin-top: 16px;
     }
     .how-duo-item {
@@ -1086,7 +1088,7 @@
     .chat-bubble.show { opacity:1; transform:translateY(0) scale(1); }
     .chat-bubble.recv { background:#f0eeff; color:var(--dark); border:1px solid rgba(107,84,255,.1); }
     .chat-bubble.sent { background:var(--p); color:white; border-radius:14px 14px 4px 14px; align-self:flex-end; margin-left:auto; }
-    .chat-time { font-size:.42rem; opacity:.45; margin-top:2px; display:block; }
+    .chat-time { font-size:.42rem; margin-top:2px; display:block; }
     .anon-line {
       font-size:.54rem; color:var(--muted); text-align:center; line-height:1.6;
       border-top:1px solid rgba(26,27,35,.07); padding-top:10px;
@@ -1128,10 +1130,11 @@
     .how-ui-b .det-sub { color: rgba(255,255,255,.5); }
     .how-ui-b .engage-btn { background: var(--p); color: white; }
     .how-ui-b .detected-card { background: rgba(255,255,255,.06); border: 1.5px solid rgba(107,84,255,.3); }
-    .how-ui-b .chat-header-label { color: rgba(255,255,255,.4); }
+    .how-ui-b .chat-header-label { color: rgba(255,255,255,.62); }
     .how-ui-b .chat-bubble.recv { background: rgba(107,84,255,.25); color: white; border: none; }
     .how-ui-b .chat-bubble.sent { background: var(--p); color: white; }
-    .how-ui-b .chat-time { color: rgba(255,255,255,.4); }
+    .how-ui-b .chat-time { color: rgba(255,255,255,.62); }
+    .how-ui-b .chat-bubble.sent .chat-time { color: #fff; }
     .how-ui-b .anon-line { color: rgba(255,255,255,.35); border-top: 1px solid rgba(255,255,255,.08); }
     .how-ui-b .det-badge { background: rgba(107,84,255,.3); color: #C7B5F3; }
     .how-ui-b .det-avatar { background: rgba(107,84,255,.3); color: #C7B5F3; }
@@ -1415,7 +1418,7 @@
       background: radial-gradient(circle, rgba(0,0,0,.18) 0%, transparent 70%);
       bottom: -200px; right: -100px; pointer-events: none;
     }
-    .why-sec .sec-label { color: var(--manila); margin-bottom: 14px; position: relative; }
+    .why-sec .sec-label { color: var(--manila-hi); margin-bottom: 14px; position: relative; }
     .why-sec .sec-label::before { background: var(--manila); }
     /* Header */
     .why-header {
@@ -1440,7 +1443,7 @@
       padding: 5px 13px; border-radius: 100px;
       background: rgba(0,0,0,.15);
       border: 1px solid rgba(255,255,255,.15);
-      font-size: .6rem; font-weight: 600; color: rgba(255,255,255,.55);
+      font-size: .6rem; font-weight: 600; color: #fff;
       letter-spacing: .01em;
     }
     /* Phrase d'accroche why */
@@ -1460,7 +1463,7 @@
     }
     .why-item-block p {
       font-size: clamp(.95rem, 1.5vw, 1.1rem);
-      color: rgba(255,255,255,.82); line-height: 1.8;
+      color: #fff; line-height: 1.8;
       font-weight: 400; margin-bottom: 18px;
     }
     .why-item-block p strong { color: white; font-weight: 700; }
@@ -1912,7 +1915,7 @@
       <p><strong>ekho te propose des lieux où aller selon ton énergie, seul ou avec tes potes.</strong> L'objectif : t'orienter vers une ambiance dans laquelle tu te sentiras naturellement à l'aise.</p>
       <p>Pensé aussi pour les timides et pour tous ceux qui se sont lassés des applications de rencontre classiques, ekho permet, une fois sur place, de renouer progressivement et en toute sécurité avec des rencontres réelles, sans jamais forcer les choses.</p>
       <p>Si le feeling passe bien par message, ce sera ensuite à toi de saisir l'occasion sur place, que ce soit pour te faire de nouveaux potes ou rencontrer ton âme sœur.</p>
-      <p style="color:var(--manila);font-weight:700;font-size:1.1rem;margin-top:28px;">Moins chercher. Mieux sortir. Rester ouvert à ce qui t'entoure.</p>
+      <p style="color:var(--manila-hi);font-weight:700;font-size:1.1rem;margin-top:28px;">Moins chercher. Mieux sortir. Rester ouvert à ce qui t'entoure.</p>
     </div>
   </div>
 
@@ -1939,7 +1942,7 @@
   <div class="faq-inner">
     <!-- Colonne gauche -->
     <div class="faq-contact">
-      <div class="sec-label" style="color:var(--p);">Questions fréquentes</div>
+      <div class="sec-label" style="color:var(--p-text);">Questions fréquentes</div>
       <h3 class="faq-contact-title">Tu ne trouves pas<br/>de réponse ?</h3>
       <p class="faq-contact-sub">On est là pour te répondre,<br/>par email ou sur Instagram.</p>
       <a href="mailto:contact@ekhoapp.fr" class="faq-btn">Nous contacter →</a>
