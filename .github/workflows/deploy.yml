@@ -20,10 +20,13 @@ jobs:
         run: |
           mkdir -p dist
           cp index.html \
+             404.html \
              mentions-legales.html \
              politique-de-confidentialite.html \
              conditions-generales-utilisation.html \
-             legal.css dist/
+             legal.css \
+             robots.txt \
+             sitemap.xml dist/
           cp -r favicon dist/
 
       - name: Deploy to Cloudflare Pages
