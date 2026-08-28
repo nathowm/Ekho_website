@@ -96,26 +96,6 @@
       display: flex; gap: 10px; padding: 14px 0 4px;
       border-top: 1px solid rgba(107,84,255,.1); margin-top: 8px;
     }
-    .nav-stores { display: flex; align-items: center; gap: 8px; }
-    .nav-store-btn {
-      display: inline-flex; align-items: center; gap: 5px;
-      background: var(--dark); color: #fff;
-      font-size: .72rem; font-weight: 600;
-      padding: 6px 12px; border-radius: 8px;
-      text-decoration: none; transition: background .2s;
-    }
-    .nav-store-btn:hover { background: var(--p); }
-    .nav-store-btn span { letter-spacing: .01em; }
-    @media (max-width: 820px) { .nav-stores { display: none; } }
-    .nav-mob-dl {
-      display: none;
-      background: var(--dark); color: #fff;
-      font-size: .75rem; font-weight: 700;
-      padding: 7px 14px; border-radius: 999px;
-      text-decoration: none; white-space: nowrap;
-      position: absolute; left: 50%; transform: translateX(-50%);
-    }
-    @media (max-width: 820px) { .nav-mob-dl { display: inline-block; } }
     .nav-pill {
       background: transparent; color: var(--p);
       font-size: 0.8rem; font-weight: 600;
@@ -124,6 +104,129 @@
       text-decoration: none; transition: border-color .2s, background .2s;
     }
     .nav-pill:hover { background: rgba(107,84,255,.07); border-color: var(--p); }
+    /* ── Stores (mobile) + bouton QR (desktop) ── */
+    .nav-stores { display: none; align-items: center; gap: 7px; }
+    .nav-store-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 7px 12px; border-radius: 100px;
+      background: var(--dark); color: #fff; text-decoration: none;
+      font-size: .68rem; font-weight: 700; white-space: nowrap;
+      transition: background .2s;
+    }
+    .nav-store-btn:hover { background: var(--p); }
+    .nav-dl {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 9px 18px; border-radius: 100px; border: none; cursor: pointer;
+      background: var(--p); color: #fff;
+      font-family: 'Poppins', sans-serif; font-size: .78rem; font-weight: 700;
+      letter-spacing: -.01em; transition: transform .2s, box-shadow .2s;
+    }
+    .nav-dl:hover { transform: translateY(-1px); box-shadow: 0 8px 22px rgba(107,84,255,.3); }
+    @media(max-width:860px) {
+      .nav-dl { display: none; }
+      .nav-stores { display: flex; }
+    }
+    @media(max-width:520px) {
+      nav { padding: 0 4%; }
+      .nav-stores { gap: 6px; }
+      .nav-store-btn { padding: 6px 10px; font-size: .62rem; gap: 5px; }
+      .nav-store-btn svg { height: 15px; }
+    }
+    @media(max-width:374px) {
+      .nav-store-btn span { display: none; }
+      .nav-store-btn { padding: 7px 9px; }
+    }
+
+    /* ── Modale QR code (desktop) ── */
+    .qr-ov {
+      display: none; position: fixed; inset: 0; z-index: 300;
+      background: rgba(14,15,26,.74);
+      backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+      align-items: center; justify-content: center; padding: 24px;
+      opacity: 0; transition: opacity .22s;
+    }
+    .qr-ov.open { display: flex; opacity: 1; }
+    .qr-modal {
+      position: relative; width: 100%; max-width: 372px;
+      background: #fff; border-radius: 26px; padding: 36px 32px 28px;
+      text-align: center; box-shadow: 0 30px 80px rgba(0,0,0,.4);
+      transform: translateY(10px); transition: transform .22s;
+    }
+    .qr-ov.open .qr-modal { transform: none; }
+    .qr-close {
+      position: absolute; top: 10px; right: 12px;
+      background: none; border: none; cursor: pointer;
+      width: 34px; height: 34px; border-radius: 50%;
+      font-size: 1.3rem; line-height: 1; color: var(--muted);
+      transition: background .2s, color .2s;
+    }
+    .qr-close:hover { background: rgba(107,84,255,.08); color: var(--p); }
+    .qr-badge {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: rgba(107,84,255,.08); border: 1px solid rgba(107,84,255,.18);
+      border-radius: 100px; padding: 6px 14px; margin-bottom: 14px;
+      font-size: .6rem; font-weight: 700; color: var(--p);
+      letter-spacing: .08em; text-transform: uppercase;
+    }
+    .qr-title { font-size: 1.28rem; font-weight: 900; letter-spacing: -.04em; color: var(--dark); line-height: 1.2; margin-bottom: 8px; }
+    .qr-sub { font-size: .8rem; font-weight: 500; color: var(--muted); line-height: 1.55; margin-bottom: 20px; }
+    .qr-code {
+      width: 176px; height: 176px; margin: 0 auto;
+      padding: 10px; border-radius: 16px;
+      border: 1.5px solid rgba(26,27,46,.1);
+    }
+    .qr-code svg { width: 100%; height: 100%; display: block; }
+    .qr-or {
+      display: flex; align-items: center; gap: 10px; margin: 20px 0 14px;
+      font-size: .62rem; font-weight: 700; color: rgba(26,27,46,.3);
+      letter-spacing: .1em; text-transform: uppercase;
+    }
+    .qr-or::before, .qr-or::after { content: ''; flex: 1; height: 1px; background: rgba(26,27,46,.1); }
+    .qr-stores { display: flex; flex-direction: column; gap: 9px; }
+
+    /* ── Badges stores (grand format) ── */
+    .store-btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      padding: 13px 22px; border-radius: 100px;
+      background: var(--dark); color: #fff; text-decoration: none;
+      font-size: .84rem; font-weight: 700; letter-spacing: -.01em;
+      transition: transform .2s, background .2s, box-shadow .2s;
+    }
+    .store-btn:hover { background: var(--p); transform: translateY(-2px); box-shadow: 0 10px 26px rgba(107,84,255,.28); }
+    .store-btn small { display: block; font-size: .58rem; font-weight: 600; opacity: .6; letter-spacing: .04em; text-transform: uppercase; }
+    .store-btn .store-lbl { text-align: left; line-height: 1.15; }
+
+    /* ──────────── TÉLÉCHARGER ──────────── */
+    .dl-sec { background: var(--dark2); padding: 96px 5%; position: relative; overflow: hidden; }
+    .dl-sec::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 70% 80% at 30% 50%, rgba(107,84,255,.3) 0%, transparent 60%);
+    }
+    .dl-inner { position: relative; z-index: 2; max-width: 560px; margin: 0 auto; text-align: center; }
+    .dl-badge {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: rgba(236,248,144,.1); border: 1px solid rgba(236,248,144,.22);
+      border-radius: 100px; padding: 6px 14px; margin-bottom: 18px;
+      font-size: .62rem; font-weight: 700; color: var(--manila);
+      letter-spacing: .08em; text-transform: uppercase;
+    }
+    .dl-h2 {
+      font-size: clamp(2rem, 4.5vw, 3.2rem);
+      font-weight: 900; letter-spacing: -.05em;
+      line-height: 1.04; color: #fff; margin-bottom: 12px;
+    }
+    .dl-h2 span { color: var(--manila); font-style: normal; margin-left: .1em; }
+    .dl-sub { font-size: .88rem; font-weight: 500; color: rgba(255,255,255,.42); line-height: 1.7; margin-bottom: 30px; }
+    .dl-stores { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; }
+    .dl-sec .store-btn { background: #fff; color: var(--dark); }
+    .dl-sec .store-btn:hover { background: var(--manila); color: var(--dark); box-shadow: 0 10px 30px rgba(236,248,144,.25); }
+    .dl-note { font-size: .7rem; font-weight: 500; color: rgba(255,255,255,.3); margin-top: 18px; letter-spacing: .01em; }
+    @media(max-width:560px) {
+      .dl-sec { padding: 72px 6%; }
+      .dl-stores { flex-direction: column; }
+      .dl-stores .store-btn { width: 100%; }
+    }
+
     .burger {
       display: none; flex-direction: column; gap: 5px;
       width: 34px; height: 34px; justify-content: center;
@@ -1304,73 +1407,6 @@
       .faq-inner { grid-template-columns: 1fr; gap: 36px; }
     }
 
-    /* ──────────── INSCRIPTION ──────────── */
-    .reg-sec { background: var(--dark2); padding: 100px 5%; position: relative; overflow: hidden; }
-    .reg-sec::before {
-      content: ''; position: absolute; inset: 0;
-      background: radial-gradient(ellipse 70% 80% at 30% 50%, rgba(107,84,255,.3) 0%, transparent 60%);
-    }
-    .reg-inner { position: relative; z-index: 2; max-width: 560px; margin: 0 auto; text-align: center; }
-    .reg-badge {
-      display: inline-flex; align-items: center; gap: 7px;
-      background: rgba(236,248,144,.1); border: 1px solid rgba(236,248,144,.22);
-      border-radius: 100px; padding: 6px 14px;
-      font-size: .62rem; font-weight: 700; color: var(--manila);
-      letter-spacing: .08em; text-transform: uppercase; margin-bottom: 18px;
-    }
-    .reg-h2 {
-      font-size: clamp(2rem, 4.5vw, 3.2rem);
-      font-weight: 900; letter-spacing: -.05em;
-      line-height: 1.04; color: white; margin-bottom: 10px;
-    }
-    .reg-h2 span { color: var(--manila); }
-    .reg-anti { font-size: clamp(.9rem, 1.4vw, 1rem); color: rgba(255,255,255,.45); line-height: 1.8; margin-bottom: 16px; max-width: 520px; }
-    .reg-tagline { font-size: clamp(1.2rem, 2vw, 1.5rem); font-weight: 700; color: var(--manila); letter-spacing: -0.02em; margin-bottom: 32px; }
-    .reg-sub { font-size: .86rem; color: rgba(255,255,255,.38); margin-bottom: 28px; line-height: 1.7; }
-    .tabs {
-      display: flex; background: rgba(255,255,255,.07);
-      border-radius: 100px; padding: 4px; margin-bottom: 22px;
-    }
-    .tab {
-      flex: 1; padding: 9px 12px; border-radius: 100px; border: none;
-      background: transparent; color: rgba(255,255,255,.4);
-      font-size: .76rem; font-weight: 600; font-family: 'Poppins', sans-serif;
-      cursor: pointer; transition: background .2s, color .2s;
-    }
-    .tab.on { background: white; color: var(--dark); }
-    .form { display: flex; flex-direction: column; gap: 10px; }
-    .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-    .fi {
-      width: 100%; padding: 13px 17px;
-      background: rgba(255,255,255,.08); border: 1.5px solid rgba(255,255,255,.1);
-      border-radius: 12px; color: white;
-      font-size: .85rem; font-family: 'Poppins', sans-serif;
-      transition: border-color .2s; outline: none;
-    }
-    .fi::placeholder { color: rgba(255,255,255,.27); }
-    .fi:focus { border-color: rgba(107,84,255,.55); }
-    .fcheck {
-      display: flex; align-items: flex-start; gap: 8px;
-      font-size: .72rem; color: rgba(255,255,255,.32);
-      line-height: 1.5; text-align: left; margin-top: 3px;
-    }
-    .fcheck input { margin-top: 2px; flex-shrink: 0; accent-color: var(--p); }
-    .fsub {
-      width: 100%; padding: 18px;
-      background: var(--manila); color: var(--dark);
-      border: none; border-radius: 100px;
-      font-size: 1rem; font-weight: 900; font-family: 'Poppins', sans-serif;
-      cursor: pointer; transition: transform .2s, box-shadow .2s;
-      letter-spacing: -.01em;
-    }
-    .fsub:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(236,248,144,.3); }
-    .ok-msg {
-      display: none; padding: 22px;
-      background: rgba(236,248,144,.08); border: 1px solid rgba(236,248,144,.18);
-      border-radius: 14px; color: var(--manila);
-      font-size: .87rem; line-height: 1.6;
-    }
-
     /* ──────────── POURQUOI ──────────── */
     /* ── Section Pourquoi ── */
     .why-sec {
@@ -1512,7 +1548,6 @@
       .how-intro { padding: 64px 6% 40px; }
       .how-paths { padding: 0 6% 64px; }
       .why-sec { padding: 72px 6% 80px; }
-      .reg-sec { padding: 80px 6%; }
       .b2b-sec.sec { padding: 72px 6%; }
 
       /* Pourquoi — empile header */
@@ -1561,7 +1596,6 @@
       .how-intro { padding: 48px 5% 28px; text-align: left; }
       .how-paths { padding: 0 5% 48px; gap: 24px; }
       .why-sec { padding: 56px 5% 64px; }
-      .reg-sec { padding: 64px 5%; }
       .b2b-sec.sec { padding: 56px 5%; }
 
       /* Pourquoi */
@@ -1574,7 +1608,6 @@
       /* Inscription */
       .reg-inner { text-align: left; }
       .reg-badge { font-size: .55rem; }
-      .reg-h2 { font-size: clamp(1.8rem, 7.5vw, 2.4rem); }
       .reg-sub { font-size: .88rem; }
       .tabs { flex-direction: column; background: transparent; padding: 0; gap: 8px; }
       .tab { border-radius: 10px; background: rgba(255,255,255,.07); }
@@ -1592,7 +1625,7 @@
     @media (max-width: 380px) {
       .hero { padding: 76px 5% 40px; }
       .hero h1 { font-size: 1.3rem; }
-      .sec, .when-sec, .why-sec, .reg-sec { padding-left: 5%; padding-right: 5%; }
+      .sec, .when-sec, .why-sec { padding-left: 5%; padding-right: 5%; }
     }
   </style>
 </head>
@@ -1607,16 +1640,16 @@
     <a href="#faq">Questions fréquentes</a>
   </div>
   <div class="nav-stores">
-    <a href="#inscription" class="nav-store-btn" title="Disponible sur l'App Store">
-      <svg height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+    <a href="https://apps.apple.com/fr/search?term=ekho" class="nav-store-btn" target="_blank" rel="noopener" title="Télécharger ekho sur l'App Store">
+      <svg height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
       <span>App Store</span>
     </a>
-    <a href="#inscription" class="nav-store-btn" title="Disponible sur Google Play">
-      <svg height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M3.18 23.76c.3.17.64.22.99.14l12.76-7.37-2.77-2.76-10.98 10zM.35 1.28C.13 1.6 0 2.04 0 2.59v18.82c0 .55.13.99.36 1.31l.07.07 10.54-10.54v-.25L.42 1.21l-.07.07zM20.96 10.33l-2.73-1.58-3.07 3.07 3.07 3.07 2.75-1.59c.78-.45.78-1.52-.02-1.97zM4.17.24l12.76 7.37-2.77 2.77L3.18.38C3.54.3 3.88.36 4.17.54V.24z"/></svg>
+    <a href="https://play.google.com/store/search?q=ekho&amp;c=apps" class="nav-store-btn" target="_blank" rel="noopener" title="Télécharger ekho sur Google Play">
+      <svg height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M3.18 23.76c.3.17.64.22.99.14l12.76-7.37-2.77-2.76-10.98 10zM.35 1.28C.13 1.6 0 2.04 0 2.59v18.82c0 .55.13.99.36 1.31l.07.07 10.54-10.54v-.25L.42 1.21l-.07.07zM20.96 10.33l-2.73-1.58-3.07 3.07 3.07 3.07 2.75-1.59c.78-.45.78-1.52-.02-1.97zM4.17.24l12.76 7.37-2.77 2.77L3.18.38C3.54.3 3.88.36 4.17.54V.24z"/></svg>
       <span>Google Play</span>
     </a>
   </div>
-  <a href="#inscription" class="nav-mob-dl">Télécharger l'app</a>
+  <button class="nav-dl" onclick="openQr()" aria-haspopup="dialog">Télécharger l'app</button>
   <button class="burger" id="burger" onclick="toggleMenu()" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
@@ -1626,6 +1659,22 @@
   <a href="#comment" onclick="closeMenu()">Comment ça marche</a>
   <a href="#pourquoi" onclick="closeMenu()">Pourquoi ekho</a>
   <a href="#faq" onclick="closeMenu()">Questions fréquentes</a>
+</div>
+
+<!-- MODALE QR (desktop) -->
+<div class="qr-ov" id="qr-ov" role="dialog" aria-modal="true" aria-labelledby="qr-title" onclick="if(event.target===this)closeQr()">
+  <div class="qr-modal">
+    <button class="qr-close" onclick="closeQr()" aria-label="Fermer">✕</button>
+    <div class="qr-badge"><span class="dot" style="background:var(--p)"></span>Été 2026</div>
+    <h3 class="qr-title" id="qr-title">Scanne pour télécharger <em style="font-style:normal;color:var(--p);">ekho</em></h3>
+    <p class="qr-sub">Pointe l'appareil photo de ton téléphone sur le code : tu arriveras sur la page de téléchargement.</p>
+    <div class="qr-code"><svg viewBox="0 0 33 33" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges" role="img" aria-label="QR code vers ekhoapp.fr"><rect width="33" height="33" fill="#fff"/><path d="M2 2h7v1h-7zM11 2h1v1h-1zM13 2h2v1h-2zM16 2h1v1h-1zM19 2h4v1h-4zM24 2h7v1h-7zM2 3h1v1h-1zM8 3h1v1h-1zM10 3h1v1h-1zM13 3h3v1h-3zM20 3h2v1h-2zM24 3h1v1h-1zM30 3h1v1h-1zM2 4h1v1h-1zM4 4h3v1h-3zM8 4h1v1h-1zM11 4h1v1h-1zM13 4h1v1h-1zM17 4h1v1h-1zM21 4h2v1h-2zM24 4h1v1h-1zM26 4h3v1h-3zM30 4h1v1h-1zM2 5h1v1h-1zM4 5h3v1h-3zM8 5h1v1h-1zM11 5h1v1h-1zM13 5h3v1h-3zM21 5h2v1h-2zM24 5h1v1h-1zM26 5h3v1h-3zM30 5h1v1h-1zM2 6h1v1h-1zM4 6h3v1h-3zM8 6h1v1h-1zM10 6h1v1h-1zM12 6h1v1h-1zM15 6h1v1h-1zM18 6h1v1h-1zM20 6h2v1h-2zM24 6h1v1h-1zM26 6h3v1h-3zM30 6h1v1h-1zM2 7h1v1h-1zM8 7h1v1h-1zM11 7h1v1h-1zM13 7h2v1h-2zM16 7h2v1h-2zM21 7h1v1h-1zM24 7h1v1h-1zM30 7h1v1h-1zM2 8h7v1h-7zM10 8h1v1h-1zM12 8h1v1h-1zM14 8h1v1h-1zM16 8h1v1h-1zM18 8h1v1h-1zM20 8h1v1h-1zM22 8h1v1h-1zM24 8h7v1h-7zM12 9h2v1h-2zM19 9h2v1h-2zM22 9h1v1h-1zM2 10h1v1h-1zM4 10h1v1h-1zM6 10h1v1h-1zM8 10h1v1h-1zM14 10h1v1h-1zM19 10h1v1h-1zM22 10h1v1h-1zM26 10h1v1h-1zM29 10h1v1h-1zM4 11h2v1h-2zM9 11h1v1h-1zM11 11h1v1h-1zM13 11h1v1h-1zM15 11h1v1h-1zM18 11h3v1h-3zM22 11h3v1h-3zM27 11h1v1h-1zM30 11h1v1h-1zM3 12h2v1h-2zM7 12h3v1h-3zM13 12h2v1h-2zM16 12h1v1h-1zM22 12h3v1h-3zM28 12h3v1h-3zM6 13h1v1h-1zM9 13h2v1h-2zM12 13h8v1h-8zM22 13h1v1h-1zM26 13h1v1h-1zM29 13h1v1h-1zM7 14h2v1h-2zM10 14h1v1h-1zM12 14h1v1h-1zM16 14h1v1h-1zM18 14h2v1h-2zM21 14h4v1h-4zM27 14h1v1h-1zM29 14h2v1h-2zM3 15h2v1h-2zM13 15h2v1h-2zM16 15h1v1h-1zM18 15h2v1h-2zM23 15h3v1h-3zM27 15h1v1h-1zM30 15h1v1h-1zM2 16h1v1h-1zM6 16h3v1h-3zM11 16h1v1h-1zM13 16h3v1h-3zM22 16h1v1h-1zM25 16h1v1h-1zM27 16h1v1h-1zM29 16h2v1h-2zM4 17h1v1h-1zM7 17h1v1h-1zM10 17h2v1h-2zM13 17h1v1h-1zM18 17h4v1h-4zM24 17h1v1h-1zM27 17h1v1h-1zM29 17h1v1h-1zM3 18h7v1h-7zM11 18h3v1h-3zM18 18h2v1h-2zM23 18h3v1h-3zM27 18h1v1h-1zM29 18h2v1h-2zM3 19h2v1h-2zM6 19h2v1h-2zM10 19h3v1h-3zM14 19h2v1h-2zM18 19h1v1h-1zM22 19h3v1h-3zM27 19h2v1h-2zM30 19h1v1h-1zM2 20h1v1h-1zM5 20h1v1h-1zM8 20h1v1h-1zM11 20h2v1h-2zM14 20h1v1h-1zM16 20h1v1h-1zM18 20h1v1h-1zM22 20h1v1h-1zM25 20h1v1h-1zM29 20h2v1h-2zM3 21h1v1h-1zM7 21h1v1h-1zM9 21h1v1h-1zM12 21h1v1h-1zM15 21h2v1h-2zM19 21h1v1h-1zM21 21h1v1h-1zM23 21h1v1h-1zM27 21h1v1h-1zM29 21h1v1h-1zM2 22h1v1h-1zM4 22h3v1h-3zM8 22h4v1h-4zM16 22h1v1h-1zM19 22h1v1h-1zM22 22h5v1h-5zM10 23h1v1h-1zM13 23h1v1h-1zM16 23h1v1h-1zM18 23h2v1h-2zM22 23h1v1h-1zM26 23h1v1h-1zM28 23h3v1h-3zM2 24h7v1h-7zM12 24h4v1h-4zM21 24h2v1h-2zM24 24h1v1h-1zM26 24h2v1h-2zM29 24h2v1h-2zM2 25h1v1h-1zM8 25h1v1h-1zM12 25h1v1h-1zM17 25h1v1h-1zM19 25h2v1h-2zM22 25h1v1h-1zM26 25h2v1h-2zM30 25h1v1h-1zM2 26h1v1h-1zM4 26h3v1h-3zM8 26h1v1h-1zM10 26h3v1h-3zM14 26h1v1h-1zM18 26h2v1h-2zM22 26h5v1h-5zM30 26h1v1h-1zM2 27h1v1h-1zM4 27h3v1h-3zM8 27h1v1h-1zM12 27h3v1h-3zM18 27h2v1h-2zM26 27h1v1h-1zM28 27h3v1h-3zM2 28h1v1h-1zM4 28h3v1h-3zM8 28h1v1h-1zM10 28h2v1h-2zM13 28h3v1h-3zM18 28h3v1h-3zM22 28h1v1h-1zM25 28h3v1h-3zM30 28h1v1h-1zM2 29h1v1h-1zM8 29h1v1h-1zM11 29h2v1h-2zM16 29h2v1h-2zM19 29h4v1h-4zM24 29h1v1h-1zM26 29h1v1h-1zM29 29h1v1h-1zM2 30h7v1h-7zM10 30h2v1h-2zM14 30h1v1h-1zM17 30h3v1h-3zM21 30h3v1h-3zM25 30h3v1h-3zM29 30h2v1h-2z" fill="#0E0B1F"/></svg></div>
+    <div class="qr-or">ou directement</div>
+    <div class="qr-stores">
+      <a href="https://apps.apple.com/fr/search?term=ekho" class="store-btn" target="_blank" rel="noopener"><svg height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg><span class="store-lbl"><small>Télécharger sur</small>App Store</span></a>
+      <a href="https://play.google.com/store/search?q=ekho&amp;c=apps" class="store-btn" target="_blank" rel="noopener"><svg height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M3.18 23.76c.3.17.64.22.99.14l12.76-7.37-2.77-2.76-10.98 10zM.35 1.28C.13 1.6 0 2.04 0 2.59v18.82c0 .55.13.99.36 1.31l.07.07 10.54-10.54v-.25L.42 1.21l-.07.07zM20.96 10.33l-2.73-1.58-3.07 3.07 3.07 3.07 2.75-1.59c.78-.45.78-1.52-.02-1.97zM4.17.24l12.76 7.37-2.77 2.77L3.18.38C3.54.3 3.88.36 4.17.54V.24z"/></svg><span class="store-lbl"><small>Disponible sur</small>Google Play</span></a>
+    </div>
+  </div>
 </div>
 
 <!-- HERO -->
@@ -1662,7 +1711,6 @@
       <div class="hpc-arrow">›</div>
     </div>
     <div style="display:flex;align-items:center;justify-content:center;gap:40px;flex-wrap:wrap;margin-top:28px;">
-      <a href="#inscription" class="btn-main" style="height:46px;padding:0 26px;border-radius:999px;font-size:.88rem;font-weight:800;display:inline-flex;align-items:center;box-shadow:0 10px 28px rgba(106,76,255,0.26);">Décris ton mood et trouve le bon endroit →</a>
       <a href="#comment" class="hero-link-down">Comment ça marche ↓</a>
     </div>
   </div>
@@ -1705,7 +1753,6 @@
         <div style="font-size:.65rem;font-weight:700;color:var(--p);letter-spacing:.08em;text-transform:uppercase;margin-bottom:18px;">📍 Marseille · Été 2026</div>
         <p style="font-size:1.05rem;font-weight:800;color:#fff;line-height:1.25;margin-bottom:10px;letter-spacing:-0.02em;"><em style="font-style:normal;color:#C7B5F3;">ekho</em> arrive à Marseille — Été 2026.</p>
         <p style="font-size:.8rem;font-weight:500;color:rgba(255,255,255,.55);line-height:1.55;margin-bottom:22px;">Rejoins la bêta pour tester les premiers lieux.</p>
-        <a href="#inscription" class="hc-cta">Rejoindre la bêta →</a>
         <button onclick="resetCard()" style="display:block;width:100%;background:none;border:none;cursor:pointer;font-size:.72rem;font-weight:600;color:rgba(255,255,255,.3);margin-top:12px;text-align:center;">← Retour</button>
       </div>
 
@@ -1878,23 +1925,18 @@
 </section>
 
 
-<!-- INSCRIPTION -->
-<section class="reg-sec" id="inscription">
-  <div class="reg-inner">
-    <div class="reg-badge"><span class="dot" style="background:var(--manila)"></span>Rejoins la bêta privée.</div>
-    <h2 class="reg-h2 rv"><span style="color:#fff;font-style:normal;">ekho</span> arrive à Marseille<br/><span>Été 2026.</span></h2>
-    <p class="reg-sub rv">Connecte-toi à ta ville. Reste ouvert aux autres.<br/>Laisse ton email pour faire partie des premiers.</p>
-    <form class="form rv" id="myform" onsubmit="onSubmit(event)">
-      <input type="text" class="fi" name="firstName" placeholder="Prénom" required/>
-      <input type="email" class="fi" name="email" placeholder="Email" required/>
-      <label class="fcheck">
-        <input type="checkbox" name="consent" required/>
-        Tu feras parti des premiers informés du lancement à Marseille.
-      </label>
-      <button type="submit" class="fsub">Rejoindre la bêta →</button>
-    </form>
-    <p style="font-size:.7rem;font-weight:500;color:rgba(255,255,255,.3);margin-top:14px;letter-spacing:.01em;line-height:1.6;">Accès limité · Aucune carte requise · Tu peux te désinscrire à tout moment.</p>
-    <div class="ok-msg" id="ok-msg">✓ Inscription confirmée — on te tient au courant dès l'ouverture à Marseille.</div>
+
+<!-- TÉLÉCHARGER -->
+<section class="dl-sec" id="telecharger">
+  <div class="dl-inner">
+    <div class="dl-badge"><span class="dot" style="background:var(--manila)"></span>Marseille · Été 2026</div>
+    <h2 class="dl-h2 rv">Télécharge <span>ekho</span>.</h2>
+    <p class="dl-sub rv">Choisis ton store et trouve le bon lieu autour de toi, selon ton mood.</p>
+    <div class="dl-stores rv">
+      <a href="https://apps.apple.com/fr/search?term=ekho" class="store-btn" target="_blank" rel="noopener"><svg height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg><span class="store-lbl"><small>Télécharger sur</small>App Store</span></a>
+      <a href="https://play.google.com/store/search?q=ekho&amp;c=apps" class="store-btn" target="_blank" rel="noopener"><svg height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M3.18 23.76c.3.17.64.22.99.14l12.76-7.37-2.77-2.76-10.98 10zM.35 1.28C.13 1.6 0 2.04 0 2.59v18.82c0 .55.13.99.36 1.31l.07.07 10.54-10.54v-.25L.42 1.21l-.07.07zM20.96 10.33l-2.73-1.58-3.07 3.07 3.07 3.07 2.75-1.59c.78-.45.78-1.52-.02-1.97zM4.17.24l12.76 7.37-2.77 2.77L3.18.38C3.54.3 3.88.36 4.17.54V.24z"/></svg><span class="store-lbl"><small>Disponible sur</small>Google Play</span></a>
+    </div>
+    <p class="dl-note">Lancement à Marseille — été 2026.</p>
   </div>
 </section>
 
@@ -2007,34 +2049,18 @@
     document.body.style.overflow = '';
   }
 
-  // Form — envoi vers le webhook n8n (relais Brevo)
-  const EKHO_WEBHOOK = 'https://n8n.mnicole.dev/webhook/d773084c-f3a9-4438-b9d9-b68bfd57829c';
-  async function onSubmit(e) {
-    e.preventDefault();
-    const form = document.getElementById('myform');
-    const btn = form.querySelector('button[type="submit"]');
-    btn.disabled = true;
-    const payload = {
-      firstName: form.firstName.value.trim(),
-      email: form.email.value.trim(),
-      consent: form.consent.checked,
-      source: location.href,
-      submittedAt: new Date().toISOString(),
-    };
-    try {
-      const res = await fetch(EKHO_WEBHOOK, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      });
-      if (!res.ok) throw new Error('HTTP ' + res.status);
-      form.style.display = 'none';
-      document.getElementById('ok-msg').style.display = 'block';
-    } catch (err) {
-      alert("Oups, l'inscription n'a pas pu être envoyée. Réessaie dans un instant.");
-      btn.disabled = false;
-    }
+  // Modale QR (desktop)
+  function openQr() {
+    document.getElementById('qr-ov').classList.add('open');
+    document.body.style.overflow = 'hidden';
   }
+  function closeQr() {
+    document.getElementById('qr-ov').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && document.getElementById('qr-ov').classList.contains('open')) closeQr();
+  });
 
   // FAQ accordéon
   function toggleFaq(btn) {
