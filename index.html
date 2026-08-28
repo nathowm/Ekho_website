@@ -148,7 +148,7 @@
     .qr-ov.open { display: flex; opacity: 1; }
     .qr-modal {
       position: relative; width: 100%; max-width: 372px;
-      background: #fff; border-radius: 26px; padding: 36px 32px 28px;
+      background: #fff; border-radius: 26px; padding: 48px 32px 28px;
       text-align: center; box-shadow: 0 30px 80px rgba(0,0,0,.4);
       transform: translateY(10px); transition: transform .22s;
     }
@@ -161,13 +161,6 @@
       transition: background .2s, color .2s;
     }
     .qr-close:hover { background: rgba(107,84,255,.08); color: var(--p); }
-    .qr-badge {
-      display: inline-flex; align-items: center; gap: 7px;
-      background: rgba(107,84,255,.08); border: 1px solid rgba(107,84,255,.18);
-      border-radius: 100px; padding: 6px 14px; margin-bottom: 14px;
-      font-size: .6rem; font-weight: 700; color: var(--p);
-      letter-spacing: .08em; text-transform: uppercase;
-    }
     .qr-title { font-size: 1.28rem; font-weight: 900; letter-spacing: -.04em; color: var(--dark); line-height: 1.2; margin-bottom: 8px; }
     .qr-sub { font-size: .8rem; font-weight: 500; color: var(--muted); line-height: 1.55; margin-bottom: 20px; }
     .qr-code {
@@ -1665,7 +1658,6 @@
 <div class="qr-ov" id="qr-ov" role="dialog" aria-modal="true" aria-labelledby="qr-title" onclick="if(event.target===this)closeQr()">
   <div class="qr-modal">
     <button class="qr-close" onclick="closeQr()" aria-label="Fermer">✕</button>
-    <div class="qr-badge"><span class="dot" style="background:var(--p)"></span>Été 2026</div>
     <h3 class="qr-title" id="qr-title">Scanne pour télécharger <em style="font-style:normal;color:var(--p);">ekho</em></h3>
     <p class="qr-sub">Pointe l'appareil photo de ton téléphone sur le code : tu arriveras sur la page de téléchargement.</p>
     <div class="qr-code"><svg viewBox="0 0 33 33" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges" role="img" aria-label="QR code vers ekhoapp.fr"><rect width="33" height="33" fill="#fff"/><path d="M2 2h7v1h-7zM11 2h1v1h-1zM13 2h2v1h-2zM16 2h1v1h-1zM19 2h4v1h-4zM24 2h7v1h-7zM2 3h1v1h-1zM8 3h1v1h-1zM10 3h1v1h-1zM13 3h3v1h-3zM20 3h2v1h-2zM24 3h1v1h-1zM30 3h1v1h-1zM2 4h1v1h-1zM4 4h3v1h-3zM8 4h1v1h-1zM11 4h1v1h-1zM13 4h1v1h-1zM17 4h1v1h-1zM21 4h2v1h-2zM24 4h1v1h-1zM26 4h3v1h-3zM30 4h1v1h-1zM2 5h1v1h-1zM4 5h3v1h-3zM8 5h1v1h-1zM11 5h1v1h-1zM13 5h3v1h-3zM21 5h2v1h-2zM24 5h1v1h-1zM26 5h3v1h-3zM30 5h1v1h-1zM2 6h1v1h-1zM4 6h3v1h-3zM8 6h1v1h-1zM10 6h1v1h-1zM12 6h1v1h-1zM15 6h1v1h-1zM18 6h1v1h-1zM20 6h2v1h-2zM24 6h1v1h-1zM26 6h3v1h-3zM30 6h1v1h-1zM2 7h1v1h-1zM8 7h1v1h-1zM11 7h1v1h-1zM13 7h2v1h-2zM16 7h2v1h-2zM21 7h1v1h-1zM24 7h1v1h-1zM30 7h1v1h-1zM2 8h7v1h-7zM10 8h1v1h-1zM12 8h1v1h-1zM14 8h1v1h-1zM16 8h1v1h-1zM18 8h1v1h-1zM20 8h1v1h-1zM22 8h1v1h-1zM24 8h7v1h-7zM12 9h2v1h-2zM19 9h2v1h-2zM22 9h1v1h-1zM2 10h1v1h-1zM4 10h1v1h-1zM6 10h1v1h-1zM8 10h1v1h-1zM14 10h1v1h-1zM19 10h1v1h-1zM22 10h1v1h-1zM26 10h1v1h-1zM29 10h1v1h-1zM4 11h2v1h-2zM9 11h1v1h-1zM11 11h1v1h-1zM13 11h1v1h-1zM15 11h1v1h-1zM18 11h3v1h-3zM22 11h3v1h-3zM27 11h1v1h-1zM30 11h1v1h-1zM3 12h2v1h-2zM7 12h3v1h-3zM13 12h2v1h-2zM16 12h1v1h-1zM22 12h3v1h-3zM28 12h3v1h-3zM6 13h1v1h-1zM9 13h2v1h-2zM12 13h8v1h-8zM22 13h1v1h-1zM26 13h1v1h-1zM29 13h1v1h-1zM7 14h2v1h-2zM10 14h1v1h-1zM12 14h1v1h-1zM16 14h1v1h-1zM18 14h2v1h-2zM21 14h4v1h-4zM27 14h1v1h-1zM29 14h2v1h-2zM3 15h2v1h-2zM13 15h2v1h-2zM16 15h1v1h-1zM18 15h2v1h-2zM23 15h3v1h-3zM27 15h1v1h-1zM30 15h1v1h-1zM2 16h1v1h-1zM6 16h3v1h-3zM11 16h1v1h-1zM13 16h3v1h-3zM22 16h1v1h-1zM25 16h1v1h-1zM27 16h1v1h-1zM29 16h2v1h-2zM4 17h1v1h-1zM7 17h1v1h-1zM10 17h2v1h-2zM13 17h1v1h-1zM18 17h4v1h-4zM24 17h1v1h-1zM27 17h1v1h-1zM29 17h1v1h-1zM3 18h7v1h-7zM11 18h3v1h-3zM18 18h2v1h-2zM23 18h3v1h-3zM27 18h1v1h-1zM29 18h2v1h-2zM3 19h2v1h-2zM6 19h2v1h-2zM10 19h3v1h-3zM14 19h2v1h-2zM18 19h1v1h-1zM22 19h3v1h-3zM27 19h2v1h-2zM30 19h1v1h-1zM2 20h1v1h-1zM5 20h1v1h-1zM8 20h1v1h-1zM11 20h2v1h-2zM14 20h1v1h-1zM16 20h1v1h-1zM18 20h1v1h-1zM22 20h1v1h-1zM25 20h1v1h-1zM29 20h2v1h-2zM3 21h1v1h-1zM7 21h1v1h-1zM9 21h1v1h-1zM12 21h1v1h-1zM15 21h2v1h-2zM19 21h1v1h-1zM21 21h1v1h-1zM23 21h1v1h-1zM27 21h1v1h-1zM29 21h1v1h-1zM2 22h1v1h-1zM4 22h3v1h-3zM8 22h4v1h-4zM16 22h1v1h-1zM19 22h1v1h-1zM22 22h5v1h-5zM10 23h1v1h-1zM13 23h1v1h-1zM16 23h1v1h-1zM18 23h2v1h-2zM22 23h1v1h-1zM26 23h1v1h-1zM28 23h3v1h-3zM2 24h7v1h-7zM12 24h4v1h-4zM21 24h2v1h-2zM24 24h1v1h-1zM26 24h2v1h-2zM29 24h2v1h-2zM2 25h1v1h-1zM8 25h1v1h-1zM12 25h1v1h-1zM17 25h1v1h-1zM19 25h2v1h-2zM22 25h1v1h-1zM26 25h2v1h-2zM30 25h1v1h-1zM2 26h1v1h-1zM4 26h3v1h-3zM8 26h1v1h-1zM10 26h3v1h-3zM14 26h1v1h-1zM18 26h2v1h-2zM22 26h5v1h-5zM30 26h1v1h-1zM2 27h1v1h-1zM4 27h3v1h-3zM8 27h1v1h-1zM12 27h3v1h-3zM18 27h2v1h-2zM26 27h1v1h-1zM28 27h3v1h-3zM2 28h1v1h-1zM4 28h3v1h-3zM8 28h1v1h-1zM10 28h2v1h-2zM13 28h3v1h-3zM18 28h3v1h-3zM22 28h1v1h-1zM25 28h3v1h-3zM30 28h1v1h-1zM2 29h1v1h-1zM8 29h1v1h-1zM11 29h2v1h-2zM16 29h2v1h-2zM19 29h4v1h-4zM24 29h1v1h-1zM26 29h1v1h-1zM29 29h1v1h-1zM2 30h7v1h-7zM10 30h2v1h-2zM14 30h1v1h-1zM17 30h3v1h-3zM21 30h3v1h-3zM25 30h3v1h-3zM29 30h2v1h-2z" fill="#0E0B1F"/></svg></div>
