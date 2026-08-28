@@ -117,11 +117,11 @@
     .nav-dl {
       display: inline-flex; align-items: center; gap: 7px;
       padding: 9px 18px; border-radius: 100px; border: none; cursor: pointer;
-      background: var(--p); color: #fff;
+      background: var(--dark); color: #fff;
       font-family: 'Poppins', sans-serif; font-size: .78rem; font-weight: 700;
-      letter-spacing: -.01em; transition: transform .2s, box-shadow .2s;
+      letter-spacing: -.01em; transition: transform .2s, background .2s, box-shadow .2s;
     }
-    .nav-dl:hover { transform: translateY(-1px); box-shadow: 0 8px 22px rgba(107,84,255,.3); }
+    .nav-dl:hover { background: var(--p); transform: translateY(-1px); box-shadow: 0 8px 22px rgba(107,84,255,.3); }
     @media(max-width:860px) {
       .nav-dl { display: none; }
       .nav-stores { display: flex; }
