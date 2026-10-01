@@ -12,7 +12,7 @@
   --bg: #F2EDE7;
   --terracotta: #C94B2D;
   --white: #FFFFFF;
-  --muted: rgba(26,27,46,0.42);
+  --muted: rgba(26,27,46,0.63);
 }
 
 html { scroll-behavior: smooth; overflow-x: hidden; }
@@ -111,11 +111,11 @@ footer {
   justify-content: space-between; flex-wrap: wrap; gap: 14px;
 }
 .ft-logo { font-size: 1.1rem; font-weight: 900; letter-spacing: -.04em; color: var(--manila); display: block; }
-.ft-tag { font-size: .66rem; color: rgba(255,255,255,.2); margin-top: 4px; display: block; }
+.ft-tag { font-size: .66rem; color: rgba(255,255,255,.62); margin-top: 4px; display: block; }
 .ft-links { display: flex; gap: 16px; }
-.ft-links a { font-size: .7rem; color: rgba(255,255,255,.25); text-decoration: none; transition: color .2s; }
-.ft-links a:hover { color: rgba(255,255,255,.6); }
-.ft-copy { font-size: .66rem; color: rgba(255,255,255,.15); width: 100%; }
+.ft-links a { font-size: .7rem; color: rgba(255,255,255,.68); text-decoration: none; transition: color .2s; }
+.ft-links a:hover { color: #fff; }
+.ft-copy { font-size: .66rem; color: rgba(255,255,255,.62); width: 100%; }
 
 @media (max-width: 600px) {
   main.legal { padding: 48px 6% 72px; }
