@@ -1,15 +1,16 @@
 /* ════════════════════════════════════════════
    ekho — gestion du consentement aux cookies
-   Google Analytics (mesure d'audience) et Meta Pixel (publicité)
-   ne sont chargés qu'après accord explicite (recommandations CNIL).
+   Google Analytics (mesure d'audience), Meta Pixel (publicité) et
+   Google Tag Manager ne sont chargés qu'après accord explicite
+   (recommandations CNIL).
    Le choix est conservé 6 mois, puis redemandé.
 ════════════════════════════════════════════ */
 (function () {
   var STORAGE_KEY = 'ekho_consent';
   var CONSENT_VERSION = 1;
   var MAX_AGE_MS = 1000 * 60 * 60 * 24 * 182; // ~6 mois
-  var GA_ID = 'G-PGSB7B1NYE';
   var META_PIXEL_ID = '1063546799639701';
+  var GTM_ID = 'GTM-PHFNZK7H';
 
   // ── Lecture / écriture du choix ──
   function readConsent() {
@@ -28,18 +29,34 @@
   // ── Chargement des traceurs ──
   var loaded = { analytics: false, ads: false };
 
-  function loadAnalytics() {
+  function ensureGtag() {
+    window.dataLayer = window.dataLayer || [];
+    if (!window.gtag) window.gtag = function () { dataLayer.push(arguments); };
+  }
+
+  // Consent Mode Google : transmet le choix du visiteur à gtag et à Tag Manager
+  function setGoogleConsent(c) {
+    ensureGtag();
+    gtag('consent', 'default', {
+      analytics_storage: c.analytics ? 'granted' : 'denied',
+      ad_storage: c.ads ? 'granted' : 'denied',
+      ad_user_data: c.ads ? 'granted' : 'denied',
+      ad_personalization: c.ads ? 'granted' : 'denied'
+    });
+  }
+
+  // Google Analytics (G-PGSB7B1NYE) est déclenché par le conteneur Tag Manager :
+  // ne pas le recharger directement, sinon chaque visite est comptée deux fois.
+  // Durée de vie des cookies _ga à limiter à 13 mois dans GTM (maximum CNIL).
+  function loadAnalytics(c) {
     if (loaded.analytics) return;
     loaded.analytics = true;
+    setGoogleConsent(c);
+    dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
     var s = document.createElement('script');
     s.async = true;
-    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+    s.src = 'https://www.googletagmanager.com/gtm.js?id=' + GTM_ID;
     document.head.appendChild(s);
-    window.dataLayer = window.dataLayer || [];
-    window.gtag = function () { dataLayer.push(arguments); };
-    gtag('js', new Date());
-    // Durée de vie des cookies _ga limitée à 13 mois (maximum recommandé par la CNIL)
-    gtag('config', GA_ID, { cookie_expires: 60 * 60 * 24 * 390 });
   }
 
   function loadAds() {
@@ -58,7 +75,7 @@
   }
 
   function apply(c) {
-    if (c.analytics) loadAnalytics(); else clearCookies(['_ga', '_gid', '_gat']);
+    if (c.analytics) loadAnalytics(c); else clearCookies(['_ga', '_gid', '_gat']);
     if (c.ads) loadAds(); else clearCookies(['_fbp', '_fbc']);
   }
 
