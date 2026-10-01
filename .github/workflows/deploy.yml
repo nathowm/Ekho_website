@@ -28,7 +28,7 @@ jobs:
              cookie-consent.js \
              robots.txt \
              sitemap.xml dist/
-          cp -r favicon dist/
+          cp -r favicon fonts dist/
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
