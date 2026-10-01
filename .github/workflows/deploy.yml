@@ -25,6 +25,7 @@ jobs:
              politique-de-confidentialite.html \
              conditions-generales-utilisation.html \
              legal.css \
+             cookie-consent.js \
              robots.txt \
              sitemap.xml dist/
           cp -r favicon dist/
