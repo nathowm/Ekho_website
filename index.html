@@ -105,7 +105,7 @@
       text-decoration: none; transition: border-color .2s, background .2s;
     }
     .nav-pill:hover { background: rgba(107,84,255,.07); border-color: var(--p); }
-    /* ── Stores (mobile) + bouton QR (desktop) ── */
+    /* ── Stores (mobile) + bouton Télécharger (desktop) ── */
     .nav-stores { display: none; align-items: center; gap: 7px; }
     .nav-store-btn {
       display: inline-flex; align-items: center; gap: 6px;
@@ -120,7 +120,7 @@
       padding: 9px 18px; border-radius: 100px; border: none; cursor: pointer;
       background: var(--dark); color: #fff;
       font-family: 'Poppins', sans-serif; font-size: .78rem; font-weight: 700;
-      letter-spacing: -.01em; transition: transform .2s, background .2s, box-shadow .2s;
+      letter-spacing: -.01em; text-decoration: none; transition: transform .2s, background .2s, box-shadow .2s;
     }
     .nav-dl:hover { background: var(--p); transform: translateY(-1px); box-shadow: 0 8px 22px rgba(107,84,255,.3); }
     @media(max-width:860px) {
@@ -137,46 +137,6 @@
       .nav-store-btn span { display: none; }
       .nav-store-btn { padding: 7px 9px; }
     }
-
-    /* ── Modale QR code (desktop) ── */
-    .qr-ov {
-      display: none; position: fixed; inset: 0; z-index: 300;
-      background: rgba(14,15,26,.74);
-      backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
-      align-items: center; justify-content: center; padding: 24px;
-      opacity: 0; transition: opacity .22s;
-    }
-    .qr-ov.open { display: flex; opacity: 1; }
-    .qr-modal {
-      position: relative; width: 100%; max-width: 372px;
-      background: #fff; border-radius: 26px; padding: 48px 32px 28px;
-      text-align: center; box-shadow: 0 30px 80px rgba(0,0,0,.4);
-      transform: translateY(10px); transition: transform .22s;
-    }
-    .qr-ov.open .qr-modal { transform: none; }
-    .qr-close {
-      position: absolute; top: 10px; right: 12px;
-      background: none; border: none; cursor: pointer;
-      width: 34px; height: 34px; border-radius: 50%;
-      font-size: 1.3rem; line-height: 1; color: var(--muted);
-      transition: background .2s, color .2s;
-    }
-    .qr-close:hover { background: rgba(107,84,255,.08); color: var(--p); }
-    .qr-title { font-size: 1.28rem; font-weight: 900; letter-spacing: -.04em; color: var(--dark); line-height: 1.2; margin-bottom: 8px; }
-    .qr-sub { font-size: .8rem; font-weight: 500; color: var(--muted); line-height: 1.55; margin-bottom: 20px; }
-    .qr-code {
-      width: 176px; height: 176px; margin: 0 auto;
-      padding: 10px; border-radius: 16px;
-      border: 1.5px solid rgba(26,27,46,.1);
-    }
-    .qr-code svg { width: 100%; height: 100%; display: block; }
-    .qr-or {
-      display: flex; align-items: center; gap: 10px; margin: 20px 0 14px;
-      font-size: .62rem; font-weight: 700; color: rgba(26,27,46,.3);
-      letter-spacing: .1em; text-transform: uppercase;
-    }
-    .qr-or::before, .qr-or::after { content: ''; flex: 1; height: 1px; background: rgba(26,27,46,.1); }
-    .qr-stores { display: flex; flex-direction: column; gap: 9px; }
 
     /* ── Badges stores (grand format) ── */
     .store-btn {
@@ -1648,7 +1608,7 @@
       <span>Google Play</span>
     </a>
   </div>
-  <button class="nav-dl" onclick="openQr()" aria-haspopup="dialog">Télécharger l'app</button>
+  <a href="#telecharger" class="nav-dl">Télécharger l'app</a>
   <button class="burger" id="burger" onclick="toggleMenu()" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
@@ -1658,21 +1618,6 @@
   <a href="#comment" onclick="closeMenu()">Comment ça marche</a>
   <a href="#pourquoi" onclick="closeMenu()">Pourquoi ekho</a>
   <a href="#faq" onclick="closeMenu()">Questions fréquentes</a>
-</div>
-
-<!-- MODALE QR (desktop) -->
-<div class="qr-ov" id="qr-ov" role="dialog" aria-modal="true" aria-labelledby="qr-title" onclick="if(event.target===this)closeQr()">
-  <div class="qr-modal">
-    <button class="qr-close" onclick="closeQr()" aria-label="Fermer">✕</button>
-    <h3 class="qr-title" id="qr-title">Scanne pour télécharger <em style="font-style:normal;color:var(--p);">ekho</em></h3>
-    <p class="qr-sub">Pointe l'appareil photo de ton téléphone sur le code : tu arriveras sur la page de téléchargement.</p>
-    <div class="qr-code"><svg viewBox="0 0 33 33" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges" role="img" aria-label="QR code vers ekhoapp.fr"><rect width="33" height="33" fill="#fff"/><path d="M2 2h7v1h-7zM11 2h1v1h-1zM13 2h2v1h-2zM16 2h1v1h-1zM19 2h4v1h-4zM24 2h7v1h-7zM2 3h1v1h-1zM8 3h1v1h-1zM10 3h1v1h-1zM13 3h3v1h-3zM20 3h2v1h-2zM24 3h1v1h-1zM30 3h1v1h-1zM2 4h1v1h-1zM4 4h3v1h-3zM8 4h1v1h-1zM11 4h1v1h-1zM13 4h1v1h-1zM17 4h1v1h-1zM21 4h2v1h-2zM24 4h1v1h-1zM26 4h3v1h-3zM30 4h1v1h-1zM2 5h1v1h-1zM4 5h3v1h-3zM8 5h1v1h-1zM11 5h1v1h-1zM13 5h3v1h-3zM21 5h2v1h-2zM24 5h1v1h-1zM26 5h3v1h-3zM30 5h1v1h-1zM2 6h1v1h-1zM4 6h3v1h-3zM8 6h1v1h-1zM10 6h1v1h-1zM12 6h1v1h-1zM15 6h1v1h-1zM18 6h1v1h-1zM20 6h2v1h-2zM24 6h1v1h-1zM26 6h3v1h-3zM30 6h1v1h-1zM2 7h1v1h-1zM8 7h1v1h-1zM11 7h1v1h-1zM13 7h2v1h-2zM16 7h2v1h-2zM21 7h1v1h-1zM24 7h1v1h-1zM30 7h1v1h-1zM2 8h7v1h-7zM10 8h1v1h-1zM12 8h1v1h-1zM14 8h1v1h-1zM16 8h1v1h-1zM18 8h1v1h-1zM20 8h1v1h-1zM22 8h1v1h-1zM24 8h7v1h-7zM12 9h2v1h-2zM19 9h2v1h-2zM22 9h1v1h-1zM2 10h1v1h-1zM4 10h1v1h-1zM6 10h1v1h-1zM8 10h1v1h-1zM14 10h1v1h-1zM19 10h1v1h-1zM22 10h1v1h-1zM26 10h1v1h-1zM29 10h1v1h-1zM4 11h2v1h-2zM9 11h1v1h-1zM11 11h1v1h-1zM13 11h1v1h-1zM15 11h1v1h-1zM18 11h3v1h-3zM22 11h3v1h-3zM27 11h1v1h-1zM30 11h1v1h-1zM3 12h2v1h-2zM7 12h3v1h-3zM13 12h2v1h-2zM16 12h1v1h-1zM22 12h3v1h-3zM28 12h3v1h-3zM6 13h1v1h-1zM9 13h2v1h-2zM12 13h8v1h-8zM22 13h1v1h-1zM26 13h1v1h-1zM29 13h1v1h-1zM7 14h2v1h-2zM10 14h1v1h-1zM12 14h1v1h-1zM16 14h1v1h-1zM18 14h2v1h-2zM21 14h4v1h-4zM27 14h1v1h-1zM29 14h2v1h-2zM3 15h2v1h-2zM13 15h2v1h-2zM16 15h1v1h-1zM18 15h2v1h-2zM23 15h3v1h-3zM27 15h1v1h-1zM30 15h1v1h-1zM2 16h1v1h-1zM6 16h3v1h-3zM11 16h1v1h-1zM13 16h3v1h-3zM22 16h1v1h-1zM25 16h1v1h-1zM27 16h1v1h-1zM29 16h2v1h-2zM4 17h1v1h-1zM7 17h1v1h-1zM10 17h2v1h-2zM13 17h1v1h-1zM18 17h4v1h-4zM24 17h1v1h-1zM27 17h1v1h-1zM29 17h1v1h-1zM3 18h7v1h-7zM11 18h3v1h-3zM18 18h2v1h-2zM23 18h3v1h-3zM27 18h1v1h-1zM29 18h2v1h-2zM3 19h2v1h-2zM6 19h2v1h-2zM10 19h3v1h-3zM14 19h2v1h-2zM18 19h1v1h-1zM22 19h3v1h-3zM27 19h2v1h-2zM30 19h1v1h-1zM2 20h1v1h-1zM5 20h1v1h-1zM8 20h1v1h-1zM11 20h2v1h-2zM14 20h1v1h-1zM16 20h1v1h-1zM18 20h1v1h-1zM22 20h1v1h-1zM25 20h1v1h-1zM29 20h2v1h-2zM3 21h1v1h-1zM7 21h1v1h-1zM9 21h1v1h-1zM12 21h1v1h-1zM15 21h2v1h-2zM19 21h1v1h-1zM21 21h1v1h-1zM23 21h1v1h-1zM27 21h1v1h-1zM29 21h1v1h-1zM2 22h1v1h-1zM4 22h3v1h-3zM8 22h4v1h-4zM16 22h1v1h-1zM19 22h1v1h-1zM22 22h5v1h-5zM10 23h1v1h-1zM13 23h1v1h-1zM16 23h1v1h-1zM18 23h2v1h-2zM22 23h1v1h-1zM26 23h1v1h-1zM28 23h3v1h-3zM2 24h7v1h-7zM12 24h4v1h-4zM21 24h2v1h-2zM24 24h1v1h-1zM26 24h2v1h-2zM29 24h2v1h-2zM2 25h1v1h-1zM8 25h1v1h-1zM12 25h1v1h-1zM17 25h1v1h-1zM19 25h2v1h-2zM22 25h1v1h-1zM26 25h2v1h-2zM30 25h1v1h-1zM2 26h1v1h-1zM4 26h3v1h-3zM8 26h1v1h-1zM10 26h3v1h-3zM14 26h1v1h-1zM18 26h2v1h-2zM22 26h5v1h-5zM30 26h1v1h-1zM2 27h1v1h-1zM4 27h3v1h-3zM8 27h1v1h-1zM12 27h3v1h-3zM18 27h2v1h-2zM26 27h1v1h-1zM28 27h3v1h-3zM2 28h1v1h-1zM4 28h3v1h-3zM8 28h1v1h-1zM10 28h2v1h-2zM13 28h3v1h-3zM18 28h3v1h-3zM22 28h1v1h-1zM25 28h3v1h-3zM30 28h1v1h-1zM2 29h1v1h-1zM8 29h1v1h-1zM11 29h2v1h-2zM16 29h2v1h-2zM19 29h4v1h-4zM24 29h1v1h-1zM26 29h1v1h-1zM29 29h1v1h-1zM2 30h7v1h-7zM10 30h2v1h-2zM14 30h1v1h-1zM17 30h3v1h-3zM21 30h3v1h-3zM25 30h3v1h-3zM29 30h2v1h-2z" fill="#0E0B1F"/></svg></div>
-    <div class="qr-or">ou directement</div>
-    <div class="qr-stores">
-      <a href="https://apps.apple.com/fr/app/ekho-app/id6763037724" class="store-btn" target="_blank" rel="noopener"><svg height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg><span class="store-lbl"><small>Télécharger sur</small>App Store</span></a>
-      <a href="https://play.google.com/store/apps/details?id=fr.ekho.app" class="store-btn" target="_blank" rel="noopener"><svg height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M3.18 23.76c.3.17.64.22.99.14l12.76-7.37-2.77-2.76-10.98 10zM.35 1.28C.13 1.6 0 2.04 0 2.59v18.82c0 .55.13.99.36 1.31l.07.07 10.54-10.54v-.25L.42 1.21l-.07.07zM20.96 10.33l-2.73-1.58-3.07 3.07 3.07 3.07 2.75-1.59c.78-.45.78-1.52-.02-1.97zM4.17.24l12.76 7.37-2.77 2.77L3.18.38C3.54.3 3.88.36 4.17.54V.24z"/></svg><span class="store-lbl"><small>Disponible sur</small>Google Play</span></a>
-    </div>
-  </div>
 </div>
 
 <!-- HERO -->
@@ -2074,19 +2019,6 @@
   window.addEventListener('resize', () => {
     clearTimeout(howResizeT);
     howResizeT = setTimeout(lockHowCardHeights, 200);
-  });
-
-  // Modale QR (desktop)
-  function openQr() {
-    document.getElementById('qr-ov').classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeQr() {
-    document.getElementById('qr-ov').classList.remove('open');
-    document.body.style.overflow = '';
-  }
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && document.getElementById('qr-ov').classList.contains('open')) closeQr();
   });
 
   // FAQ accordéon
