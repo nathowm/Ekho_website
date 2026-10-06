@@ -5,7 +5,7 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --p: #6B54FF;
+  --p: #4B3BB3;
   --dark: #1A1B2E;
   --dark2: #0E0F1A;
   --manila: #ECF890;
@@ -34,7 +34,7 @@ header.legal-nav {
   padding: 0 5%; height: 64px;
   background: rgba(255,255,255,0.88);
   backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(107,84,255,0.1);
+  border-bottom: 1px solid rgba(75,59,179,0.1);
 }
 .legal-nav .nav-logo {
   font-size: 1.4rem; font-weight: 900; letter-spacing: -0.05em;
@@ -43,10 +43,10 @@ header.legal-nav {
 .legal-nav .nav-back {
   font-size: 0.8rem; font-weight: 600; color: var(--p);
   padding: 8px 18px; border-radius: 100px;
-  border: 1.5px solid rgba(107,84,255,.35);
+  border: 1.5px solid rgba(75,59,179,.35);
   text-decoration: none; transition: border-color .2s, background .2s;
 }
-.legal-nav .nav-back:hover { background: rgba(107,84,255,.07); border-color: var(--p); }
+.legal-nav .nav-back:hover { background: rgba(75,59,179,.07); border-color: var(--p); }
 
 /* ──────────── CONTENU ──────────── */
 main.legal {
@@ -80,12 +80,12 @@ main.legal {
 .legal a { color: var(--p); text-decoration: underline; text-underline-offset: 3px; }
 .legal a:hover { opacity: .8; }
 .legal strong { font-weight: 700; color: var(--dark); }
-.legal hr { border: none; border-top: 1px solid rgba(107,84,255,.12); margin: 40px 0; }
+.legal hr { border: none; border-top: 1px solid rgba(75,59,179,.12); margin: 40px 0; }
 
 /* Encadré « à compléter » */
 .legal-note {
   background: rgba(236,248,144,.35);
-  border: 1px solid rgba(107,84,255,.18);
+  border: 1px solid rgba(75,59,179,.18);
   border-radius: 12px;
   padding: 16px 18px;
   font-size: .85rem;
@@ -99,9 +99,9 @@ main.legal {
 }
 .legal th, .legal td {
   text-align: left; padding: 10px 12px;
-  border: 1px solid rgba(107,84,255,.14); vertical-align: top;
+  border: 1px solid rgba(75,59,179,.14); vertical-align: top;
 }
-.legal th { background: rgba(107,84,255,.06); font-weight: 700; }
+.legal th { background: rgba(75,59,179,.06); font-weight: 700; }
 
 /* ──────────── FOOTER ──────────── */
 footer {
@@ -111,11 +111,11 @@ footer {
   justify-content: space-between; flex-wrap: wrap; gap: 14px;
 }
 .ft-logo { font-size: 1.1rem; font-weight: 900; letter-spacing: -.04em; color: var(--manila); display: block; }
-.ft-tag { font-size: .66rem; color: rgba(255,255,255,.62); margin-top: 4px; display: block; }
+.ft-tag { font-size: .6875rem; color: rgba(255,255,255,.62); margin-top: 4px; display: block; }
 .ft-links { display: flex; gap: 16px; }
 .ft-links a { font-size: .7rem; color: rgba(255,255,255,.68); text-decoration: none; transition: color .2s; }
 .ft-links a:hover { color: #fff; }
-.ft-copy { font-size: .66rem; color: rgba(255,255,255,.62); width: 100%; }
+.ft-copy { font-size: .6875rem; color: rgba(255,255,255,.62); width: 100%; }
 
 @media (max-width: 600px) {
   main.legal { padding: 48px 6% 72px; }
